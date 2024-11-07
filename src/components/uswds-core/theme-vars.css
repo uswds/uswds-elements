@@ -1,0 +1,18 @@
+:root {
+  /* Theme colors */
+  --usa-theme-color-base-lightest: var(--usa-system-color-gray-5);
+  /* Applied colors */
+  --usa-theme-page-background-color: var(--usa-system-color-white);
+  --usa-theme-text-color: var(--usa-system-color-ink);
+  /* Font weight */
+  --usa-theme-text-light: 100;
+  --usa-theme-text-bold: 700;
+  /* Font family */
+  --usa-theme-font-body: Source Sans Pro Web, Helvetica Neue, Helvetica, Roboto, Arial, sans-serif;
+  --usa-theme-grid-container-max-width: var(--usa-system-unit-desktop);
+  /* Focus styles */
+  --usa-theme-focus-color: var(--usa-system-color-blue-40v);
+  --usa-theme-focus-offset: 0;
+  --usa-theme-focus-style: solid;
+  --usa-theme-focus-width: var(--usa-system-unit-05);
+}

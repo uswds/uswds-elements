@@ -1,0 +1,26 @@
+:root {
+  --usa-system-color-white: #fff;
+  --usa-system-color-gray-5: #f0f0f0;
+  --usa-system-color-gray-10: #e6e6e6;
+  --usa-system-color-gray-30: #adadad;
+  --usa-system-color-gray-cool-10: #dfe1e2;
+  --usa-system-color-gray-cool-30: #a9aeb1;
+  --usa-system-color-gray-cool-60: #565c65;
+  --usa-system-color-blue-50: #2378c3;
+  --usa-system-color-blue-40v: #2491ff;
+
+  --usa-system-color-ink: #1b1b1b;
+  /* Spacing */
+  --usa-system-unit-05: .25rem;
+  --usa-system-unit-1: .5rem;
+  --usa-system-unit-105: .75rem;
+  --usa-system-unit-2: 1rem;
+  --usa-system-unit-205: 1.25rem;
+  --usa-system-unit-3: 1.5rem;
+  --usa-system-unit-4: 2rem;
+  --usa-system-unit-5: 2.5rem;
+  --usa-system-unit-6: 3rem;
+  --usa-system-unit-7: 3.5rem;
+  --usa-system-unit-mobile-lg: 30rem;
+  --usa-system-unit-desktop: 64rem;
+}

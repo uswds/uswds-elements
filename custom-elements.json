@@ -38,7 +38,7 @@
         {
           "kind": "class",
           "description": "",
-          "name": "R",
+          "name": "U",
           "members": [
             {
               "kind": "method",
@@ -122,7 +122,7 @@
           "kind": "custom-element-definition",
           "name": "usa-banner",
           "declaration": {
-            "name": "R",
+            "name": "U",
             "module": "dist/components/usa-banner.js"
           }
         },
@@ -130,7 +130,7 @@
           "kind": "js",
           "name": "UsaBanner",
           "declaration": {
-            "name": "R",
+            "name": "U",
             "module": "dist/components/usa-banner.js"
           }
         }
@@ -694,6 +694,114 @@
     {
       "kind": "javascript-module",
       "path": "src/components/usa-link/usa-link.spec.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/usa-text-input/index.js",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UsaTextInput",
+          "cssProperties": [
+            {
+              "description": "Sets the line-height of input element",
+              "name": "--theme-input-line-height"
+            },
+            {
+              "description": "Sets the max width of the input element",
+              "name": "--theme-input-max-width"
+            },
+            {
+              "description": "Sets the border width of error and success states.",
+              "name": "--theme-input-state-border-width"
+            }
+          ],
+          "slots": [
+            {
+              "description": "This element has a slot",
+              "name": ""
+            }
+          ],
+          "members": [],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "usa-text-input",
+          "summary": "The usa-text-input component.",
+          "customElement": true
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UsaTextInput",
+          "declaration": {
+            "name": "UsaTextInput",
+            "module": "src/components/usa-text-input/index.js"
+          }
+        },
+        {
+          "kind": "custom-element-definition",
+          "name": "usa-text-input",
+          "declaration": {
+            "name": "UsaTextInput",
+            "module": "src/components/usa-text-input/index.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/usa-text-input/text-input.stories.js",
+      "declarations": [
+        {
+          "kind": "variable",
+          "name": "Default",
+          "type": {
+            "text": "object"
+          },
+          "default": "{}"
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/components/usa-text-input/text-input.stories.js"
+          }
+        },
+        {
+          "kind": "js",
+          "name": "Default",
+          "declaration": {
+            "name": "Default",
+            "module": "src/components/usa-text-input/text-input.stories.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/usa-text-input/usa-text-input.css.js",
+      "declarations": [],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "default",
+          "declaration": {
+            "module": "src/components/usa-text-input/usa-text-input.css.js"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/usa-text-input/usa-text-input.spec.js",
       "declarations": [],
       "exports": []
     }
