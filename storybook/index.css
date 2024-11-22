@@ -75,6 +75,48 @@ body {
   min-width: 320px;
   min-height: 100vh;
 }
+@font-face{
+  font-family:"Source Sans Pro Web";
+  font-style:normal;
+  font-weight:300;
+  font-display:fallback;
+  src:url(@uswds/uswds/fonts/source-sans-pro/sourcesanspro-light-webfont.woff2) format("woff2");
+}
+@font-face{
+  font-family:"Source Sans Pro Web";
+  font-style:normal;
+  font-weight:400;
+  font-display:fallback;
+  src:url(@uswds/uswds/fonts/source-sans-pro/sourcesanspro-regular-webfont.woff2) format("woff2");
+}
+@font-face{
+  font-family:"Source Sans Pro Web";
+  font-style:normal;
+  font-weight:700;
+  font-display:fallback;
+  src:url(@uswds/uswds/fonts/source-sans-pro/sourcesanspro-bold-webfont.woff2) format("woff2");
+}
+@font-face{
+  font-family:"Source Sans Pro Web";
+  font-style:italic;
+  font-weight:300;
+  font-display:fallback;
+  src:url(@uswds/uswds/fonts/source-sans-pro/sourcesanspro-lightitalic-webfont.woff2) format("woff2");
+}
+@font-face{
+  font-family:"Source Sans Pro Web";
+  font-style:italic;
+  font-weight:400;
+  font-display:fallback;
+  src:url(@uswds/uswds/fonts/source-sans-pro/sourcesanspro-italic-webfont.woff2) format("woff2");
+}
+@font-face{
+  font-family:"Source Sans Pro Web";
+  font-style:italic;
+  font-weight:700;
+  font-display:fallback;
+  src:url(@uswds/uswds/fonts/source-sans-pro/sourcesanspro-bolditalic-webfont.woff2) format("woff2");
+}
 
 @media (prefers-color-scheme: light) {
   :root {
