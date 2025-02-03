@@ -22,7 +22,6 @@
   "scripts": {
     "build": "vite build && npm run manifest:build",
     "build:watch": "vite build --watch",
-
     "dev": "vite",
     "prettier:js": "npx prettier --check './src/components/**/*.js'",
     "prettier:js:fix": "npx prettier --write './src/components/**/*.js'",
@@ -39,6 +38,7 @@
     "pages": "npm run storybook:build && cp -r storybook-static _site"
   },
   "dependencies": {
+    "@uswds/tokens": "github:uswds/uswds-tokens#cm-output-css-props",
     "@uswds/uswds": "^3.11.0",
     "lit": "^3.2.1",
     "sass": "^1.83.1"
