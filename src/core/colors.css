@@ -1,6 +1,8 @@
 :root {
-  --usa-base-lightest: #f0f0f0;
+  --usa-base-lightest: var(--gray-5);
+  --usa-primary: var(--blue-vivid-60);
+  --usa-primary-dark: var(--blue-warm-vivid-70);
 
-  --theme-link-color: #005ea2;
-  --theme-link-hover-color: #1a4480;
+  --theme-link-color: var(--usa-primary);
+  --theme-link-hover-color: var(--usa-primary-dark);
 }
