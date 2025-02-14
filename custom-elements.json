@@ -7386,7 +7386,11 @@
     },
     {
       "kind": "javascript-module",
+<<<<<<< HEAD
       "path": "storybook-static/sb-addons/essentials-actions-3/manager-bundle.js",
+=======
+      "path": "storybook-static/sb-addons/essentials-backgrounds-4/manager-bundle.js",
+>>>>>>> 1fe674e23d3207fe97466162a7bc6d39fee66a01
       "declarations": [],
       "exports": []
     },
@@ -7410,6 +7414,7 @@
     },
     {
       "kind": "javascript-module",
+<<<<<<< HEAD
       "path": "storybook-static/sb-addons/a11y-10/manager-bundle.js",
       "declarations": [],
       "exports": []
@@ -7417,6 +7422,9 @@
     {
       "kind": "javascript-module",
       "path": "storybook-static/sb-addons/essentials-backgrounds-4/manager-bundle.js",
+=======
+      "path": "storybook-static/sb-addons/essentials-outline-8/manager-bundle.js",
+>>>>>>> 1fe674e23d3207fe97466162a7bc6d39fee66a01
       "declarations": [],
       "exports": []
     },
@@ -7428,7 +7436,23 @@
     },
     {
       "kind": "javascript-module",
+<<<<<<< HEAD
       "path": "storybook-static/sb-addons/essentials-outline-8/manager-bundle.js",
+=======
+      "path": "storybook-static/sb-addons/a11y-10/manager-bundle.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "storybook-static/sb-addons/essentials-viewport-5/manager-bundle.js",
+      "declarations": [],
+      "exports": []
+    },
+    {
+      "kind": "javascript-module",
+      "path": "storybook-static/sb-addons/essentials-actions-3/manager-bundle.js",
+>>>>>>> 1fe674e23d3207fe97466162a7bc6d39fee66a01
       "declarations": [],
       "exports": []
     },
@@ -7446,12 +7470,15 @@
     },
     {
       "kind": "javascript-module",
+<<<<<<< HEAD
       "path": "storybook-static/sb-addons/essentials-viewport-5/manager-bundle.js",
       "declarations": [],
       "exports": []
     },
     {
       "kind": "javascript-module",
+=======
+>>>>>>> 1fe674e23d3207fe97466162a7bc6d39fee66a01
       "path": "storybook-static/sb-addons/storybook-11/manager-bundle.js",
       "declarations": [],
       "exports": []
