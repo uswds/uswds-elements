@@ -33,7 +33,7 @@ import { UsaBanner } from "@uswds/elements";
 ```html
 <!-- importing directy into an HTML page -->
 <script type="module">
-  import { UsaBanner } from "@uswds/elements";
+    import { UsaBanner } from "@uswds/elements";
 </script>
 <usa-banner></usa-banner>
 ```
