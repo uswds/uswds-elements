@@ -6,14 +6,14 @@ export const bannerStyles: CSSResultGroup = [
     :host {
       --usa-color-base-lightest: #f0f0f0;
       --usa-color-base-lighter: #dfe1e2;
-      --usa-color-blue-60v: #005ea2;
+      --usa-color-blue-vivid-60: #005ea2;
       --usa-color-transparent: transparent;
 
       --usa-banner-background-color: var(--usa-color-base-lightest);
       --usa-banner-font-family:
         system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Helvetica, Arial, sans-serif;
-      --usa-banner-link-color: var(--usa-color-blue-60v, #005ea2);
+      --usa-banner-link-color: var(--usa-color-blue-vivid-60);
       --usa-banner-link-hover-color: #1a4480;
       --usa-banner-focus-outline-color: #2491ff;
       --usa-banner-max-width: var(--usa-breakpoint-desktop);
@@ -39,12 +39,6 @@ export const bannerStyles: CSSResultGroup = [
       --usa-breakpoint-tablet: 40rem;
       --usa-breakpoint-desktop: 64rem;
 
-      --theme-banner-background-color: var(--usa-banner-background-color);
-      --theme-banner-font-family: var(--usa-banner-font-family);
-      --theme-banner-link-color: var(--usa-banner-link-color);
-      --theme-banner-link-hover-color: var(--usa-banner-link-hover-color);
-      --theme-banner-max-width: var(--usa-banner-max-width);
-
       --usa-icon-expand-more: url("/src/shared/icons/expand_more.svg");
       --usa-icon-expand-less: url("/src/shared/icons/expand_less.svg");
       --usa-icon-close: url("/src/shared/icons/close.svg");
@@ -56,9 +50,9 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     section {
-      background-color: var(--theme-banner-background-color);
+      background-color: var(--usa-banner-background-color);
       box-sizing: border-box;
-      font-family: var(--theme-banner-font-family);
+      font-family: var(--usa-banner-font-family);
       font-size: var(--usa-banner-font-size-xs);
     }
 
@@ -307,7 +301,7 @@ export const bannerStyles: CSSResultGroup = [
       left: 0;
       top: 0;
       bottom: 0;
-      color: var(--theme-banner-link-color);
+      color: var(--usa-banner-link-color);
       display: block;
       font-size: var(--usa-banner-font-size-xs);
       height: auto;
@@ -319,7 +313,7 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     button:hover {
-      color: var(--theme-banner-link-hover-color);
+      color: var(--usa-banner-link-hover-color);
     }
 
     @media (max-width: 39.99em) {
@@ -413,7 +407,7 @@ export const bannerStyles: CSSResultGroup = [
         display: block;
         width: var(--usa-size-touch-target);
         height: var(--usa-size-touch-target);
-        background-color: var(--usa-color-blue-60v);
+        background-color: var(--usa-color-blue-vivid-60);
         mask-size: 1.5rem 1.5rem;
         mask-repeat: no-repeat;
         mask-position: center;
