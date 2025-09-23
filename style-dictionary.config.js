@@ -48,6 +48,12 @@ const filters = {
   spacing: (token) => token.path[0] === "spacing",
 };
 
+const outputFiles = [
+  'breakpoints',
+  'colors',
+  'spacing',
+];
+
 export default {
   source: ["tokens/**/*.json"],
   platforms: {
@@ -55,45 +61,21 @@ export default {
       transforms: ["name/uswds-theme", "value/uswds-units"],
       prefix: "usa",
       buildPath: "build/scss/",
-      files: [
-        {
-          destination: "_breakpoints.scss",
-          format: "scss/variables",
-          filter: filters.breakpoints,
-        },
-        {
-          destination: "_colors.scss",
-          format: "scss/variables",
-          filter: filters.colors,
-        },
-        {
-          destination: "_spacing.scss",
-          format: "scss/variables",
-          filter: filters.spacing,
-        }
-      ],
+      files: outputFiles.map(name => ({
+        destination: `_${name}.scss`,
+        format: "scss/variables",
+        filter: filters[name],
+      }))
     },
     css: {
       transforms: ["name/uswds-theme", "value/uswds-units"],
       prefix: "usa",
       buildPath: "build/css/",
-      files: [
-        {
-          destination: "breakpoints.css",
-          format: "css/variables",
-          filter: filters.breakpoints,
-        },
-        {
-          destination: "colors.css",
-          format: "css/variables",
-          filter: filters.colors,
-        },
-        {
-          destination: "spacing.css",
-          format: "css/variables",
-          filter: filters.spacing,
-        }
-      ],
+      files: outputFiles.map(name => ({
+        destination: `${name}.css`,
+        format: "css/variables",
+        filter: filters[name],
+      }))
     },
   },
 };
