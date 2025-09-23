@@ -30,5 +30,10 @@
       "$value": "{spacing.4}"
     }
   },
+  "size": {
+    "touch-target": {
+      "$value": "{spacing.6}"
+    }
+  },
   "$type": "dimension"
 }
