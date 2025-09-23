@@ -405,7 +405,7 @@ export const bannerStyles: CSSResultGroup = [
         display: block;
         width: var(--usa-size-touch-target);
         height: var(--usa-size-touch-target);
-        background-color: var(--usa-color-blue-vivid-60);
+        background-color: var(--usa-banner-link-color);
         mask-size: 1.5rem 1.5rem;
         mask-repeat: no-repeat;
         mask-position: center;
