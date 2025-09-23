@@ -41,6 +41,13 @@ StyleDictionary.registerTransform({
   },
 });
 
+const filters = {
+  breakpoints: (token) => token.path[0] === "breakpoint",
+  colors: (token) =>
+    token.filePath && token.filePath.includes("tokens/color/"),
+  spacing: (token) => token.path[0] === "spacing",
+};
+
 export default {
   source: ["tokens/**/*.json"],
   platforms: {
@@ -50,21 +57,20 @@ export default {
       buildPath: "build/scss/",
       files: [
         {
+          destination: "_breakpoints.scss",
+          format: "scss/variables",
+          filter: filters.breakpoints,
+        },
+        {
           destination: "_colors.scss",
           format: "scss/variables",
-          filter: (token) =>
-            token.filePath && token.filePath.includes("tokens/color/"),
+          filter: filters.colors,
         },
         {
           destination: "_spacing.scss",
           format: "scss/variables",
-          filter: (token) => token.path[0] === "spacing",
-        },
-        {
-          destination: "_breakpoints.scss",
-          format: "scss/variables",
-          filter: (token) => token.path[0] === "breakpoint",
-        },
+          filter: filters.spacing,
+        }
       ],
     },
     css: {
@@ -73,21 +79,20 @@ export default {
       buildPath: "build/css/",
       files: [
         {
+          destination: "breakpoints.css",
+          format: "css/variables",
+          filter: filters.breakpoints,
+        },
+        {
           destination: "colors.css",
           format: "css/variables",
-          filter: (token) =>
-            token.filePath && token.filePath.includes("tokens/color/"),
+          filter: filters.colors,
         },
         {
           destination: "spacing.css",
           format: "css/variables",
-          filter: (token) => token.path[0] === "spacing",
-        },
-        {
-          destination: "breakpoints.css",
-          format: "css/variables",
-          filter: (token) => token.path[0] === "breakpoint",
-        },
+          filter: filters.spacing,
+        }
       ],
     },
   },
