@@ -45,7 +45,7 @@ const filters = {
   breakpoints: (token) => token.path[0] === "breakpoint",
   colors: (token) =>
     token.filePath && token.filePath.includes("tokens/color/"),
-  spacing: (token) => token.path[0] === "spacing",
+  spacing: (token) => token.path[0] === "spacing" || token.path[0] === "site-margins" || token.path[0] === "size",
 };
 
 const outputFiles = [
