@@ -4,24 +4,13 @@ import { css } from "lit";
 export const bannerStyles: CSSResultGroup = [
   css`
     :host {
+      /**
+       * Global tokens
+       */
       --usa-color-base-lightest: #f0f0f0;
       --usa-color-base-lighter: #dfe1e2;
       --usa-color-blue-vivid-60: #005ea2;
       --usa-color-transparent: transparent;
-
-      --usa-banner-background-color: var(--usa-color-base-lightest);
-      --usa-banner-font-family:
-        system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
-      --usa-banner-link-color: var(--usa-color-blue-vivid-60);
-      --usa-banner-link-hover-color: #1a4480;
-      --usa-banner-focus-outline-color: #2491ff;
-      --usa-banner-max-width: var(--usa-breakpoint-desktop);
-      --usa-banner-font-size-xs: 0.75rem;
-      --usa-banner-font-size-sm: 0.875rem;
-      --usa-banner-font-size-base: 0.94rem;
-      --usa-banner-line-height-base: 1.6;
-      --usa-banner-line-height-sm: 1.2;
 
       --usa-spacing-05: 0.25rem;
       --usa-spacing-1: 0.5rem;
@@ -38,6 +27,23 @@ export const bannerStyles: CSSResultGroup = [
 
       --usa-breakpoint-tablet: 40rem;
       --usa-breakpoint-desktop: 64rem;
+
+      /**
+       * Component tokens
+       */
+      --usa-banner-background-color: var(--usa-color-base-lightest);
+      --usa-banner-font-family:
+        system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+      --usa-banner-link-color: var(--usa-color-blue-vivid-60);
+      --usa-banner-link-hover-color: #1a4480;
+      --usa-banner-focus-outline-color: #2491ff;
+      --usa-banner-max-width: var(--usa-breakpoint-desktop);
+      --usa-banner-font-size-xs: 0.75rem;
+      --usa-banner-font-size-sm: 0.875rem;
+      --usa-banner-font-size-base: 0.94rem;
+      --usa-banner-line-height-base: 1.6;
+      --usa-banner-line-height-sm: 1.2;
 
       --usa-icon-expand-more: url("/src/shared/icons/expand_more.svg");
       --usa-icon-expand-less: url("/src/shared/icons/expand_less.svg");
