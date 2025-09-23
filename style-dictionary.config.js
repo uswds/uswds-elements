@@ -41,17 +41,23 @@ StyleDictionary.registerTransform({
   },
 });
 
-const filters = {
-  breakpoints: (token) => token.path[0] === "breakpoint",
-  colors: (token) =>
-    token.filePath && token.filePath.includes("tokens/color/"),
-  spacing: (token) => token.path[0] === "spacing" || token.path[0] === "site-margins" || token.path[0] === "size",
-};
-
-const outputFiles = [
-  'breakpoints',
-  'colors',
-  'spacing',
+const outputs = [
+  {
+    name: "breakpoints",
+    filter: (token) => token.path[0] === "breakpoint",
+  },
+  {
+    name: "colors",
+    filter: (token) =>
+      token.filePath && token.filePath.includes("tokens/color/"),
+  },
+  {
+    name: "spacing",
+    filter: (token) =>
+      token.path[0] === "spacing" ||
+      token.path[0] === "site-margins" ||
+      token.path[0] === "size",
+  },
 ];
 
 export default {
@@ -61,21 +67,21 @@ export default {
       transforms: ["name/uswds-theme", "value/uswds-units"],
       prefix: "usa",
       buildPath: "build/scss/",
-      files: outputFiles.map(name => ({
+      files: outputs.map(({ name, filter }) => ({
         destination: `_${name}.scss`,
         format: "scss/variables",
-        filter: filters[name],
-      }))
+        filter,
+      })),
     },
     css: {
       transforms: ["name/uswds-theme", "value/uswds-units"],
       prefix: "usa",
       buildPath: "build/css/",
-      files: outputFiles.map(name => ({
+      files: outputs.map(({ name, filter }) => ({
         destination: `${name}.css`,
         format: "css/variables",
-        filter: filters[name],
-      }))
+        filter,
+      })),
     },
   },
 };
