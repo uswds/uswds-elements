@@ -7,11 +7,6 @@ export const bannerStyles: CSSResultGroup = [
       /**
        * Global tokens
        */
-      --usa-color-base-lightest: #f0f0f0;
-      --usa-color-base-lighter: #dfe1e2;
-      --usa-color-blue-vivid-60: #005ea2;
-      --usa-color-transparent: transparent;
-
       --usa-spacing-05: 0.25rem;
       --usa-spacing-1: 0.5rem;
       --usa-spacing-2: 1rem;
@@ -31,13 +26,14 @@ export const bannerStyles: CSSResultGroup = [
       /**
        * Component tokens
        */
-      --usa-banner-background-color: var(--usa-color-base-lightest);
+      --usa-banner-background-color: var(--usa-color-base-lightest, #f0f0f0);
+      --usa-banner-button-close-background-color: var(--usa-color-base-lighter, #dfe1e2);
       --usa-banner-font-family:
         system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Helvetica, Arial, sans-serif;
-      --usa-banner-link-color: var(--usa-color-blue-vivid-60);
-      --usa-banner-link-hover-color: #1a4480;
-      --usa-banner-focus-outline-color: #2491ff;
+      --usa-banner-link-color: var(--usa-color-blue-vivid-60, #005ea2);
+      --usa-banner-link-hover-color: var(--usa-color-blue-warm-vivid-70, #1a4480);
+      --usa-banner-focus-outline-color: var(--usa-color-blue-vivid-40, #2491ff);
       --usa-banner-max-width: var(--usa-breakpoint-desktop);
       --usa-banner-font-size-xs: 0.75rem;
       --usa-banner-font-size-sm: 0.875rem;
@@ -136,7 +132,6 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     .content {
-      background-color: var(--usa-color-transparent);
       font-size: var(--usa-banner-font-size-base);
       line-height: var(--usa-banner-line-height-base);
       margin-inline: auto;
@@ -233,7 +228,6 @@ export const bannerStyles: CSSResultGroup = [
 
     .header-action::after {
       background-color: currentColor;
-      background-image: var(--usa-icon-expand-more);
       content: "";
       display: inline-block;
       height: 1rem;
@@ -273,7 +267,6 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (min-width: 40em) {
       header.expanded {
-        background-color: transparent;
         display: block;
         font-size: var(--usa-banner-font-size-sm);
         font-weight: 400;
@@ -359,7 +352,6 @@ export const bannerStyles: CSSResultGroup = [
         position: absolute;
         top: 0;
         right: -18px;
-        background-image: var(--usa-icon-expand-more);
         mask-image: var(--usa-icon-expand-more);
       }
 
@@ -397,7 +389,7 @@ export const bannerStyles: CSSResultGroup = [
         top: 0;
         bottom: 0;
         right: 0;
-        background-color: var(--usa-color-base-lighter);
+        background-color: var(--usa-banner-button-close-background-color);
         content: "";
         display: block;
         height: var(--usa-size-touch-target);
@@ -417,7 +409,6 @@ export const bannerStyles: CSSResultGroup = [
         mask-size: 1.5rem 1.5rem;
         mask-repeat: no-repeat;
         mask-position: center;
-        background-image: var(--usa-icon-close);
         mask-image: var(--usa-icon-close);
       }
     }
@@ -432,7 +423,6 @@ export const bannerStyles: CSSResultGroup = [
       button[aria-expanded="true"]::after,
       button[aria-expanded="true"]:hover::after {
         position: absolute;
-        background-image: var(--usa-icon-expand-less);
         mask-image: var(--usa-icon-expand-less);
       }
     }
