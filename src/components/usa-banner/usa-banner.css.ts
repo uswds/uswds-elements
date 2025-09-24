@@ -503,11 +503,5 @@ export const bannerStyles: CSSResultGroup = [
       mask-size: cover;
       width: 1.21875ex;
     }
-
-    .usa-js-loading .content {
-      position: absolute;
-      left: -999em;
-      right: auto;
-    }
   `,
 ];
