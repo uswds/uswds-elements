@@ -16,3 +16,6 @@ jobs:
 
       - name: Run Storybook tests
         run: npm run test:storybook:ci
+
+      - name: Run vitest tests
+        run: npm run test:ci
