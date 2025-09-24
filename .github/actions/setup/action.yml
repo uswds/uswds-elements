@@ -1,5 +1,5 @@
-name: Setup node
-description: Setup node and install dependencies
+name: Setup node and install dependencies
+description: Setup action to be reused in multiple workflows
 inputs:
   skipInstall:
     description: Skip the install step
