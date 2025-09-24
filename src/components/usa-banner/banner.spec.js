@@ -22,9 +22,9 @@ describe("USA Banner component", async () => {
   });
 
   it("uses gov TLD by default", () => {
-    expect(
-      getInsideBanner().querySelector(".content").textContent,
-    ).toContain(".gov");
+    expect(getInsideBanner().querySelector(".content").textContent).toContain(
+      ".gov",
+    );
   });
 
   it("initializes closed", () => {
@@ -58,8 +58,8 @@ describe("MIL variant", async () => {
   });
 
   it("renders correctly", () => {
-    expect(
-      getInsideBanner().querySelector(".content").textContent,
-    ).toContain(".mil");
+    expect(getInsideBanner().querySelector(".content").textContent).toContain(
+      ".mil",
+    );
   });
 });
