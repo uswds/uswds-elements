@@ -7,7 +7,7 @@ function getInsideBanner() {
 }
 
 function getBannerButton() {
-  return getInsideBanner().querySelector(".usa-banner__button");
+  return getInsideBanner().querySelector(".usa-accordion__button");
 }
 
 describe("USA Banner component", async () => {
@@ -23,7 +23,7 @@ describe("USA Banner component", async () => {
 
   it("uses gov TLD by default", () => {
     expect(
-      getInsideBanner().querySelector(".usa-banner__content").textContent,
+      getInsideBanner().querySelector(".content").textContent,
     ).toContain(".gov");
   });
 
@@ -59,7 +59,7 @@ describe("MIL variant", async () => {
 
   it("renders correctly", () => {
     expect(
-      getInsideBanner().querySelector(".usa-banner__content").textContent,
+      getInsideBanner().querySelector(".content").textContent,
     ).toContain(".mil");
   });
 });
