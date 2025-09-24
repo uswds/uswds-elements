@@ -293,22 +293,22 @@ export const bannerStyles: CSSResultGroup = [
     button {
       background: none;
       border: none;
-      padding: 0;
-      font: inherit;
-      cursor: pointer;
-      outline: inherit;
-      position: absolute;
-      left: 0;
-      top: 0;
       bottom: 0;
       color: var(--usa-banner-link-color);
+      cursor: pointer;
       display: block;
+      font: inherit;
       font-size: var(--usa-banner-font-size-xs);
       height: auto;
+      left: 0;
       line-height: var(--usa-banner-line-height-sm);
+      outline: inherit;
+      padding: 0;
       padding-block-start: 0;
       padding-inline-start: 0;
+      position: absolute;
       text-decoration: none;
+      top: 0;
       width: auto;
     }
 
@@ -332,28 +332,28 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (min-width: 40em) {
       button {
-        position: relative;
-        display: inline;
-        margin-inline-start: var(--usa-spacing-1);
-        left: auto;
-        top: auto;
         bottom: auto;
+        display: inline;
+        left: auto;
+        margin-inline-start: var(--usa-spacing-1);
+        position: relative;
+        top: auto;
       }
 
       button::after {
+        background-color: currentColor;
         content: "";
         display: inline-block;
-        width: 1rem;
         height: 1rem;
         margin-block: 0;
-        background-color: currentColor;
-        mask-size: contain;
-        mask-repeat: no-repeat;
-        mask-position: center;
-        position: absolute;
-        top: 0;
-        right: -18px;
         mask-image: var(--usa-icon-expand-more);
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: contain;
+        position: absolute;
+        right: -18px;
+        top: 0;
+        width: 1rem;
       }
 
       button:hover {
@@ -386,31 +386,31 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (max-width: 39.99em) {
       button[aria-expanded="true"]::before {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
         background-color: var(--usa-banner-button-close-background-color);
+        bottom: 0;
         content: "";
         display: block;
         height: var(--usa-size-touch-target);
+        position: absolute;
+        right: 0;
+        top: 0;
         width: var(--usa-size-touch-target);
       }
 
       button[aria-expanded="true"]::after {
-        position: absolute;
-        top: 0;
+        background-color: var(--usa-banner-link-color);
         bottom: 0;
-        right: 0;
         content: "";
         display: block;
-        width: var(--usa-size-touch-target);
         height: var(--usa-size-touch-target);
-        background-color: var(--usa-banner-link-color);
-        mask-size: 1.5rem 1.5rem;
-        mask-repeat: no-repeat;
-        mask-position: center;
         mask-image: var(--usa-icon-close);
+        mask-position: center;
+        mask-repeat: no-repeat;
+        mask-size: 1.5rem 1.5rem;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: var(--usa-size-touch-target);
       }
     }
 
@@ -423,8 +423,8 @@ export const bannerStyles: CSSResultGroup = [
 
       button[aria-expanded="true"]::after,
       button[aria-expanded="true"]:hover::after {
-        position: absolute;
         mask-image: var(--usa-icon-expand-less);
+        position: absolute;
       }
     }
 
@@ -436,19 +436,19 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     .button-text {
-      position: absolute;
       left: -999em;
+      position: absolute;
       right: auto;
       text-decoration: underline;
     }
 
     @media (min-width: 40em) {
       .button-text {
-        position: static;
-        left: auto;
-        right: auto;
         clip: auto;
         display: inline;
+        left: auto;
+        position: static;
+        right: auto;
       }
     }
 
@@ -459,8 +459,8 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     .guidance {
-      display: flex;
       align-items: flex-start;
+      display: flex;
       max-width: 62ex;
       padding-block-start: var(--usa-spacing-2);
     }
