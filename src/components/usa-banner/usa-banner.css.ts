@@ -28,23 +28,22 @@ export const bannerStyles: CSSResultGroup = [
        */
       --usa-banner-background-color: var(--usa-color-base-lightest, #f0f0f0);
       --usa-banner-button-close-background-color: var(--usa-color-base-lighter, #dfe1e2);
-      --usa-banner-text-color: var(--usa-color-base-darkest, #1b1b1b);
-      --usa-banner-font-family:
-        system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
-      --usa-banner-link-color: var(--usa-color-blue-vivid-60, #005ea2);
-      --usa-banner-link-hover-color: var(--usa-color-blue-warm-vivid-70, #1a4480);
       --usa-banner-focus-outline-color: var(--usa-color-blue-vivid-40, #2491ff);
-      --usa-banner-max-width: var(--usa-breakpoint-desktop);
+      --usa-banner-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif;
       --usa-banner-font-size-xs: 0.75rem;
       --usa-banner-font-size-sm: 0.875rem;
       --usa-banner-font-size-base: 0.94rem;
-      --usa-banner-line-height-base: 1.6;
       --usa-banner-line-height-sm: 1.2;
-
-      --usa-icon-expand-more: url("/src/shared/icons/expand_more.svg");
-      --usa-icon-expand-less: url("/src/shared/icons/expand_less.svg");
+      --usa-banner-line-height-base: 1.6;
+      --usa-banner-link-color: var(--usa-color-blue-vivid-60, #005ea2);
+      --usa-banner-link-hover-color: var(--usa-color-blue-warm-vivid-70, #1a4480);
+      --usa-banner-max-width: var(--usa-breakpoint-desktop);
+      --usa-banner-text-color: var(--usa-color-base-darkest, #1b1b1b);
+  
       --usa-icon-close: url("/src/shared/icons/close.svg");
+      --usa-icon-expand-less: url("/src/shared/icons/expand_less.svg");
+      --usa-icon-expand-more: url("/src/shared/icons/expand_more.svg");
       --usa-icon-lock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='64' viewBox='0 0 52 64' class='usa-banner__lock-image' role='img' aria-labelledby='banner-lock-description-default' focusable='false'%3E%3Ctitle id='banner-lock-title-default'%3ELock%3C/title%3E%3Cdesc id='banner-lock-description-default'%3ELocked padlock icon%3C/desc%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z'%3E%3C/path%3E%3C/svg%3E");
     }
 
