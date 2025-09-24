@@ -1,4 +1,4 @@
-name: Storybook Tests
+name: Storybook and Component Tests
 on: push
 jobs:
   test:
