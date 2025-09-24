@@ -28,6 +28,7 @@ export const bannerStyles: CSSResultGroup = [
        */
       --usa-banner-background-color: var(--usa-color-base-lightest, #f0f0f0);
       --usa-banner-button-close-background-color: var(--usa-color-base-lighter, #dfe1e2);
+      --usa-banner-text-color: var(--usa-color-base-darkest, #1b1b1b);
       --usa-banner-font-family:
         system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Helvetica, Arial, sans-serif;
@@ -128,7 +129,7 @@ export const bannerStyles: CSSResultGroup = [
 
     header,
     .content {
-      color: #1b1b1b;
+      color: var(--usa-banner-text-color);
     }
 
     .content {
