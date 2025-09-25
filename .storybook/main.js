@@ -8,7 +8,7 @@ const config = {
     "@storybook/addon-links",
     "@storybook/addon-docs",
     "@chromatic-com/storybook",
-    "@storybook/addon-a11y"
+    "@storybook/addon-a11y",
   ],
   framework: {
     name: "@storybook/web-components-vite",
