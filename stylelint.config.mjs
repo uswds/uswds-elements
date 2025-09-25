@@ -1,12 +1,18 @@
 /** @type {import("stylelint").Config} */
 export default {
   extends: ["stylelint-config-standard"],
+  plugins: ["stylelint-order"],
   rules: {
     "declaration-block-no-redundant-longhand-properties": null,
     "media-feature-range-notation": "prefix",
     "no-descending-specificity": null,
     "no-duplicate-selectors": null,
     "number-max-precision": 5,
+    "order/order": [
+      "custom-properties",
+      "declarations"
+    ],
+    "order/properties-alphabetical-order": true,
     "selector-class-pattern":
       "^([a-z]+\\:)?[a-z]([a-z0-9-]+)?(__([a-z0-9]+-?)+)?(--([a-z0-9]+-?)+){0,2}$",
   },
