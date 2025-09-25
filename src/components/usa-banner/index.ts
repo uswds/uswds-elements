@@ -222,9 +222,8 @@ export class UsaBanner extends LitElement {
                   need to be on the same line to avoid one extra space of underline 
                   before the expand icon.
                 -->
-                <p class="header-action">
-                  <slot name="banner-action">${banner.action}</slot>
-                </p>
+                <!-- prettier-ignore -->
+                <p class="header-action"><slot name="banner-action">${banner.action}</slot></p>
               </div>
               <button
                 type="button"
