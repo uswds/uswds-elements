@@ -31,6 +31,8 @@
     "start": "npm run storybook & npm run manifest:watch",
     "storybook:build": "storybook build",
     "storybook": "storybook dev -p 8008",
+    "stylelint": "stylelint './src/components/**/*.{css,css.js,css.ts}'",
+    "stylelint:fix": "stylelint './src/components/**/*.{css,css.js,css.ts}' --fix",
     "manifest:build": "npx cem analyze --litelement",
     "manifest:watch": "npx cem analyze --litelement --watch --dev",
     "test": "vitest",
