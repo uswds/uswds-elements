@@ -29,7 +29,7 @@ export default {
   },
   overrides: [
     {
-      files: ["src/components/**/*.css.ts"],
+      files: ["src/components/**/*.css.js", "src/components/**/*.css.ts"],
       customSyntax: "postcss-lit",
       rules: {
         /**
