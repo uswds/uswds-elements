@@ -21,16 +21,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright tests
-        run: |
-          npx playwright test | tee output.log
-          if grep -q -e "Error: A snapshot doesn't exist at" -e "Screenshot comparison failed" output.log; then
-            echo "Playwright tests failed due to a snapshot issue."
-            echo "SNAPSHOT_DIFFERENCES=true" >> $GITHUB_ENV
-            exit 1
-          elif grep -q "failed" output.log; then
-            echo "Playwright tests failed due to a non-snapshot issue."
-            exit 1
-          fi
+        run: npx playwright test
 
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
@@ -41,7 +32,7 @@ jobs:
 
       - name: Comment on PR with report link
         uses: thollander/actions-comment-pull-request@v3
-        if: ${{ failure() && env.SNAPSHOT_DIFFERENCES == 'true' }}
+        if: ${{ failure() }}
         with:
           message: |
             ### Playwright visual snapshot differences were detected.
