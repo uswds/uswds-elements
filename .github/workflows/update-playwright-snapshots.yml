@@ -1,0 +1,54 @@
+name: Generate New Playwright Screenshots
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'The branch to checkout and run tests on'
+        required: true
+        type: string
+      testFile:
+        description: 'Optional specific test file to run'
+        required: false
+        type: string
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-noble
+    env:
+      HOME: /root
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build storybook
+        run: npm run storybook:build
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright to generate screenshots
+        run: |
+          if [ -n "${{ github.event.inputs.testFile }}" ]; then
+            npx playwright test "${{ github.event.inputs.testFile }}" --update-snapshots
+          else
+            npx playwright test --update-snapshots
+          fi
+
+      - name: Upload new screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-snapshots
+          path: tests/**/__screenshots__/
+          retention-days: 30
