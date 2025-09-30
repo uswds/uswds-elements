@@ -1,6 +1,7 @@
 name: Generate New Playwright Screenshots
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       branch:
@@ -39,16 +40,11 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Playwright to generate screenshots
-        run: |
-          if [ -n "${{ github.event.inputs.testFile }}" ]; then
-            npx playwright test "${{ github.event.inputs.testFile }}" --update-snapshots
-          else
-            npx playwright test --update-snapshots
-          fi
+        run: npx playwright test --update-snapshots
 
       - name: Upload new screenshots
         uses: actions/upload-artifact@v4
         with:
           name: playwright-snapshots
-          path: tests/**/__screenshots__/
+          path: e2e/**/*-snapshots/
           retention-days: 30
