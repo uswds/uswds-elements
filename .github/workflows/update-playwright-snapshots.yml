@@ -1,16 +1,11 @@
 name: Generate New Playwright Screenshots
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       branch:
         description: 'The branch to checkout and run tests on'
         required: true
-        type: string
-      testFile:
-        description: 'Optional specific test file to run'
-        required: false
         type: string
 
 jobs:
@@ -28,7 +23,8 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version-file: '.nvmrc'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
