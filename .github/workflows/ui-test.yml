@@ -1,18 +1,21 @@
-name: Storybook Tests
+name: Storybook and Component Tests
 on: push
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-      - name: Install dependencies
-        run: npm ci
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup project
+        uses: ./.github/actions/setup
+
       - name: Install playwright
         run: npx playwright install
+
       - name: Run Storybook tests
         run: npm run test:storybook:ci
+
+      - name: Run vitest tests
+        run: npm run test:ci

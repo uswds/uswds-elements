@@ -34,6 +34,7 @@
     "manifest:build": "npx cem analyze --litelement",
     "manifest:watch": "npx cem analyze --litelement --watch --dev",
     "test": "vitest",
+    "test:ci": "vitest run",
     "test:storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run storybook:build --quiet && npx http-server storybook-static --port 6006 --silent\" \"wait-on tcp:127.0.0.1:6006 && npx test-storybook\"",
     "vite:preview": "vite preview",
     "pages": "npm run storybook:build && cp -r storybook-static _site"
