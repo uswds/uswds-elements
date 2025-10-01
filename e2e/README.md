@@ -99,7 +99,7 @@ test.describe("my-component visual regression tests", () => {
 
 ### Updating Snapshots
 
-Updating the snapshots locally has a dependency on [Docker](https://docs.docker.com/get-docker/). If there are restrictions in being able to install Docker on your machine, you can run the snapshot update workflow in CI as described in the section called [Snapshot Update Workflow](#snapshot-update-workflow) below. 
+Updating the snapshots locally has a dependency on [Docker](https://docs.docker.com/get-docker/). If there are restrictions in being able to install Docker on your machine, you can run the snapshot update workflow in CI as described in the section called [Snapshot Update Workflow](#snapshot-update-workflow) below.
 
 If your UI changes intentionally, **update the visual snapshots**, To update snapshots locally:
 
