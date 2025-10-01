@@ -8,9 +8,8 @@ This project uses [Playwright](https://playwright.dev/) for end-to-end (E2E) and
 
 - [Developing Tests Locally](#developing-tests-locally)
   - [1. Prerequisites](#1-prerequisites)
-  - [2. Starting the Storybook Server](#2-starting-the-storybook-server)
-  - [3. Running E2E Tests](#3-running-e2e-tests)
-  - [4. Writing a New Visual Regression Test](#4-writing-a-new-visual-regression-test)
+  - [2. Running E2E Tests](#3-running-e2e-tests)
+  - [3. Writing a New Visual Regression Test](#4-writing-a-new-visual-regression-test)
 - [Visual Regression and Snapshots](#visual-regression-and-snapshots)
   - [How It Works](#how-it-works)
   - [Updating Snapshots](#updating-snapshots)
@@ -39,17 +38,7 @@ This project uses [Playwright](https://playwright.dev/) for end-to-end (E2E) and
   npx playwright install --with-deps
   ```
 
-### 2. Starting the Storybook Server
-
-Playwright E2E tests run against the Storybook instance. For local development, start Storybook **using the Express server** setup.
-
-```shell
-npm run storybook:serve # Start the Express server for the static Storybook ([http://localhost:3000](http://localhost:3000))
-```
-
-_Note_: The `storybook:serve` script uses Express to serve the built static files from `storybook-static`. Make sure Storybook is running at `http://localhost:3000` before running any Playwright tests.
-
-### 3. Running E2E Tests
+### 2. Running E2E Tests
 
 With Storybook running locally, execute the E2E tests:
 
@@ -63,7 +52,7 @@ npx playwright test
 npx playwright test e2e/components/usa-banner/usa-banner.spec.ts
 ```
 
-### 4. Writing a New Visual Regression Test
+### 3. Writing a New Visual Regression Test
 
 Create a new test file under `e2e/components/{component-name}` named after your component or feature (e.g., `e2e/components/my-component/my-component.spec.ts`). Tests typically:
 
@@ -110,9 +99,23 @@ test.describe("my-component visual regression tests", () => {
 
 ### Updating Snapshots
 
-If your UI changes intentionally, **update the visual snapshots**:
+Updating the snapshots locally has a dependency on [Docker](https://docs.docker.com/get-docker/). If there are restrictions in being able to install Docker on your machine, you can run the snapshot update workflow in CI as described in the section called [Snapshot Update Workflow](#snapshot-update-workflow) below. 
+
+If your UI changes intentionally, **update the visual snapshots**, To update snapshots locally:
+
+**Ensure Docker is installed.**
+
+#### Start a dev shell (container with Playwright + Node)
 
 ```shell
+docker compose run --service-ports --rm e2e
+```
+
+This will open a shell inside the container with the Playwright and Node dependencies installed.
+
+From the terminal in the container environment, run the snapshot update workflow:
+
+```sh
 npx playwright test --update-snapshots
 ```
 
@@ -166,11 +169,8 @@ This will regenerate the baseline images in the relevant `*-snapshots/` folders.
 
 ## Troubleshooting
 
-- **Storybook server is not running:**  
-  Ensure `npm run storybook:serve` (Express server) is running at `http://localhost:3000`.
-
 - **Snapshots not updating:**  
-  Use `npx playwright test --update-snapshots` locally or trigger the update workflow in CI.
+  Use the docker container to update your snapshots locally or trigger the update workflow in CI.
 
 - **Test file not running:**  
   Check that your test files are located under `e2e/` and end with `.spec.ts`.

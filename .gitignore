@@ -34,3 +34,7 @@ storybook-static
 /blob-report/
 /playwright/.cache/
 /playwright/.auth/
+
+# Docker
+/.npm/_update-notifier-last-checked
+/.bash_history
