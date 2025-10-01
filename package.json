@@ -24,6 +24,7 @@
     "build:tokens": "style-dictionary build --config ./style-dictionary.config.js",
     "build:watch": "vite build --watch",
     "dev": "vite",
+    "fix-permissions": "sudo chown -R $(id -u):$(id -g) .",
     "prettier:js": "npx prettier --check './src/components/**/*.js'",
     "prettier:js:fix": "npx prettier --write './src/components/**/*.js'",
     "prettier:md": "npx prettier --check '**/*.{md,mdx}'",
