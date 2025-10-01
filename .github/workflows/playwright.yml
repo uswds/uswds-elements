@@ -46,4 +46,4 @@ jobs:
           message: |
             ### Playwright tests failed.
             View the [Playwright report](${{ steps.artifact-upload.outputs.artifact-url }}) to review any visual differences.
-            **To generate updated snapshots, please comment:** /approve-snapshots
+            **To generate updated snapshots, run the "Generate New Playwright Screenshots" workflow.** and add the updated snapshots to your PR.

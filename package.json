@@ -31,6 +31,7 @@
     "start": "npm run storybook & npm run manifest:watch",
     "storybook:build": "storybook build",
     "storybook": "storybook dev -p 8008",
+    "prestorybook:serve": "npm run storybook:build",
     "storybook:serve": "node server/index.mjs",
     "manifest:build": "npx cem analyze --litelement",
     "manifest:watch": "npx cem analyze --litelement --watch --dev",
