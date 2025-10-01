@@ -1,0 +1,21 @@
+name: Setup node and install dependencies
+description: Setup action to be reused in multiple workflows
+inputs:
+  skipInstall:
+    description: Skip the install step
+    required: false
+    default: 'false'
+runs:
+  using: composite
+  steps:
+    - name: Install node.js version
+      uses: actions/setup-node@v4
+      id: install-node
+      with:
+        node-version-file: '.nvmrc'
+        cache: 'npm'
+
+    - name: Install dependencies
+      if: ${{ inputs.skipInstall != 'true' }}
+      shell: bash
+      run: npm ci

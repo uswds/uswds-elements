@@ -15,10 +15,13 @@ import iconHttps from "@uswds/uswds/img/icon-https.svg";
  * @attribute {string} label - The custom aria label users can override.
  * @attribute {string} tld - The top level domain for the site.
  *
- * @cssprop --theme-banner-background-color - Sets banner background color.
- * @cssprop --theme-banner-font-family - Sets banner font family.
- * @cssprop --theme-banner-link-color - Sets the default link color.
- * @cssprop --theme-banner-link-hover-color - Sets the default link color.
+ * @cssprop --usa-banner-background-color - Sets banner background color.
+ * @cssprop --usa-banner-button-close-background-color - Sets the background color for the close control on smaller viewports.
+ * @cssprop --usa-banner-focus-outline-color - Sets banner focus outline color.
+ * @cssprop --usa-banner-font-family - Sets banner font family.
+ * @cssprop --usa-banner-link-color - Sets the default link color.
+ * @cssprop --usa-banner-link-hover-color - Sets the default link color.
+ * @cssprop --usa-banner-text-color - Sets the default text color.
  *
  * @slot banner-text - The text for official government website text.
  * @slot banner-action - Action text label "Here's how you know."

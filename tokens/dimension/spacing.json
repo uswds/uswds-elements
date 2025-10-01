@@ -22,5 +22,18 @@
       "$value": { "value": "3", "unit": "rem" }
     }
   },
+  "site-margins": {
+    "mobile-width": {
+      "$value": "{spacing.2}"
+    },
+    "width": {
+      "$value": "{spacing.4}"
+    }
+  },
+  "size": {
+    "touch-target": {
+      "$value": "{spacing.6}"
+    }
+  },
   "$type": "dimension"
 }
