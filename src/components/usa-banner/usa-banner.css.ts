@@ -27,20 +27,27 @@ export const bannerStyles: CSSResultGroup = [
        * Component tokens
        */
       --usa-banner-background-color: var(--usa-color-base-lightest, #f0f0f0);
-      --usa-banner-button-close-background-color: var(--usa-color-base-lighter, #dfe1e2);
+      --usa-banner-button-close-background-color: var(
+        --usa-color-base-lighter,
+        #dfe1e2
+      );
       --usa-banner-focus-outline-color: var(--usa-color-blue-vivid-40, #2491ff);
-      --usa-banner-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-      Helvetica, Arial, sans-serif;
+      --usa-banner-font-family:
+        system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
       --usa-banner-font-size-xs: 0.75rem;
       --usa-banner-font-size-sm: 0.875rem;
       --usa-banner-font-size-base: 0.94rem;
       --usa-banner-line-height-sm: 1.2;
       --usa-banner-line-height-base: 1.6;
       --usa-banner-link-color: var(--usa-color-blue-vivid-60, #005ea2);
-      --usa-banner-link-hover-color: var(--usa-color-blue-warm-vivid-70, #1a4480);
+      --usa-banner-link-hover-color: var(
+        --usa-color-blue-warm-vivid-70,
+        #1a4480
+      );
       --usa-banner-max-width: var(--usa-breakpoint-desktop);
       --usa-banner-text-color: var(--usa-color-base-darkest, #1b1b1b);
-  
+
       --usa-icon-close: url("/src/shared/icons/close.svg");
       --usa-icon-expand-less: url("/src/shared/icons/expand_less.svg");
       --usa-icon-expand-more: url("/src/shared/icons/expand_more.svg");
