@@ -26,7 +26,7 @@ This project uses [Playwright](https://playwright.dev/) for end-to-end (E2E) and
 ### 1. Prerequisites
 
 - **Node.js** (See `.nvmrc` for version)
-- **npm**  
+- **npm**
 - Install dependencies:
 
   ```bash
@@ -42,15 +42,17 @@ This project uses [Playwright](https://playwright.dev/) for end-to-end (E2E) and
 ### 2. Starting the Storybook Server
 
 Playwright E2E tests run against the Storybook instance. For local development, start Storybook **using the Express server** setup.
-```
-bash npm run storybook:build # Build the static Storybook site (if needed) npm run storybook:serve # Start the Express server for the static Storybook ([http://localhost:3000](http://localhost:3000))
-``` 
 
-*Note*: The `storybook:serve` script typically uses Express to serve the built static files from `storybook-static`. Make sure Storybook is running at `http://localhost:3000` before running any Playwright tests.
+```shell
+npm run storybook:serve # Start the Express server for the static Storybook ([http://localhost:3000](http://localhost:3000))
+```
+
+_Note_: The `storybook:serve` script uses Express to serve the built static files from `storybook-static`. Make sure Storybook is running at `http://localhost:3000` before running any Playwright tests.
 
 ### 3. Running E2E Tests
 
 With Storybook running locally, execute the E2E tests:
+
 ```shell
 # Run all tests
 npx playwright test
@@ -59,7 +61,7 @@ npx playwright test
 ```shell
 # Run a specific test file
 npx playwright test e2e/components/usa-banner/usa-banner.spec.ts
-``` 
+```
 
 ### 4. Writing a New Visual Regression Test
 
@@ -70,26 +72,28 @@ Create a new test file under `e2e/components/{component-name}` named after your 
 - Assert visual snapshots using `toHaveScreenshot()`. Screenshots are saved in `*-snapshots/`.
 
 **Example test:**
-```typescript 
-// e2e/components/my-component/my-component.spec.ts 
+
+```typescript
+// e2e/components/my-component/my-component.spec.ts
 import { test, expect } from "@playwright/test";
 
-test.describe("my-component visual regression tests", () => { 
-  const storyName = "components-my-component--default"; 
+test.describe("my-component visual regression tests", () => {
+  const storyName = "components-my-component--default";
   const storyUrl = `http://localhost:3000/iframe.html?globals=&args=&id=${storyName}&viewMode=story`;
 
-  test.beforeEach(async ({ page }) => { 
-    await page.goto(storyUrl); 
+  test.beforeEach(async ({ page }) => {
+    await page.goto(storyUrl);
   });
-  
-  test("Component matches visual snapshot", async ({ page }) => { 
-    const element = page.locator('my-component'); 
-    await expect(element).toHaveScreenshot(`default-${storyName}.png`); 
-  }); 
+
+  test("Component matches visual snapshot", async ({ page }) => {
+    const element = page.locator("my-component");
+    await expect(element).toHaveScreenshot(`default-${storyName}.png`);
+  });
 });
-``` 
+```
 
 **Tips:**
+
 - Use `page.goto(<URL>)` to load your story.
 - Capture the specific element you want to test (e.g., `page.locator('my-component')`).
 - Use `await expect(locator).toHaveScreenshot(<name.png>)` to capture or compare against stored visual snapshots.
@@ -108,9 +112,9 @@ test.describe("my-component visual regression tests", () => {
 
 If your UI changes intentionally, **update the visual snapshots**:
 
-```shell 
+```shell
 npx playwright test --update-snapshots
-``` 
+```
 
 This will regenerate the baseline images in the relevant `*-snapshots/` folders.
 
@@ -139,6 +143,7 @@ This will regenerate the baseline images in the relevant `*-snapshots/` folders.
   Run manually via the GitHub Actions tab ("Run workflow").
 
 **Workflow Steps:**
+
 1. Checks out the branch.
 2. Installs dependencies and Storybook.
 3. Runs Playwright with `--update-snapshots`.
@@ -148,7 +153,7 @@ This will regenerate the baseline images in the relevant `*-snapshots/` folders.
 
 ## Visual Regression: Reviewing and Approving
 
-1. **CI/PR fails due to a screenshot difference:**  
+1. **CI/PR fails due to a screenshot difference:**
    - Inspect the [Playwright report artifact](https://playwright.dev/docs/test-reporters) for visual diffs.
    - If changes are intentional, update and commit new snapshots by triggering the snapshot update workflow, downloading the zip file, and adding the new screenshots to the PR.
 
@@ -184,4 +189,7 @@ This will regenerate the baseline images in the relevant `*-snapshots/` folders.
 ---
 
 **Questions or problems?** Open an issue or reach out to the team!
+
+```
+
 ```
