@@ -15,12 +15,13 @@ export const bannerStyles: CSSResultGroup = [
         Helvetica, Arial, sans-serif;
       --usa-banner-link-color: var(--usa-color-blue-60v, #005ea2);
       --usa-banner-link-hover-color: #1a4480;
-      --usa-banner-max-width: 1200px;
+      --usa-banner-focus-outline-color: #2491ff;
+      --usa-banner-max-width: var(--usa-breakpoint-desktop);
       --usa-banner-font-size-xs: 0.75rem;
       --usa-banner-font-size-sm: 0.875rem;
-      --usa-banner-font-size-base: 1rem;
-      --usa-banner-line-height-base: 1.5;
-      --usa-banner-line-height-sm: 1.4;
+      --usa-banner-font-size-base: 0.94rem;
+      --usa-banner-line-height-base: 1.6;
+      --usa-banner-line-height-sm: 1.2;
 
       --usa-spacing-05: 0.25rem;
       --usa-spacing-1: 0.5rem;
@@ -36,6 +37,7 @@ export const bannerStyles: CSSResultGroup = [
       --usa-site-margins-width: 2rem;
 
       --usa-breakpoint-tablet: 40rem;
+      --usa-breakpoint-desktop: 64rem;
 
       --theme-banner-background-color: var(--usa-banner-background-color);
       --theme-banner-font-family: var(--usa-banner-font-family);
@@ -46,16 +48,17 @@ export const bannerStyles: CSSResultGroup = [
       --usa-icon-expand-more: url("/src/shared/icons/expand_more.svg");
       --usa-icon-expand-less: url("/src/shared/icons/expand_less.svg");
       --usa-icon-close: url("/src/shared/icons/close.svg");
-      --usa-icon-lock: url("/src/shared/icons/lock.svg");
+      --usa-icon-lock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='64' viewBox='0 0 52 64' class='usa-banner__lock-image' role='img' aria-labelledby='banner-lock-description-default' focusable='false'%3E%3Ctitle id='banner-lock-title-default'%3ELock%3C/title%3E%3Cdesc id='banner-lock-description-default'%3ELocked padlock icon%3C/desc%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z'%3E%3C/path%3E%3C/svg%3E");
     }
+
     * {
       box-sizing: border-box;
     }
 
     section {
-      font-family: var(--theme-banner-font-family);
-      box-sizing: border-box;
       background-color: var(--theme-banner-background-color);
+      box-sizing: border-box;
+      font-family: var(--theme-banner-font-family);
       font-size: var(--usa-banner-font-size-xs);
     }
 
@@ -68,26 +71,63 @@ export const bannerStyles: CSSResultGroup = [
     @media (min-width: 40em) {
       section {
         font-size: var(--usa-banner-font-size-xs);
-        padding-bottom: 0;
+        padding-block-end: 0;
       }
     }
 
     section .usa-accordion {
       font-family: inherit;
     }
+
     section .grid-row {
       display: grid;
+      /**
+       * This creates a responsive grid where:
+       * - Columns auto-fit based on available space
+       * - Each column has a minimum width that's the smaller of 100% or half the tablet breakpoint (20rem)
+       * - Columns can grow to fill remaining space (1fr)
+       */
       grid-template-columns: repeat(
-        auto-fill,
+        auto-fit,
         minmax(min(100%, calc(var(--usa-breakpoint-tablet) / 2)), 1fr)
       );
-      gap: var(--usa-spacing-4);
+    }
+
+    @media (min-width: 40em) {
+      section .grid-row {
+        gap: var(--usa-spacing-2);
+      }
+    }
+
+    @media (min-width: 64em) {
+      section .grid-row {
+        gap: calc(var(--usa-spacing-05) / 2);
+      }
+    }
+
+    .grid-col-auto {
+      flex: 0 1 auto;
+    }
+
+    .grid-col-fill {
+      flex: 1 1 0;
+      max-width: 100%;
+      min-width: 1px;
+      width: auto;
+    }
+
+    @media (min-width: 40em) {
+      .tablet\\:grid-col-auto {
+        flex: 0 1 auto;
+        max-width: 100%;
+        width: auto;
+      }
     }
 
     section .tablet\\:grid-col-6 {
       flex: 0 0 auto;
-      width: 100%;
       gap: var(--usa-spacing-1);
+      width: 100%;
     }
 
     header,
@@ -96,28 +136,27 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     .content {
-      max-width: var(--usa-banner-max-width);
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: var(--usa-spacing-2);
-      padding-right: var(--usa-spacing-2);
       background-color: var(--usa-color-transparent);
       font-size: var(--usa-banner-font-size-base);
+      line-height: var(--usa-banner-line-height-base);
+      margin-inline: auto;
+      max-width: var(--usa-banner-max-width);
       overflow: hidden;
-      padding-bottom: var(--usa-spacing-2);
-      padding-left: calc(
-        var(--usa-site-margins-mobile-width) - var(--usa-spacing-1)
-      );
-      padding-top: var(--usa-spacing-05);
+      padding-block-end: var(--usa-spacing-2);
+      padding-block-start: var(--usa-spacing-05);
+      padding-inline: var(--usa-spacing-1);
       width: 100%;
     }
 
     @media (min-width: 40em) {
       .content {
-        padding-left: var(--usa-spacing-2);
-        padding-right: var(--usa-spacing-2);
-        padding-top: var(--usa-spacing-3);
-        padding-bottom: var(--usa-spacing-3);
+        padding-block: var(--usa-spacing-3);
+      }
+    }
+
+    @media (min-width: 64em) {
+      .content {
+        padding-inline: var(--usa-spacing-4);
       }
     }
 
@@ -126,15 +165,13 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     .inner {
-      padding-left: var(--usa-spacing-2);
-      padding-right: var(--usa-spacing-2);
-      max-width: var(--usa-banner-max-width);
-      margin-left: auto;
-      margin-right: auto;
+      align-items: flex-start;
       display: flex;
       flex-wrap: nowrap;
-      align-items: flex-start;
-      padding-right: 0;
+      margin-inline: auto;
+      max-width: var(--usa-banner-max-width);
+      padding-inline-end: 0;
+      padding-inline-start: var(--usa-spacing-2);
     }
 
     @media (min-width: 40em) {
@@ -143,55 +180,51 @@ export const bannerStyles: CSSResultGroup = [
       }
     }
 
+    @media (min-width: 64em) {
+      .inner {
+        padding-inline: var(--usa-spacing-4);
+      }
+    }
+
     header {
-      padding-top: var(--usa-spacing-1);
-      padding-bottom: var(--usa-spacing-1);
-      font-size: var(--usa-banner-font-size-sm);
+      font-size: var(--usa-banner-font-size-xs);
       font-weight: 400;
       min-height: var(--usa-size-touch-target);
+      padding-block: var(--usa-spacing-1);
       position: relative;
     }
 
     @media (min-width: 40em) {
       header {
-        padding-top: var(--usa-spacing-05);
-        padding-bottom: var(--usa-spacing-05);
         min-height: 0;
+        padding-block: var(--usa-spacing-05);
       }
     }
 
     .header-text {
-      margin-top: 0;
-      margin-bottom: 0;
-      font-size: var(--usa-banner-font-size-sm);
+      font-size: var(--usa-banner-font-size-xs);
       line-height: var(--usa-banner-line-height-sm);
+      margin-block: 0;
     }
 
     .header-flag {
       float: left;
-      margin-right: var(--usa-spacing-1);
+      margin-inline-end: var(--usa-spacing-1);
+      padding-block-start: 0;
       width: var(--usa-spacing-2);
-      padding-top: 3px;
-    }
-
-    @media (min-width: 40em) {
-      .header-flag {
-        margin-right: var(--usa-spacing-1);
-        padding-top: 0;
-      }
     }
 
     .header-action {
-      color: var(--usa-banner-link-color);
-      text-decoration: underline;
       background: none;
       border: none;
-      padding: 0;
-      font: inherit;
+      color: var(--usa-banner-link-color);
       cursor: pointer;
+      font: inherit;
       line-height: var(--usa-banner-line-height-sm);
-      margin-bottom: 0;
-      margin-top: 2px;
+      margin-block-end: 0;
+      margin-block-start: 2px;
+      padding: 0;
+      text-decoration: underline;
     }
 
     .header-action:hover {
@@ -199,17 +232,17 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     .header-action::after {
+      background-color: currentColor;
+      background-image: var(--usa-icon-expand-more);
       content: "";
       display: inline-block;
-      width: 0.5rem;
-      height: 0.5rem;
-      margin-left: 0.25rem;
-      background-color: currentColor;
-      mask-size: contain;
-      mask-repeat: no-repeat;
-      mask-position: center;
-      background-image: var(--usa-icon-expand-more);
+      height: 1rem;
       mask-image: var(--usa-icon-expand-more);
+      mask-position: center;
+      mask-repeat: no-repeat;
+      mask-size: 1rem 1rem;
+      vertical-align: middle;
+      width: 1rem;
     }
 
     .expanded .header-action {
@@ -233,7 +266,9 @@ export const bannerStyles: CSSResultGroup = [
     }
 
     header.expanded {
-      padding-right: calc(var(--usa-size-touch-target) + var(--usa-spacing-1));
+      padding-inline-end: calc(
+        var(--usa-size-touch-target) + var(--usa-spacing-1)
+      );
     }
 
     @media (min-width: 40em) {
@@ -243,17 +278,17 @@ export const bannerStyles: CSSResultGroup = [
         font-size: var(--usa-banner-font-size-sm);
         font-weight: 400;
         min-height: 0;
-        padding-right: 0;
+        padding-inline-end: 0;
       }
     }
 
     header.expanded .inner {
-      margin-left: 0;
+      margin-inline-start: 0;
     }
 
     @media (min-width: 40em) {
       header.expanded .inner {
-        margin-left: auto;
+        margin-inline-start: auto;
       }
     }
 
@@ -273,13 +308,12 @@ export const bannerStyles: CSSResultGroup = [
       top: 0;
       bottom: 0;
       color: var(--theme-banner-link-color);
-      text-decoration: underline;
       display: block;
-      font-size: var(--usa-banner-font-size-sm);
+      font-size: var(--usa-banner-font-size-xs);
       height: auto;
       line-height: var(--usa-banner-line-height-sm);
-      padding-top: 0;
-      padding-left: 0;
+      padding-block-start: 0;
+      padding-inline-start: 0;
       text-decoration: none;
       width: auto;
     }
@@ -298,11 +332,15 @@ export const bannerStyles: CSSResultGroup = [
       }
     }
 
+    button:not([disabled]):focus {
+      outline: var(--usa-spacing-05) solid var(--usa-banner-focus-outline-color);
+    }
+
     @media (min-width: 40em) {
       button {
         position: relative;
         display: inline;
-        margin-left: var(--usa-spacing-1);
+        margin-inline-start: var(--usa-spacing-1);
         left: auto;
         top: auto;
         bottom: auto;
@@ -319,8 +357,8 @@ export const bannerStyles: CSSResultGroup = [
         mask-repeat: no-repeat;
         mask-position: center;
         position: absolute;
-        top: 3px;
-        right: -16px;
+        top: 0;
+        right: -18px;
         background-image: var(--usa-icon-expand-more);
         mask-image: var(--usa-icon-expand-more);
       }
@@ -373,10 +411,10 @@ export const bannerStyles: CSSResultGroup = [
         right: 0;
         content: "";
         display: block;
-        width: 1.5rem;
-        height: 1.5rem;
+        width: var(--usa-size-touch-target);
+        height: var(--usa-size-touch-target);
         background-color: var(--usa-color-blue-60v);
-        mask-size: contain;
+        mask-size: 1.5rem 1.5rem;
         mask-repeat: no-repeat;
         mask-position: center;
         background-image: var(--usa-icon-close);
@@ -432,13 +470,20 @@ export const bannerStyles: CSSResultGroup = [
     .guidance {
       display: flex;
       align-items: flex-start;
-      max-width: 72ch;
-      padding-top: var(--usa-spacing-2);
+      max-width: 62ex;
+      padding-block-start: var(--usa-spacing-2);
+    }
+
+    @media (max-width: 39.99em) {
+      .guidance {
+        padding-inline-end: 0.75rem;
+      }
     }
 
     @media (min-width: 40em) {
       .guidance {
-        padding-top: 0;
+        padding-block-start: 0;
+        padding-inline-end: var(--usa-spacing-1);
       }
     }
 
@@ -465,7 +510,6 @@ export const bannerStyles: CSSResultGroup = [
       mask-position: center;
       mask-repeat: no-repeat;
       mask-size: cover;
-      vertical-align: middle;
       width: 1.21875ex;
     }
 

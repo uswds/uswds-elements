@@ -68,7 +68,7 @@ export class UsaBanner extends LitElement {
         banner: {
           label: "Official website of the United States government",
           text: "An official website of the United States government",
-          action: "Here's how you know",
+          action: "Here’s how you know",
         },
         domain: {
           heading: "Official websites use",
@@ -135,6 +135,7 @@ export class UsaBanner extends LitElement {
         role="img"
         alt=""
         aria-hidden="true"
+        fetchpriority="low"
       />
       <div class="usa-media-block__body">
         <p>
@@ -171,6 +172,7 @@ export class UsaBanner extends LitElement {
         role="img"
         alt=""
         aria-hidden="true"
+        fetchpriority="low"
       />
       <div class="usa-media-block__body">
         <p>
@@ -217,9 +219,12 @@ export class UsaBanner extends LitElement {
                 <p class="header-text">
                   <slot name="banner-text">${banner.text}</slot>
                 </p>
-                <p class="header-action">
-                  <slot name="banner-action">${banner.action}</slot>
-                </p>
+                <!-- 
+                  Since the header-action text below is underlined, the slot and p 
+                  need to be on the same line to avoid one extra space of underline 
+                  before the expand icon.
+                -->
+                <p class="header-action"><slot name="banner-action">${banner.action}</slot></p>
               </div>
               <button
                 type="button"
