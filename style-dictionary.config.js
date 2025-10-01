@@ -41,6 +41,25 @@ StyleDictionary.registerTransform({
   },
 });
 
+const outputs = [
+  {
+    name: "breakpoints",
+    filter: (token) => token.path[0] === "breakpoint",
+  },
+  {
+    name: "colors",
+    filter: (token) =>
+      token.filePath && token.filePath.includes("tokens/color/"),
+  },
+  {
+    name: "spacing",
+    filter: (token) =>
+      token.path[0] === "spacing" ||
+      token.path[0] === "site-margins" ||
+      token.path[0] === "size",
+  },
+];
+
 export default {
   source: ["tokens/**/*.json"],
   platforms: {
@@ -48,47 +67,21 @@ export default {
       transforms: ["name/uswds-theme", "value/uswds-units"],
       prefix: "usa",
       buildPath: "build/scss/",
-      files: [
-        {
-          destination: "_colors.scss",
-          format: "scss/variables",
-          filter: (token) =>
-            token.filePath && token.filePath.includes("tokens/color/"),
-        },
-        {
-          destination: "_spacing.scss",
-          format: "scss/variables",
-          filter: (token) => token.path[0] === "spacing",
-        },
-        {
-          destination: "_breakpoints.scss",
-          format: "scss/variables",
-          filter: (token) => token.path[0] === "breakpoint",
-        },
-      ],
+      files: outputs.map(({ name, filter }) => ({
+        destination: `_${name}.scss`,
+        format: "scss/variables",
+        filter,
+      })),
     },
     css: {
       transforms: ["name/uswds-theme", "value/uswds-units"],
       prefix: "usa",
       buildPath: "build/css/",
-      files: [
-        {
-          destination: "colors.css",
-          format: "css/variables",
-          filter: (token) =>
-            token.filePath && token.filePath.includes("tokens/color/"),
-        },
-        {
-          destination: "spacing.css",
-          format: "css/variables",
-          filter: (token) => token.path[0] === "spacing",
-        },
-        {
-          destination: "breakpoints.css",
-          format: "css/variables",
-          filter: (token) => token.path[0] === "breakpoint",
-        },
-      ],
+      files: outputs.map(({ name, filter }) => ({
+        destination: `${name}.css`,
+        format: "css/variables",
+        filter,
+      })),
     },
   },
 };
