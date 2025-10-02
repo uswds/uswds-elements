@@ -16,3 +16,6 @@ jobs:
 
       - name: Run prettier Markdown
         run: "npm run prettier:md"
+
+      - name: Run stylelint
+        run: "npm run stylelint"
