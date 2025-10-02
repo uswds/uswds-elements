@@ -9,8 +9,8 @@ export default defineConfig({
   },
   css: {
     preprocessorOptions: {
-      scss: { 
-        additionalData: `@import "./node_modules/@uswds/uswds/packages";`
+      scss: {
+        additionalData: `@import "./node_modules/@uswds/uswds/packages";`,
       },
     },
   },

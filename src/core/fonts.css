@@ -6,11 +6,13 @@
    Theme settings
    ========================================================================== */
 :root {
-  --font-stack-source-sans-pro: "Source Sans Pro Web", "Helvetica Neue",
-    "Helvetica", "Roboto", "Arial", sans-serif;
-  --font-stack-public-sans: "Public Sans Web", -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-stack-source-sans-pro:
+    "Source Sans Pro Web", "Helvetica Neue", "Helvetica", "Roboto", "Arial",
+    sans-serif;
+  --font-stack-public-sans:
+    "Public Sans Web", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
 
   --usa-font-sans: var(--font-stack-source-sans-pro);
   --usa-font-ui: var(--usa-font-sans);
