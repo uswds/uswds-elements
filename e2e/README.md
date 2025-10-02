@@ -7,15 +7,15 @@ This project uses [Playwright](https://playwright.dev/) for end-to-end (E2E) and
 ## 📋 Table of Contents
 
 - [Developing Tests Locally](#developing-tests-locally)
-  - [1. Prerequisites](#1-prerequisites)
-  - [2. Running E2E Tests](#3-running-e2e-tests)
-  - [3. Writing a New Visual Regression Test](#4-writing-a-new-visual-regression-test)
+    - [1. Prerequisites](#1-prerequisites)
+    - [2. Running E2E Tests](#3-running-e2e-tests)
+    - [3. Writing a New Visual Regression Test](#4-writing-a-new-visual-regression-test)
 - [Visual Regression and Snapshots](#visual-regression-and-snapshots)
-  - [How It Works](#how-it-works)
-  - [Updating Snapshots](#updating-snapshots)
+    - [How It Works](#how-it-works)
+    - [Updating Snapshots](#updating-snapshots)
 - [GitHub Actions Integration](#github-actions-integration)
-  - [Playwright E2E Workflow](#playwright-e2e-workflow)
-  - [Snapshot Update Workflow](#snapshot-update-workflow)
+    - [Playwright E2E Workflow](#playwright-e2e-workflow)
+    - [Snapshot Update Workflow](#snapshot-update-workflow)
 - [Troubleshooting](#troubleshooting)
 
 ---
@@ -28,15 +28,15 @@ This project uses [Playwright](https://playwright.dev/) for end-to-end (E2E) and
 - **npm**
 - Install dependencies:
 
-  ```bash
-  npm ci
-  ```
+    ```bash
+    npm ci
+    ```
 
 - Install Playwright browsers and dependencies:
 
-  ```bash
-  npx playwright install --with-deps
-  ```
+    ```bash
+    npx playwright install --with-deps
+    ```
 
 ### 2. Running E2E Tests
 
@@ -67,17 +67,17 @@ Create a new test file under `e2e/components/{component-name}` named after your 
 import { test, expect } from "@playwright/test";
 
 test.describe("my-component visual regression tests", () => {
-  const storyName = "components-my-component--default";
-  const storyUrl = `http://localhost:3000/iframe.html?globals=&args=&id=${storyName}&viewMode=story`;
+    const storyName = "components-my-component--default";
+    const storyUrl = `http://localhost:3000/iframe.html?globals=&args=&id=${storyName}&viewMode=story`;
 
-  test.beforeEach(async ({ page }) => {
-    await page.goto(storyUrl);
-  });
+    test.beforeEach(async ({ page }) => {
+        await page.goto(storyUrl);
+    });
 
-  test("Component matches visual snapshot", async ({ page }) => {
-    const element = page.locator("my-component");
-    await expect(element).toHaveScreenshot(`default-${storyName}.png`);
-  });
+    test("Component matches visual snapshot", async ({ page }) => {
+        const element = page.locator("my-component");
+        await expect(element).toHaveScreenshot(`default-${storyName}.png`);
+    });
 });
 ```
 
@@ -130,10 +130,10 @@ This will regenerate the baseline images in the relevant `*-snapshots/` folders.
 - **File:** `.github/workflows/playwright.yml`
 - **Triggers:** `push` and `pull_request` to `main` and `develop`
 - **Steps:**
-  1. Installs dependencies and builds Storybook.
-  2. Runs Playwright tests against the static Storybook.
-  3. Uploads test results and snapshot diffs as workflow artifacts.
-  4. If there are failures, a PR comment is added with a link to the Playwright report.
+    1. Installs dependencies and builds Storybook.
+    2. Runs Playwright tests against the static Storybook.
+    3. Uploads test results and snapshot diffs as workflow artifacts.
+    4. If there are failures, a PR comment is added with a link to the Playwright report.
 
 > Playwright tests failed.  
 > View the [Playwright report](...) to review any visual differences.
@@ -157,13 +157,13 @@ This will regenerate the baseline images in the relevant `*-snapshots/` folders.
 ## Visual Regression: Reviewing and Approving
 
 1. **CI/PR fails due to a screenshot difference:**
-   - Inspect the [Playwright report artifact](https://playwright.dev/docs/test-reporters) for visual diffs.
-   - If changes are intentional, update and commit new snapshots by triggering the snapshot update workflow, downloading the zip file, and adding the new screenshots to the PR.
+    - Inspect the [Playwright report artifact](https://playwright.dev/docs/test-reporters) for visual diffs.
+    - If changes are intentional, update and commit new snapshots by triggering the snapshot update workflow, downloading the zip file, and adding the new screenshots to the PR.
 
 2. **After snapshot update:**
-   - Review PR changes to confirm new images are correct.
-   - PR is considered mergeable with an approval, and there are no visual diffs.
-   - If there are visual diffs, update the snapshots and commit the changes.
+    - Review PR changes to confirm new images are correct.
+    - PR is considered mergeable with an approval, and there are no visual diffs.
+    - If there are visual diffs, update the snapshots and commit the changes.
 
 ---
 
