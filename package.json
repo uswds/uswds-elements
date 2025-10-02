@@ -42,7 +42,8 @@
     "test:ci": "vitest run",
     "test:storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run storybook:serve\" \"wait-on tcp:127.0.0.1:3000 && npx test-storybook --url http://localhost:3000\"",
     "vite:preview": "vite preview",
-    "pages": "npm run storybook:build && cp -r storybook-static _site"
+    "pages": "npm run storybook:build && cp -r storybook-static _site",
+    "prepare": "husky"
   },
   "dependencies": {
     "@uswds/uswds": "^3.11.0",
@@ -71,6 +72,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-storybook": "9.0.18",
     "express": "^5.1.0",
+    "husky": "^9.1.7",
     "jsdom": "^24.1.1",
     "postcss-lit": "^1.2.0",
     "prettier": "^3.6.2",
