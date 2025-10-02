@@ -6,6 +6,7 @@ export default css`
       color: var(--theme-link-color, #005ea2);
       text-decoration: underline;
     }
+
     a:visited {
       color: var(--theme-link-visited-color, #54278f);
     }

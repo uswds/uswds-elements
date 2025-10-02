@@ -4,9 +4,7 @@ import { css } from "lit";
 export const bannerStyles: CSSResultGroup = [
   css`
     :host {
-      /**
-       * Global tokens
-       */
+      /** Global tokens */
       --usa-spacing-05: 0.25rem;
       --usa-spacing-1: 0.5rem;
       --usa-spacing-2: 1rem;
@@ -14,18 +12,12 @@ export const bannerStyles: CSSResultGroup = [
       --usa-spacing-4: 2rem;
       --usa-spacing-5: 2.5rem;
       --usa-spacing-6: 3rem;
-
       --usa-size-touch-target: 3rem;
-
       --usa-site-margins-mobile-width: 1rem;
       --usa-site-margins-width: 2rem;
-
       --usa-breakpoint-tablet: 40rem;
       --usa-breakpoint-desktop: 64rem;
-
-      /**
-       * Component tokens
-       */
+      /** Component tokens */
       --usa-banner-background-color: var(--usa-color-base-lightest, #f0f0f0);
       --usa-banner-button-close-background-color: var(
         --usa-color-base-lighter,
@@ -47,7 +39,7 @@ export const bannerStyles: CSSResultGroup = [
       );
       --usa-banner-max-width: var(--usa-breakpoint-desktop);
       --usa-banner-text-color: var(--usa-color-base-darkest, #1b1b1b);
-
+      /** Icons */
       --usa-icon-close: url("/src/shared/icons/close.svg");
       --usa-icon-expand-less: url("/src/shared/icons/expand_less.svg");
       --usa-icon-expand-more: url("/src/shared/icons/expand_more.svg");
@@ -84,12 +76,10 @@ export const bannerStyles: CSSResultGroup = [
 
     section .grid-row {
       display: grid;
-      /**
-       * This creates a responsive grid where:
-       * - Columns auto-fit based on available space
-       * - Each column has a minimum width that's the smaller of 100% or half the tablet breakpoint (20rem)
-       * - Columns can grow to fill remaining space (1fr)
-       */
+      /* This creates a responsive grid where: */
+      /* - Columns auto-fit based on available space */
+      /* - Each column has a minimum width that's the smaller of 100% or half the tablet breakpoint (20rem) */
+      /* - Columns can grow to fill remaining space (1fr) */
       grid-template-columns: repeat(
         auto-fit,
         minmax(min(100%, calc(var(--usa-breakpoint-tablet) / 2)), 1fr)
@@ -450,7 +440,6 @@ export const bannerStyles: CSSResultGroup = [
 
     @media (min-width: 40em) {
       .button-text {
-        clip: auto;
         display: inline;
         left: auto;
         position: static;
