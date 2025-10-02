@@ -11,6 +11,9 @@ jobs:
       - name: Setup project
         uses: ./.github/actions/setup
 
+      - name: Install playwright
+        run: npx playwright install
+
       - name: Run Storybook tests
         run: npm run test:storybook:ci
 
