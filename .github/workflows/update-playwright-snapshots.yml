@@ -1,0 +1,40 @@
+name: Generate New Playwright Screenshots
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'The branch to checkout and run tests on'
+        required: true
+        type: string
+
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.0-noble
+    env:
+      HOME: /root
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.branch }}
+
+      - name: Setup project
+        uses: ./.github/actions/setup
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright to generate screenshots
+        run: npx playwright test --update-snapshots
+
+      - name: Upload new screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-snapshots
+          path: e2e/**/*-snapshots/
+          retention-days: 30

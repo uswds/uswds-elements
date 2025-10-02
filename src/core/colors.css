@@ -1,6 +1,8 @@
-:root {
-  --usa-base-lightest: #f0f0f0;
+@import url("/build/css/colors.css");
 
-  --theme-link-color: #005ea2;
-  --theme-link-hover-color: #1a4480;
+:root {
+  --usa-color-base-lightest: var(--usa-color-gray-5);
+
+  --theme-link-color: var(--usa-color-blue-vivid-60);
+  --theme-link-hover-color: var(--usa-color-blue-warm-vivid-70);
 }

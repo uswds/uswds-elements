@@ -2,7 +2,7 @@ import { LitElement, html } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { classMap } from "lit/directives/class-map.js";
 
-import { bannerStyles } from "./usa-banner.scss";
+import { bannerStyles } from "./usa-banner.css.ts";
 
 import usFlagSmall from "@uswds/uswds/img/us_flag_small.png";
 import iconDotGov from "@uswds/uswds/img/icon-dot-gov.svg";
@@ -15,10 +15,13 @@ import iconHttps from "@uswds/uswds/img/icon-https.svg";
  * @attribute {string} label - The custom aria label users can override.
  * @attribute {string} tld - The top level domain for the site.
  *
- * @cssprop --theme-banner-background-color - Sets banner background color.
- * @cssprop --theme-banner-font-family - Sets banner font family.
- * @cssprop --theme-banner-link-color - Sets the default link color.
- * @cssprop --theme-banner-link-hover-color - Sets the default link color.
+ * @cssprop --usa-banner-background-color - Sets banner background color.
+ * @cssprop --usa-banner-button-close-background-color - Sets the background color for the close control on smaller viewports.
+ * @cssprop --usa-banner-focus-outline-color - Sets banner focus outline color.
+ * @cssprop --usa-banner-font-family - Sets banner font family.
+ * @cssprop --usa-banner-link-color - Sets the default link color.
+ * @cssprop --usa-banner-link-hover-color - Sets the default link color.
+ * @cssprop --usa-banner-text-color - Sets the default text color.
  *
  * @slot banner-text - The text for official government website text.
  * @slot banner-action - Action text label "Here's how you know."
@@ -49,7 +52,7 @@ export class UsaBanner extends LitElement {
 
   toggle() {
     this.isOpen = !this.isOpen;
-    const contentElement = this.shadowRoot?.querySelector(".usa-banner__content");
+    const contentElement = this.shadowRoot?.querySelector(".content");
     if (contentElement) {
       contentElement.toggleAttribute("hidden");
     }
@@ -66,7 +69,7 @@ export class UsaBanner extends LitElement {
         banner: {
           label: "Official website of the United States government",
           text: "An official website of the United States government",
-          action: "Here's how you know",
+          action: "Here’s how you know",
         },
         domain: {
           heading: "Official websites use",
@@ -128,11 +131,12 @@ export class UsaBanner extends LitElement {
 
     return html`
       <img
-        class="usa-banner__icon usa-media-block__img"
+        class="icon usa-media-block__img"
         src="${iconDotGov}"
         role="img"
         alt=""
         aria-hidden="true"
+        fetchpriority="low"
       />
       <div class="usa-media-block__body">
         <p>
@@ -151,7 +155,7 @@ export class UsaBanner extends LitElement {
   lockIcon() {
     return html`
       <span
-        class="usa-banner__icon-lock"
+        class="icon-lock"
         role="img"
         aria-label="Locked padlock icon"
         part="lock-icon"
@@ -164,11 +168,12 @@ export class UsaBanner extends LitElement {
 
     return html`
       <img
-        class="usa-banner__icon usa-media-block__img"
+        class="icon usa-media-block__img"
         src="${iconHttps}"
         role="img"
         alt=""
         aria-hidden="true"
+        fetchpriority="low"
       />
       <div class="usa-media-block__body">
         <p>
@@ -189,21 +194,21 @@ export class UsaBanner extends LitElement {
   static styles = [bannerStyles];
 
   render() {
-    const classes = { ["usa-banner__header--expanded"]: this.isOpen };
+    const classes = { ["expanded"]: this.isOpen };
     // ? Is there a better way to fallback to a default value is passed value doesn't match?
     // Example: User passes `tld="zzz"` --> uses "gov" domain instead of `zzz`.
     const tld = this.tld === "mil" ? "mil" : "gov";
     const { banner } = this._bannerText;
 
     return html`
-      <section class="usa-banner" aria-label=${this.label || banner.label}>
+      <section aria-label=${this.label || banner.label}>
         <div class="usa-accordion">
-          <header class="usa-banner__header ${classMap(classes)}">
-            <div class="usa-banner__inner">
+          <header class="${classMap(classes)}">
+            <div class="inner">
               <div class="grid-col-auto">
                 <img
                   aria-hidden="true"
-                  class="usa-banner__header-flag"
+                  class="header-flag"
                   src=${usFlagSmall}
                   alt=""
                 />
@@ -212,32 +217,36 @@ export class UsaBanner extends LitElement {
                 class="grid-col-fill tablet:grid-col-auto"
                 aria-hidden="true"
               >
-                <p class="usa-banner__header-text">
+                <p class="header-text">
                   <slot name="banner-text">${banner.text}</slot>
                 </p>
-                <p class="usa-banner__header-action">
-                  <slot name="banner-action">${banner.action}</slot>
-                </p>
+                <!-- 
+                  Since the header-action text below is underlined, the slot and p 
+                  need to be on the same line to avoid one extra space of underline 
+                  before the expand icon.
+                -->
+                <!-- prettier-ignore -->
+                <p class="header-action"><slot name="banner-action">${banner.action}</slot></p>
               </div>
               <button
                 type="button"
-                class="usa-accordion__button usa-banner__button"
+                class="usa-accordion__button"
                 aria-expanded="${this.isOpen}"
                 aria-controls="gov-banner-default"
                 @click="${this.toggle}"
               >
-                <span class="usa-banner__button-text">
+                <span class="button-text">
                   ${this._actionText || banner.action}
                 </span>
               </button>
             </div>
           </header>
-          <div class="usa-banner__content usa-accordion__content" hidden>
+          <div class="content usa-accordion__content" hidden>
             <div class="grid-row grid-gap-lg">
-              <div class="usa-banner__guidance tablet:grid-col-6">
+              <div class="guidance tablet:grid-col-6">
                 ${this.domainTemplate(tld)}
               </div>
-              <div class="usa-banner__guidance tablet:grid-col-6">
+              <div class="guidance tablet:grid-col-6">
                 ${this.httpsTemplate(tld)}
               </div>
             </div>

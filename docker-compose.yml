@@ -1,0 +1,10 @@
+services:
+  e2e:
+    build: .
+    volumes:
+      - .:/workspace
+      - /workspace/node_modules # Keeps node_modules inside container
+    ports:
+      - "3000:3000" # Storybook Express server
+    stdin_open: true
+    tty: true

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+npm run prettier:js:fix
+npm run prettier:md:fix
+npm run stylelint:fix
+npm run test:ci
