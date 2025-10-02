@@ -1,4 +1,6 @@
 name: Generate New Playwright Screenshots
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
