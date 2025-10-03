@@ -1,5 +1,8 @@
 import type { CSSResultGroup } from "lit";
-import { css } from "lit";
+import { css, unsafeCSS } from "lit";
+import iconClose from "../../shared/icons/close.svg";
+import iconExpandMore from "../../shared/icons/expand_more.svg";
+import iconExpandLess from "../../shared/icons/expand_less.svg";
 
 export const bannerStyles: CSSResultGroup = [
   css`
@@ -40,9 +43,9 @@ export const bannerStyles: CSSResultGroup = [
       --usa-banner-max-width: var(--usa-breakpoint-desktop);
       --usa-banner-text-color: var(--usa-color-base-darkest, #1b1b1b);
       /** Icons */
-      --usa-icon-close: url("/src/shared/icons/close.svg");
-      --usa-icon-expand-less: url("/src/shared/icons/expand_less.svg");
-      --usa-icon-expand-more: url("/src/shared/icons/expand_more.svg");
+      --usa-icon-close: url("${unsafeCSS(iconClose)}");
+      --usa-icon-expand-less: url("${unsafeCSS(iconExpandLess)}");
+      --usa-icon-expand-more: url("${unsafeCSS(iconExpandMore)}");
       --usa-icon-lock: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='52' height='64' viewBox='0 0 52 64' class='usa-banner__lock-image' role='img' aria-labelledby='banner-lock-description-default' focusable='false'%3E%3Ctitle id='banner-lock-title-default'%3ELock%3C/title%3E%3Cdesc id='banner-lock-description-default'%3ELocked padlock icon%3C/desc%3E%3Cpath fill='%23000000' fill-rule='evenodd' d='M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z'%3E%3C/path%3E%3C/svg%3E");
     }
 
