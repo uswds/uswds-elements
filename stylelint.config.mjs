@@ -4,7 +4,6 @@ export default {
   plugins: ["stylelint-order"],
   rules: {
     "declaration-block-no-redundant-longhand-properties": null,
-    "media-feature-range-notation": "prefix",
     "no-descending-specificity": null,
     "no-duplicate-selectors": null,
     "number-max-precision": 5,

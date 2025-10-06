@@ -66,7 +66,7 @@ export const bannerStyles: CSSResultGroup = [
       box-sizing: border-box;
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       section {
         font-size: var(--usa-banner-font-size-xs);
         padding-block-end: 0;
@@ -89,13 +89,13 @@ export const bannerStyles: CSSResultGroup = [
       );
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       section .grid-row {
         gap: var(--usa-spacing-2);
       }
     }
 
-    @media (min-width: 64em) {
+    @media (width >= 64em) {
       section .grid-row {
         gap: calc(var(--usa-spacing-05) / 2);
       }
@@ -112,7 +112,7 @@ export const bannerStyles: CSSResultGroup = [
       width: auto;
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       .tablet\\:grid-col-auto {
         flex: 0 1 auto;
         max-width: 100%;
@@ -143,13 +143,13 @@ export const bannerStyles: CSSResultGroup = [
       width: 100%;
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       .content {
         padding-block: var(--usa-spacing-3);
       }
     }
 
-    @media (min-width: 64em) {
+    @media (width >= 64em) {
       .content {
         padding-inline: var(--usa-spacing-4);
       }
@@ -169,13 +169,13 @@ export const bannerStyles: CSSResultGroup = [
       padding-inline-start: var(--usa-spacing-2);
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       .inner {
         align-items: center;
       }
     }
 
-    @media (min-width: 64em) {
+    @media (width >= 64em) {
       .inner {
         padding-inline: var(--usa-spacing-4);
       }
@@ -189,7 +189,7 @@ export const bannerStyles: CSSResultGroup = [
       position: relative;
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       header {
         min-height: 0;
         padding-block: var(--usa-spacing-05);
@@ -243,7 +243,7 @@ export const bannerStyles: CSSResultGroup = [
       display: none;
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       .header-action {
         display: none;
       }
@@ -265,7 +265,7 @@ export const bannerStyles: CSSResultGroup = [
       );
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       header.expanded {
         display: block;
         font-size: var(--usa-banner-font-size-sm);
@@ -279,7 +279,7 @@ export const bannerStyles: CSSResultGroup = [
       margin-inline-start: 0;
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       header.expanded .inner {
         margin-inline-start: auto;
       }
@@ -315,7 +315,7 @@ export const bannerStyles: CSSResultGroup = [
       color: var(--usa-banner-link-hover-color);
     }
 
-    @media (max-width: 39.99em) {
+    @media (width <= 39.99em) {
       button {
         width: 100%;
       }
@@ -329,7 +329,7 @@ export const bannerStyles: CSSResultGroup = [
       outline: var(--usa-spacing-05) solid var(--usa-banner-focus-outline-color);
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       button {
         bottom: auto;
         display: inline;
@@ -383,7 +383,7 @@ export const bannerStyles: CSSResultGroup = [
       }
     }
 
-    @media (max-width: 39.99em) {
+    @media (width <= 39.99em) {
       button[aria-expanded="true"]::before {
         background-color: var(--usa-banner-button-close-background-color);
         bottom: 0;
@@ -413,7 +413,7 @@ export const bannerStyles: CSSResultGroup = [
       }
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       button[aria-expanded="true"] {
         height: auto;
         padding: 0;
@@ -441,7 +441,7 @@ export const bannerStyles: CSSResultGroup = [
       text-decoration: underline;
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       .button-text {
         display: inline;
         left: auto;
@@ -463,13 +463,13 @@ export const bannerStyles: CSSResultGroup = [
       padding-block-start: var(--usa-spacing-2);
     }
 
-    @media (max-width: 39.99em) {
+    @media (width <= 39.99em) {
       .guidance {
         padding-inline-end: 0.75rem;
       }
     }
 
-    @media (min-width: 40em) {
+    @media (width >= 40em) {
       .guidance {
         padding-block-start: 0;
         padding-inline-end: var(--usa-spacing-1);
