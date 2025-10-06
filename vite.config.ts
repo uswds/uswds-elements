@@ -1,7 +1,9 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
+import litCss from "vite-plugin-lit-css";
 
 export default defineConfig({
+  plugins: [litCss()],
   resolve: {
     alias: {
       "@uswds/uswds": resolve(__dirname, "node_modules/@uswds/uswds/dist"),
