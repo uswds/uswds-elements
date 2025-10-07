@@ -18,7 +18,9 @@ export default defineConfig({
       drafts: {
         nesting: true,
       },
-      targets: browserslistToTargets(browserslist(">= 0.25%")),
+      targets: browserslistToTargets(
+        browserslist(["> 2%", "last 2 versions", "not dead"]),
+      ),
     },
     preprocessorOptions: {
       scss: {
