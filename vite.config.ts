@@ -1,5 +1,7 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
+import browserslist from "browserslist";
+import { browserslistToTargets } from "lightningcss";
 import litCss from "vite-plugin-lit-css";
 
 export default defineConfig({
@@ -12,17 +14,11 @@ export default defineConfig({
   css: {
     transformer: "lightningcss",
     lightningcss: {
-      // Lightning CSS options
-      minify: true,
+      minify: process.env.NODE_ENV === "production" || process.env.CI,
       drafts: {
-        nesting: true, // Enable CSS nesting (useful for your :host { a { } } syntax)
+        nesting: true,
       },
-      targets: {
-        // Target browsers (adjust as needed)
-        chrome: 90,
-        firefox: 88,
-        safari: 14,
-      },
+      targets: browserslistToTargets(browserslist(">= 0.25%")),
     },
     preprocessorOptions: {
       scss: {
