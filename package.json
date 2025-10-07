@@ -74,6 +74,7 @@
     "express": "^5.1.0",
     "husky": "^9.1.7",
     "jsdom": "^24.1.1",
+    "lightningcss": "^1.30.2",
     "postcss-lit": "^1.2.0",
     "prettier": "^3.6.2",
     "serve-static": "^2.2.0",

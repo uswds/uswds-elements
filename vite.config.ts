@@ -10,6 +10,20 @@ export default defineConfig({
     },
   },
   css: {
+    transformer: "lightningcss",
+    lightningcss: {
+      // Lightning CSS options
+      minify: true,
+      drafts: {
+        nesting: true, // Enable CSS nesting (useful for your :host { a { } } syntax)
+      },
+      targets: {
+        // Target browsers (adjust as needed)
+        chrome: 90,
+        firefox: 88,
+        safari: 14,
+      },
+    },
     preprocessorOptions: {
       scss: {
         additionalData: `@import "./node_modules/@uswds/uswds/packages";`,
