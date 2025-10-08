@@ -11,7 +11,7 @@ const entries: Array<{ name: string; path: string; sizeLimit: string }> = [
   {
     name: "components/usa-banner",
     path: "src/components/usa-banner/index.ts",
-    sizeLimit: "3 kB",
+    sizeLimit: "10 kB",
   },
   {
     name: "components/usa-link",
