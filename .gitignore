@@ -38,3 +38,6 @@ storybook-static
 # Docker
 /.npm/_update-notifier-last-checked
 /.bash_history
+
+# bundlesize plugin
+bundlemeta.json
