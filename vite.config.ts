@@ -3,9 +3,8 @@ import { resolve } from "path";
 import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
 import litCss from "vite-plugin-lit-css";
-import bundlesize, { type Limit } from "vite-plugin-bundlesize";
-
-type Entry = { name: string; path: string; sizeLimit: string };
+import bundlesize from "vite-plugin-bundlesize";
+import { type Entry, mapEntryToLimit } from "./utils/build-helpers";
 
 const entries: Array<Entry> = [
   {
@@ -24,14 +23,6 @@ const entries: Array<Entry> = [
     sizeLimit: "0.8 kB",
   },
 ];
-
-export const mapEntryToLimit = (entry: Entry): Limit => {
-  return {
-    name: `${entry.name}.js`,
-    limit: entry.sizeLimit,
-    mode: "brotli",
-  };
-};
 
 export default defineConfig({
   plugins: [
