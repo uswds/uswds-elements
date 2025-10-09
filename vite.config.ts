@@ -5,7 +5,9 @@ import { browserslistToTargets } from "lightningcss";
 import litCss from "vite-plugin-lit-css";
 import bundlesize, { type Limit } from "vite-plugin-bundlesize";
 
-const entries: Array<{ name: string; path: string; sizeLimit: string }> = [
+type Entry = { name: string; path: string; sizeLimit: string };
+
+const entries: Array<Entry> = [
   {
     name: "components/index",
     path: "src/components/index",
@@ -23,18 +25,20 @@ const entries: Array<{ name: string; path: string; sizeLimit: string }> = [
   },
 ];
 
+export const mapEntryToLimit = (entry: Entry): Limit => {
+  return {
+    name: `${entry.name}.js`,
+    limit: entry.sizeLimit,
+    mode: "brotli",
+  };
+};
+
 export default defineConfig({
   plugins: [
     litCss(),
     bundlesize({
       limits: [
-        ...entries.map((item) => {
-          return {
-            name: `${item.name}.js`,
-            limit: item.sizeLimit,
-            mode: "brotli",
-          } as Limit;
-        }),
+        ...entries.map(mapEntryToLimit),
         { name: "**/*.cjs", limit: "Infinity" },
       ],
     }),
