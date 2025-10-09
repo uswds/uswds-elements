@@ -24,7 +24,21 @@ const entries: Array<{ name: string; path: string; sizeLimit: string }> = [
 ];
 
 export default defineConfig({
-  plugins: [litCss()],
+  plugins: [
+    litCss(),
+    bundlesize({
+      limits: [
+        ...entries.map((item) => {
+          return {
+            name: `${item.name}.js`,
+            limit: item.sizeLimit,
+            mode: "brotli",
+          } as Limit;
+        }),
+        { name: "**/*.cjs", limit: "Infinity" },
+      ],
+    }),
+  ],
   resolve: {
     alias: {
       "@uswds/uswds": resolve(__dirname, "node_modules/@uswds/uswds/dist"),
@@ -63,18 +77,4 @@ export default defineConfig({
       output: { globals: { lit: "lit" }, format: "es" },
     },
   },
-  plugins: [
-    bundlesize({
-      limits: [
-        ...entries.map((item) => {
-          return {
-            name: `${item.name}.js`,
-            limit: item.sizeLimit,
-            mode: "brotli",
-          } as Limit;
-        }),
-        { name: "**/*.cjs", limit: "Infinity" },
-      ],
-    }),
-  ],
 });
