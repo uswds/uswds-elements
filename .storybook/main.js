@@ -14,5 +14,17 @@ const config = {
     name: "@storybook/web-components-vite",
     options: {},
   },
+  viteFinal: async (config) => {
+    /**
+     * Unload the `vite-plugin-bundlesize` plugin.
+     * This plugin is only used in the CI pipeline for output size of the
+     * individual components.
+     */
+    config.plugins = config.plugins.filter(
+      (plugin) => plugin.name !== "vite-plugin-bundlesize",
+    );
+
+    return config;
+  },
 };
 export default config;
