@@ -1,12 +1,15 @@
-import { LitElement, html } from "lit";
+import { LitElement, html, css, unsafeCSS } from "lit";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { classMap } from "lit/directives/class-map.js";
 
-import { bannerStyles } from "./usa-banner.css.ts";
+import styles from "./usa-banner.css";
 
 import usFlagSmall from "@uswds/uswds/img/us_flag_small.png";
 import iconDotGov from "@uswds/uswds/img/icon-dot-gov.svg";
 import iconHttps from "@uswds/uswds/img/icon-https.svg";
+import iconClose from "../../shared/icons/close.svg";
+import iconExpandMore from "../../shared/icons/expand_more.svg";
+import iconExpandLess from "../../shared/icons/expand_less.svg";
 
 /**
  * @summary The usa-banner component.
@@ -191,7 +194,17 @@ export class UsaBanner extends LitElement {
     `;
   }
 
-  static styles = [bannerStyles];
+  static styles = [
+    css`
+      :host {
+        /** Icons */
+        --usa-icon-close: url("${unsafeCSS(iconClose)}");
+        --usa-icon-expand-less: url("${unsafeCSS(iconExpandLess)}");
+        --usa-icon-expand-more: url("${unsafeCSS(iconExpandMore)}");
+      }
+    `,
+    styles,
+  ];
 
   render() {
     const classes = { ["expanded"]: this.isOpen };

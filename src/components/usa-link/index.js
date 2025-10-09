@@ -1,5 +1,5 @@
 import { LitElement, css, html } from "lit";
-import styles from "./usa-link.css.js";
+import styles from "./usa-link.css";
 
 /**
  * @summary The usa-link component.

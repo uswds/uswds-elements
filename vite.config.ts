@@ -1,5 +1,8 @@
 import { defineConfig } from "vite";
 import { resolve } from "path";
+import browserslist from "browserslist";
+import { browserslistToTargets } from "lightningcss";
+import litCss from "vite-plugin-lit-css";
 import bundlesize, { type Limit } from "vite-plugin-bundlesize";
 
 const entries: Array<{ name: string; path: string; sizeLimit: string }> = [
@@ -21,12 +24,23 @@ const entries: Array<{ name: string; path: string; sizeLimit: string }> = [
 ];
 
 export default defineConfig({
+  plugins: [litCss()],
   resolve: {
     alias: {
       "@uswds/uswds": resolve(__dirname, "node_modules/@uswds/uswds/dist"),
     },
   },
   css: {
+    transformer: "lightningcss",
+    lightningcss: {
+      minify: process.env.NODE_ENV === "production" || process.env.CI,
+      drafts: {
+        nesting: true,
+      },
+      targets: browserslistToTargets(
+        browserslist(["> 2%", "last 2 versions", "not dead"]),
+      ),
+    },
     preprocessorOptions: {
       scss: {
         additionalData: `@import "./node_modules/@uswds/uswds/packages";`,

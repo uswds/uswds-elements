@@ -4,7 +4,6 @@ export default {
   plugins: ["stylelint-order"],
   rules: {
     "declaration-block-no-redundant-longhand-properties": null,
-    "media-feature-range-notation": "prefix",
     "no-descending-specificity": null,
     "no-duplicate-selectors": null,
     "number-max-precision": 5,
@@ -27,21 +26,4 @@ export default {
     ],
     "value-keyword-case": null,
   },
-  overrides: [
-    {
-      files: ["src/components/**/*.css.js", "src/components/**/*.css.ts"],
-      customSyntax: "postcss-lit",
-      rules: {
-        /**
-         * `postcss-lit` has special formatting rules for CSS comments that remove
-         * leading whitespace from the comment, which don't appear to be configurable.
-         * That means each line of a comment in the `css` tagged template literal
-         * must be a standalone, block-level comment to preserve its formatting
-         * and indentation. The line below is meant to make sure comments on
-         * consecutive lines are NOT flagged as violations.
-         */
-        "comment-empty-line-before": null,
-      },
-    },
-  ],
 };
