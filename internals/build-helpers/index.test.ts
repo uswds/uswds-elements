@@ -4,7 +4,7 @@ import {
   type Entry,
   mapEntryToTuple,
   mapEntriesToKeyValue,
-} from "./build-helpers";
+} from "./index";
 
 describe("mapEntryToLimit", () => {
   it("should correctly transform an entry to a Limit object", () => {

@@ -6,7 +6,7 @@
   "files": [
     ".storybook",
     "storybook",
-    "scripts",
+    "internals/scripts",
     "dist",
     "src"
   ],
@@ -33,7 +33,7 @@
     "storybook:build": "storybook build",
     "storybook": "storybook dev -p 8008",
     "prestorybook:serve": "npm run storybook:build --quiet",
-    "storybook:serve": "node scripts/serve-storybook.js",
+    "storybook:serve": "node internals/scripts/serve-storybook.js",
     "stylelint": "stylelint './src/components/**/*.{css,css.js,css.ts}'",
     "stylelint:fix": "stylelint './src/components/**/*.{css,css.js,css.ts}' --fix",
     "manifest:build": "npx cem analyze --litelement",

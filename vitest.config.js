@@ -6,8 +6,8 @@ export default defineConfig({
     include: [
       "src/**/*.spec.{js,ts}",
       "src/**/*.test.{js,ts}",
-      "utils/**/*.spec.{js,ts}",
-      "utils/**/*.test.{js,ts}",
+      "internals/**/*.spec.{js,ts}",
+      "internals/**/*.test.{js,ts}",
     ],
   },
 });

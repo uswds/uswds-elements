@@ -8,7 +8,7 @@ import {
   type Entry,
   mapEntriesToKeyValue,
   mapEntryToLimit,
-} from "./utils/build-helpers";
+} from "./internals/build-helpers";
 
 const entries: Array<Entry> = [
   {
