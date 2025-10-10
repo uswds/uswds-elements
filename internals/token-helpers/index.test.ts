@@ -1,0 +1,73 @@
+import { describe, it, expect } from "vitest";
+import type { TransformedToken, PlatformConfig } from "style-dictionary/types";
+import { generateTokenName } from "./index";
+
+describe("generateTokenName", () => {
+  const token: TransformedToken = {
+    $value: { value: "75", unit: "rem" },
+    filePath: "tokens/dimension/breakpoints.json",
+    isSource: true,
+    $type: "dimension",
+    key: "{breakpoint.desktop-lg}",
+    original: {
+      $value: { value: "75", unit: "rem" },
+      $type: "dimension",
+      key: "{breakpoint.desktop-lg}",
+    },
+    name: "desktop-lg",
+    attributes: {},
+    path: ["breakpoint", "desktop-lg"],
+  };
+
+  const options: PlatformConfig = {
+    prefix: "usa",
+    transforms: [],
+    buildPath: "",
+    files: [],
+    log: {},
+    actions: [],
+  };
+
+  it("should generate token name for breakpoint prefix", () => {
+    const result = generateTokenName(token, options);
+    expect(result).toBe("usa-breakpoint-desktop-lg");
+  });
+
+  it("should generate token name for spacing prefix", () => {
+    const spacingToken: TransformedToken = {
+      ...token,
+      path: ["spacing", "small"],
+    };
+    const result = generateTokenName(spacingToken, options);
+    expect(result).toBe("usa-spacing-small");
+  });
+
+  it("should generate token name for color directory with single path key", () => {
+    const colorTokenSingle: TransformedToken = {
+      ...token,
+      filePath: "tokens/color/primary.json",
+      path: ["black"],
+    };
+    const result = generateTokenName(colorTokenSingle, options);
+    expect(result).toBe("usa-color-black");
+  });
+
+  it("should generate token name for color directory with multiple path keys", () => {
+    const colorTokenMulti: TransformedToken = {
+      ...token,
+      filePath: "tokens/color/primary.json",
+      path: ["primary", "light"],
+    };
+    const result = generateTokenName(colorTokenMulti, options);
+    expect(result).toBe("usa-color-primary-light");
+  });
+
+  it("should generate token name fallback for other cases", () => {
+    const otherToken: TransformedToken = {
+      ...token,
+      path: ["font", "base-size"],
+    };
+    const result = generateTokenName(otherToken, options);
+    expect(result).toBe("usa-font-base-size");
+  });
+});
