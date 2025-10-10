@@ -1,4 +1,9 @@
-export const generateTokenName = (token, options) => {
+import type { TransformedToken, PlatformConfig } from "style-dictionary/types";
+
+export const generateTokenName = (
+  token: TransformedToken,
+  options: PlatformConfig,
+) => {
   if (token.path[0] === "spacing") {
     return `${options.prefix}-spacing-${token.path[1]}`;
   }
