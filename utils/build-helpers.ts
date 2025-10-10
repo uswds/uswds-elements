@@ -9,3 +9,14 @@ export const mapEntryToLimit = (entry: Entry): Limit => {
     mode: "brotli",
   };
 };
+
+export function mapEntriesToKeyValue(entries: Entry[]): Record<string, string> {
+  return entries.reduce(
+    (result, entry) => {
+      const [key, value]: EntryTuple = [entry.name, entry.path];
+      result[key] = value;
+      return result;
+    },
+    {} as Record<string, string>,
+  );
+}

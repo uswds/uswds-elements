@@ -4,7 +4,11 @@ import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
 import litCss from "vite-plugin-lit-css";
 import bundlesize from "vite-plugin-bundlesize";
-import { type Entry, mapEntryToLimit } from "./utils/build-helpers";
+import {
+  type Entry,
+  mapEntriesToKeyValue,
+  mapEntryToLimit,
+} from "./utils/build-helpers";
 
 const entries: Array<Entry> = [
   {
@@ -59,13 +63,7 @@ export default defineConfig({
   build: {
     sourcemap: "hidden",
     lib: {
-      entry: entries.reduce(
-        (acc, entry) => {
-          acc[entry.name] = entry.path;
-          return acc;
-        },
-        {} as Record<string, string>,
-      ),
+      entry: mapEntriesToKeyValue(entries),
     },
     rollupOptions: {
       external: ["lit"],
