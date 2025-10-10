@@ -36,10 +36,10 @@ describe("generateTokenName", () => {
   it("should generate token name for spacing prefix", () => {
     const spacingToken: TransformedToken = {
       ...token,
-      path: ["spacing", "small"],
+      path: ["site-margins", "width"],
     };
     const result = generateTokenName(spacingToken, options);
-    expect(result).toBe("usa-spacing-small");
+    expect(result).toBe("usa-site-margins-width");
   });
 
   it("should generate token name for color directory with single path key", () => {
