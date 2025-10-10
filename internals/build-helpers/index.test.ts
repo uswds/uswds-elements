@@ -1,10 +1,5 @@
 import { describe, it, expect } from "vitest";
-import {
-  mapEntryToLimit,
-  type Entry,
-  mapEntryToTuple,
-  mapEntriesToKeyValue,
-} from "./index";
+import { mapEntryToLimit, type Entry, mapEntriesToKeyValue } from "./index";
 
 describe("mapEntryToLimit", () => {
   it("should correctly transform an entry to a Limit object", () => {
