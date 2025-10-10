@@ -7,8 +7,8 @@ export type Entry = { name: string; path: string; sizeLimit: string };
  * the properties to adhere to the `Limit` type structure.
  *
  * @param {Entry} entry - The input object containing information about the entry.
- * @returns {Limit} - A transformed object with details about the limit, including
- *                    the updated name, size limit, and compression mode.
+ * @return {Limit} - A transformed object with details about the limit, including
+ * the updated name, size limit, and compression mode.
  */
 export const mapEntryToLimit = (entry: Entry): Limit => {
   return {
@@ -23,7 +23,7 @@ export const mapEntryToLimit = (entry: Entry): Limit => {
  * is used as the key and its path is used as the value.
  *
  * @param {Entry[]} entries - The array of Entry objects to be mapped into key-value pairs.
- * @return {Record<string, string>} An object representing the key-value pairs derived from the entries,
+ * @return {Record<string, string>} - An object representing the key-value pairs derived from the entries,
  * where the key is the entry's name and the value is the entry's path.
  */
 export function mapEntriesToKeyValue(entries: Entry[]): Record<string, string> {
