@@ -33,7 +33,7 @@
     "storybook:build": "storybook build",
     "storybook": "storybook dev -p 8008",
     "prestorybook:serve": "npm run storybook:build --quiet",
-    "storybook:serve": "node server/index.mjs",
+    "storybook:serve": "node scripts/serve-storybook.js",
     "stylelint": "stylelint './src/components/**/*.{css,css.js,css.ts}'",
     "stylelint:fix": "stylelint './src/components/**/*.{css,css.js,css.ts}' --fix",
     "manifest:build": "npx cem analyze --litelement",
