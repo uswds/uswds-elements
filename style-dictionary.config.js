@@ -1,5 +1,8 @@
 import StyleDictionary from "style-dictionary";
-import { generateTokenName } from "./internals/token-helpers/index.ts";
+import {
+  generateTokenName,
+  getTokenValueWithUnit,
+} from "./internals/token-helpers/index.ts";
 
 StyleDictionary.registerTransform({
   name: "name/uswds-theme",
@@ -10,12 +13,7 @@ StyleDictionary.registerTransform({
 StyleDictionary.registerTransform({
   name: "value/uswds-units",
   type: "value",
-  transform: function (token) {
-    if (token.$type === "dimension" && typeof token.$value === "object") {
-      return token.$value.value + (token.$value.unit || "");
-    }
-    return token.$value;
-  },
+  transform: getTokenValueWithUnit,
 });
 
 const outputs = [

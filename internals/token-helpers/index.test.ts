@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import type { TransformedToken, PlatformConfig } from "style-dictionary/types";
-import { generateTokenName } from "./index";
+import { generateTokenName, getTokenValueWithUnit } from "./index";
 
 describe("generateTokenName", () => {
   const token: TransformedToken = {
@@ -69,5 +69,45 @@ describe("generateTokenName", () => {
     };
     const result = generateTokenName(otherToken, options);
     expect(result).toBe("usa-font-base-size");
+  });
+});
+
+describe("getTokenValueWithUnit", () => {
+  const defaultToken: TransformedToken = {
+    $value: { value: "75", unit: "rem" },
+    $type: "dimension",
+    isSource: true,
+    key: "desktop-lg",
+    name: "desktop-lg",
+    attributes: {},
+    path: ["breakpoint", "desktop-lg"],
+    original: {
+      $value: { value: "75", unit: "rem" },
+      $type: "dimension",
+      key: "desktop-lg",
+    },
+  };
+
+  it("should return value + unit for dimension tokens with object value", () => {
+    const result = getTokenValueWithUnit(defaultToken);
+    expect(result).toBe("75rem");
+  });
+
+  it("should return value string when unit is missing in dimension object", () => {
+    const token = {
+      ...defaultToken,
+      $value: { value: "30" },
+    };
+    const result = getTokenValueWithUnit(token);
+    expect(result).toBe("30");
+  });
+
+  it("should return raw value if token type is not dimension", () => {
+    const token = {
+      $value: "#fff2f5",
+      $type: "color",
+    };
+    const result = getTokenValueWithUnit(token);
+    expect(result).toBe("#fff2f5");
   });
 });
