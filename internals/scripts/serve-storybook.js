@@ -9,11 +9,9 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-console.log(path.join(__dirname, "..", "storybook-static"));
-
 // Serve static files from storybook-static directory
 app.use(
-  serveStatic(path.join(__dirname, "..", "storybook-static"), {
+  serveStatic(path.join(__dirname, "..", "..", "storybook-static"), {
     index: ["index.html"],
   }),
 );
