@@ -25,5 +25,8 @@ COPY . .
 # Expose default Storybook port
 EXPOSE 3000
 
+# Expose port for reports if there are test failures
+EXPOSE 9323
+
 # Default entrypoint; override in docker-compose or docker run
 CMD [ "bash" ]

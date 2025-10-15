@@ -6,5 +6,6 @@ services:
       - /workspace/node_modules # Keeps node_modules inside container
     ports:
       - "3000:3000" # Storybook Express server
+      - "9323:9323" # Playwright report port in the event o f test failure
     stdin_open: true
     tty: true
