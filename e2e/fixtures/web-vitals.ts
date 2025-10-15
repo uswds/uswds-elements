@@ -1,11 +1,5 @@
 import { test as base } from "@playwright/test";
 import type * as webVitals from "web-vitals";
-import path from "path";
-import fs from "fs";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 declare global {
   interface Window {
@@ -36,31 +30,14 @@ export const test = base.extend<WebVitalsFixture>({
     const setup = async () => {
       await page.exposeFunction("validateMetric", validateMetric);
 
-      // Using classic script to get webVitals global namespace
-      const scriptPath = path.join(
-        __dirname,
-        "../../",
-        "node_modules/web-vitals/dist/web-vitals.attribution.iife.js",
-      );
-      // Read the web-vitals script content at runtime
-      const scriptBody = fs.readFileSync(scriptPath, "utf8");
-
       /*
-       * Inject the script into the page.
-       * Make sure to use the raw script content instead of creating a script with the src set to `webVitalsUrl`.
-       * Otherwise, the external script may get blocked on certain websites.
+       * Inject the script into the page using ES6 module imports.
+       * This approach dynamically imports the web-vitals library at runtime.
        */
-      await page.addInitScript(
-        async ([scriptBody]) => {
-          window.addEventListener("DOMContentLoaded", async () => {
-            const script = document.createElement("script");
-            script.text = scriptBody;
-            try {
-              document.head.appendChild(script);
-            } catch (e) {
-              console.error("Error when initializing injected CWV script");
-              console.error(e);
-            }
+      await page.addInitScript(async () => {
+        window.addEventListener("DOMContentLoaded", async () => {
+          try {
+            window.webVitals = await import("web-vitals/attribution");
 
             // From GoogleChrome/web-vitals:
             // > Note that some of these metrics will not report until the user has interacted with the page,
@@ -79,10 +56,12 @@ export const test = base.extend<WebVitalsFixture>({
             window.webVitals.onINP(checkMetric);
             window.webVitals.onLCP(checkMetric);
             window.webVitals.onTTFB(checkMetric);
-          });
-        },
-        [scriptBody],
-      );
+          } catch (e) {
+            console.error("Error when initializing injected CWV script");
+            console.error(e);
+          }
+        });
+      });
     };
 
     await use({ badMetrics, setup });
