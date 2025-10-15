@@ -10,7 +10,7 @@ declare global {
 
 type WebVitalsFixture = {
   webVitals: {
-    badMetrics: string[];
+    failingMetrics: string[];
     setup: () => Promise<void>;
   };
 };
@@ -19,11 +19,11 @@ type WebVitalsFixture = {
 // https://gist.github.com/cloudydaiyz/923ca44bdb0a1ff3434a9360967025a6
 export const test = base.extend<WebVitalsFixture>({
   webVitals: async ({ page }, use) => {
-    const badMetrics: string[] = [];
+    const failingMetrics: string[] = [];
 
-    function validateMetric(name: string, good: boolean) {
-      if (!good) {
-        badMetrics.push(name);
+    function validateMetric(name: string, isWithinThreshold: boolean) {
+      if (!isWithinThreshold) {
+        failingMetrics.push(name);
       }
     }
 
@@ -43,12 +43,12 @@ export const test = base.extend<WebVitalsFixture>({
             // > Note that some of these metrics will not report until the user has interacted with the page,
             // > switched tabs, or the page starts to unload.
             // See: https://github.com/GoogleChrome/web-vitals#:~:text=Note%20that%20some%20of%20these%20metrics%20will%20not%20report%20until%20the%20user%20has%20interacted%20with%20the%20page%2C%20switched%20tabs%2C%20or%20the%20page%20starts%20to%20unload.
-            function checkMetric(m: webVitals.Metric) {
-              if (m.rating !== "good") {
-                window.validateMetric(m.name, false);
+            function checkMetric(metric: webVitals.Metric) {
+              if (metric.rating !== "good") {
+                window.validateMetric(metric.name, false);
                 return;
               }
-              window.validateMetric(m.name, true);
+              window.validateMetric(metric.name, true);
             }
 
             window.webVitals.onCLS(checkMetric);
@@ -64,7 +64,7 @@ export const test = base.extend<WebVitalsFixture>({
       });
     };
 
-    await use({ badMetrics, setup });
+    await use({ failingMetrics, setup });
   },
 });
 

@@ -15,6 +15,6 @@ test.describe("usa-banner performance", () => {
 
     // Page unload to record INP and CLS
     await page.close();
-    expect(webVitals.badMetrics).toHaveLength(0);
+    expect(webVitals.failingMetrics).toHaveLength(0);
   });
 });
