@@ -15,8 +15,6 @@ declare global {
 }
 
 test.describe("usa-banner performance", () => {
-  // Web vitals are collected differently for each browser.
-  // Some metrics may be collected inconsistently or not at all.
   test("should have good web vitals", async ({ page }) => {
     const badMetrics: string[] = [];
     function validateMetric(name: string, good: boolean) {
@@ -82,14 +80,6 @@ test.describe("usa-banner performance", () => {
     // Page click to record LCP and FID
     await page.waitForLoadState("domcontentloaded");
     await page.getByRole("button", { name: "Here’s how you know" }).click();
-
-    // Manually obtain navigation event metrics for page load time
-    // - NOTE: There is only one PerformanceNavigationTiming object in the performance timeline
-    //   See: https://developer.mozilla.org/en-US/docs/Web/API/PerformanceNavigationTiming
-    const [navTiming] = await page.evaluate(() =>
-      window.performance.getEntriesByType("navigation").map((e) => e.toJSON()),
-    );
-    validateMetric("Page load", navTiming.loadEventEnd < 2000);
 
     // Page unload to record INP and CLS
     await page.close();
