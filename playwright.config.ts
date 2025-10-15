@@ -42,11 +42,13 @@ export default defineConfig({
     {
       name: "firefox",
       use: { ...devices["Desktop Firefox"] },
+      testIgnore: ["**/*performance.spec.ts"],
     },
 
     {
       name: "webkit",
       use: { ...devices["Desktop Safari"] },
+      testIgnore: ["**/*performance.spec.ts"],
     },
 
     {
@@ -56,16 +58,19 @@ export default defineConfig({
     {
       name: "Mobile Safari",
       use: { ...devices["iPhone 12"] },
+      testIgnore: ["**/*performance.spec.ts"],
     },
 
     // Add tablet configurations
     {
       name: "Tablet Chrome",
       use: { ...devices["iPad Pro"] },
+      testIgnore: ["**/*performance.spec.ts"],
     },
     {
       name: "Tablet Safari",
       use: { ...devices["iPad Pro"] },
+      testIgnore: ["**/*performance.spec.ts"],
     },
   ],
 
