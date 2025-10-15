@@ -68,5 +68,4 @@ export const test = base.extend<WebVitalsFixture>({
   },
 });
 
-// @ts-expect-error expect is passing through for convenience in the test file
 export { expect } from "@playwright/test";
