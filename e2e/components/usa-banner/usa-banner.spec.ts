@@ -1,11 +1,12 @@
 import { test, expect } from "@playwright/test";
+import { StorybookPage } from "../../models/storybook-page";
 
 test.describe("usa-banner visual regression tests", () => {
   const storyName = "components-banner--default";
-  const storyUrl = `http://localhost:3000/iframe.html?globals=&args=&id=${storyName}&viewMode=story`;
 
   test.beforeEach(async ({ page }) => {
-    await page.goto(storyUrl);
+    const storybookPage = new StorybookPage(page);
+    await storybookPage.gotoAndWaitForDomLoaded(storyName);
   });
 
   test("Collapsed state should match visual snapshot", async ({ page }) => {

@@ -1,16 +1,14 @@
 import { test, expect } from "../../fixtures/web-vitals";
+import { StorybookPage } from "../../models/storybook-page";
 
 test.describe("usa-banner performance", () => {
   test("should have good web vitals", async ({ page, webVitals }) => {
     await webVitals.setup();
 
-    const storyName = "components-banner--default";
-    const storyUrl = `http://localhost:3000/iframe.html?globals=&args=&id=${storyName}&viewMode=story`;
-
-    await page.goto(storyUrl);
+    const storybookPage = new StorybookPage(page);
+    await storybookPage.gotoAndWaitForDomLoaded("components-banner--default");
 
     // Page click to record LCP and FID
-    await page.waitForLoadState("domcontentloaded");
     await page.getByRole("button", { name: "Here’s how you know" }).click();
 
     // Page unload to record INP and CLS
