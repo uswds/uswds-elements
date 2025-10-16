@@ -8,7 +8,7 @@ test.describe("usa-banner performance", () => {
     const storybookPage = new StorybookPage(page);
     await storybookPage.gotoAndWaitForDomLoaded("components-banner--default");
 
-    // Page click to record LCP and FID
+    // Page click to record LCP
     await page.getByRole("button", { name: "Here’s how you know" }).click();
 
     // Page unload to record INP and CLS

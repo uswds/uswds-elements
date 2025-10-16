@@ -29,7 +29,7 @@ export class StorybookPage {
   }
 
   /**
-   * Navigate to a specific story and wait for the DOM to be fully loaded
+   * Navigate to a specific story and wait for the DOM to be loaded
    * @param storyId - The story ID (e.g., "components-banner--default")
    * @param options - Additional options for the story URL
    */
@@ -39,12 +39,5 @@ export class StorybookPage {
   ) {
     await this.goto(storyId, options);
     await this.page.waitForLoadState("domcontentloaded");
-  }
-
-  /**
-   * Get the current page instance
-   */
-  getPage(): Page {
-    return this.page;
   }
 }
