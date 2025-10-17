@@ -1,7 +1,6 @@
 import "./index.ts";
 import { html, nothing } from "lit";
 
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories
 const meta = {
   title: "Components/Alert",
   component: "usa-alert",
@@ -17,7 +16,6 @@ const meta = {
 
 export default meta;
 
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const InformationalAlert = {
   args: {
     heading: "Informational Alert",
