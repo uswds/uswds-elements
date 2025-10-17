@@ -5,7 +5,6 @@ import { html, nothing } from "lit";
 const meta = {
   title: "Components/Alert",
   component: "usa-alert",
-  tags: ["beta"],
   render: ({ heading, type, content, noIcon }) => {
     return html`
       <usa-alert type="${type}" ?no-icon="${noIcon}">
