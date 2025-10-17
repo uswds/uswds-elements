@@ -8,6 +8,18 @@ import {
 import stylesBaseVariables from "./base-variables.css";
 import styles from "./usa-alert.css";
 
+/**
+ * @summary The usa-alert component.
+ *
+ * @attribute {string} type - The type of alert (info, warning, etc)
+ * @attribute {string} noIcon - Use this attribute to hide the icon
+ *
+ * @slot heading - Text for the heading. Make sure to specify the correct heading level (h2, h3, etc)
+ * @slot content - Body content for the alert. Can contain HTML (links, etc).
+ *
+ * @tagname usa-alert
+ */
+
 @customElement("usa-alert")
 export class MDAlert extends LitElement {
   @property({ type: String })
