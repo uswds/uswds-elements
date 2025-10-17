@@ -80,6 +80,7 @@
     "serve-static": "^2.2.0",
     "shadow-dom-testing-library": "^1.11.3",
     "storybook": "^9.0.18",
+    "storybook-addon-tag-badges": "^2.0.3",
     "style-dictionary": "^5.0.1",
     "stylelint": "^16.24.0",
     "stylelint-config-standard": "^39.0.0",

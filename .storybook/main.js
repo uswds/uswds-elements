@@ -9,6 +9,7 @@ const config = {
     "@storybook/addon-docs",
     "@chromatic-com/storybook",
     "@storybook/addon-a11y",
+    "storybook-addon-tag-badges",
   ],
   framework: {
     name: "@storybook/web-components-vite",
