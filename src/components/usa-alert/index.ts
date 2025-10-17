@@ -8,7 +8,7 @@ import {
 import stylesBaseVariables from "./base-variables.css";
 import styles from "./usa-alert.css";
 
-@customElement("maryland-alert")
+@customElement("usa-alert")
 export class MDAlert extends LitElement {
   @property({ type: String })
   type = "info";
