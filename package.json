@@ -36,8 +36,8 @@
     "storybook:serve": "node internals/scripts/serve-storybook.js",
     "stylelint": "stylelint './src/components/**/*.{css,css.js,css.ts}'",
     "stylelint:fix": "stylelint './src/components/**/*.{css,css.js,css.ts}' --fix",
-    "manifest:build": "npx cem analyze --litelement",
-    "manifest:watch": "npx cem analyze --litelement --watch --dev",
+    "manifest:build": "npx cem analyze",
+    "manifest:watch": "npx cem analyze --watch --dev",
     "test": "vitest",
     "test:ci": "vitest run",
     "test:storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run storybook:serve\" \"wait-on tcp:127.0.0.1:3000 && npx test-storybook --url http://localhost:3000\"",
@@ -51,7 +51,6 @@
     "sass": "^1.84.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^4.0.1",
     "@custom-elements-manifest/analyzer": "^0.10.3",
     "@eslint/css": "^0.9.0",
     "@playwright/test": "^1.55.1",
