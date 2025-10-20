@@ -485,7 +485,7 @@ button[aria-expanded="true"]:hover {
 }
 
 .icon-lock {
-  background-image: var(--usa-icon-lock);
+  background-color: currentColor;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
