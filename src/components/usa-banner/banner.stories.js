@@ -104,12 +104,12 @@ export const ToggleBanner = {
     const button = canvas.getByShadowRole("button");
     const dotGovText = canvas.getByShadowText("Official websites use .gov");
 
-    userEvent.click(button);
+    await userEvent.click(button);
     await waitFor(() => {
       expect(dotGovText).toBeVisible();
     });
 
-    userEvent.click(button);
+    await userEvent.click(button);
     await waitFor(() => {
       expect(dotGovText).not.toBeVisible();
     });
