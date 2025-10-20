@@ -50,33 +50,22 @@ export const CustomContent = {
   },
   args: {
     label: "Un site Web officiel du gouvernement américain",
-    bannerText: "Un site Web officiel du gouvernement américain",
-    bannerAction: "Voici comment vous le savez",
-    domainHeading: "Les sites Web officiels utilisent",
-    domainText:
+    /**
+     * The `getStorybookHelpers` function from @wc-toolkit/storybook-helpers`
+     * automatically appends the `slot` attribute to avoid collisions with other props.
+     *
+     * To set the content for this story, the key should have the suffix `-slot`,
+     * even though the slot name in the component is `banner-text`, `banner-action`, etc.
+     */
+    "banner-text-slot": "Un site Web officiel du gouvernement américain",
+    "banner-action-slot": "Voici comment vous le savez",
+    "domain-heading-slot": "Les sites Web officiels utilisent",
+    "domain-text-slot":
       "Un site Web .gov appartient à une organisation gouvernementale officielle aux États-Unis.",
-    httpsHeading: "Les sites Web .gov sécurisés utilisent HTTPS",
-    httpsText: `Un <strong>verrou</strong> (<span class="usa-banner__icon-lock" role="img" aria-label="Locked padlock icon"></span>) ou <strong>https://</strong> signifie que vous êtes connecté(e) en toute sécurité au site Web .gov. Assurez-vous de ne partager des informations sensibles que sur des sites Web officiels et sécurisés.`,
+    "https-heading-slot": "Les sites Web .gov sécurisés utilisent HTTPS",
+    "https-text-slot": `Un <strong>verrou</strong> ( <span class="usa-banner__icon-lock" role="img" aria-label="Locked padlock icon"></span> ) ou <strong>https://</strong> signifie que vous êtes connecté(e) en toute sécurité au site Web .gov. Assurez-vous de ne partager des informations sensibles que sur des sites Web officiels et sécurisés.`,
     tld: "mil",
   },
-  render: ({
-    label,
-    bannerText,
-    bannerAction,
-    domainHeading,
-    domainText,
-    httpsHeading,
-    httpsText,
-  }) => html`
-    <usa-banner label=${label || nothing}>
-      <span slot="banner-text">${bannerText}</span>
-      <span slot="banner-action">${bannerAction}</span>
-      <span slot="domain-heading">${domainHeading}</span>
-      <span slot="domain-text">${domainText}</span>
-      <span slot="https-heading">${httpsHeading}</span>
-      <span slot="https-text">${unsafeHTML(httpsText)}</span>
-    </usa-banner>
-  `,
 };
 
 export const Mil = {
