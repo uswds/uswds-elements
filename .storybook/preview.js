@@ -2,9 +2,11 @@
  * Custom elements for component docs generation.
  */
 import { setCustomElementsManifest } from "@storybook/web-components-vite";
+import { setStorybookHelpersConfig } from "@wc-toolkit/storybook-helpers";
 import customElements from "../custom-elements.json";
 
 setCustomElementsManifest(customElements);
+setStorybookHelpersConfig({});
 
 /**
  *
@@ -27,6 +29,7 @@ import "../src/core/index.css";
 const preview = {
   parameters: {
     controls: {
+      // expanded: true,
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/i,

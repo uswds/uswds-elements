@@ -1,19 +1,22 @@
 import "./index";
-
 import { html, nothing } from "lit";
-
-import { userEvent, expect, waitFor } from "storybook/test";
+import { expect, userEvent, waitFor } from "storybook/test";
 import { within } from "shadow-dom-testing-library";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
+import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
+
+const { argTypes, args } = getStorybookHelpers("usa-banner");
 
 export default {
   title: "Components/Banner",
   component: "usa-banner",
   args: {
+    ...args,
     label: "",
     tld: "gov",
     lang: "en",
   },
+  argTypes,
   render: ({ lang, label, tld }) => html`
     <usa-banner
       lang=${lang || nothing}
