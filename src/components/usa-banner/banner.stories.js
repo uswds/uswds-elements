@@ -17,13 +17,30 @@ export default {
     lang: "en",
   },
   argTypes,
-  render: ({ lang, label, tld }) => html`
-    <usa-banner
-      lang=${lang || nothing}
-      label=${label || nothing}
-      tld=${tld || nothing}
-    ></usa-banner>
-  `,
+  render: ({ lang, label, tld, ...cssProps }) => {
+    // Return only CSS variables to use in a style tag
+    const cssVariables = Object.entries(cssProps)
+      .filter(
+        ([key, value]) => key.startsWith("--") && value != null && value !== "",
+      )
+      .map(([key, value]) => `${key}: ${value};`)
+      .join("\n    ");
+
+    return html`
+      ${cssVariables
+        ? html`<style>
+            usa-banner {
+              ${cssVariables}
+            }
+          </style>`
+        : nothing}
+      <usa-banner
+        lang=${lang || nothing}
+        label=${label || nothing}
+        tld=${tld || nothing}
+      ></usa-banner>
+    `;
+  },
 };
 
 export const Default = {};
