@@ -40,7 +40,6 @@ export class UsaBanner extends LitElement {
     lang: { type: String, reflect: true },
     data: { attribute: false },
     isOpen: { type: Boolean },
-    classes: {},
     label: { type: String },
     tld: { type: String, reflect: true },
   };
@@ -49,7 +48,6 @@ export class UsaBanner extends LitElement {
   lang!: string;
   data!: any;
   isOpen!: boolean;
-  classes!: any;
   label!: string;
   tld!: string;
 

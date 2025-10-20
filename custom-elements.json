@@ -122,15 +122,6 @@
             },
             {
               "kind": "field",
-              "name": "classes",
-              "privacy": "public",
-              "type": {
-                "text": "any"
-              },
-              "attribute": "classes"
-            },
-            {
-              "kind": "field",
               "name": "label",
               "privacy": "public",
               "type": {
@@ -226,13 +217,6 @@
               },
               "default": "false",
               "fieldName": "isOpen"
-            },
-            {
-              "name": "classes",
-              "type": {
-                "text": "any"
-              },
-              "fieldName": "classes"
             }
           ],
           "superclass": {
