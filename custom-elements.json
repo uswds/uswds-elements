@@ -95,7 +95,7 @@
               "name": "lang",
               "privacy": "public",
               "type": {
-                "text": "SupportedLanguage"
+                "text": "\"en\" | \"es\""
               },
               "default": "\"en\"",
               "attribute": "lang",
@@ -125,7 +125,7 @@
               "name": "tld",
               "privacy": "public",
               "type": {
-                "text": "SupportedTLD"
+                "text": "\"gov\" | \"mil\""
               },
               "default": "\"gov\"",
               "attribute": "tld",
@@ -179,7 +179,7 @@
           "attributes": [
             {
               "type": {
-                "text": "SupportedLanguage"
+                "text": "\"en\" | \"es\""
               },
               "description": "The element's language.",
               "name": "lang",
@@ -196,7 +196,7 @@
             },
             {
               "type": {
-                "text": "SupportedTLD"
+                "text": "\"gov\" | \"mil\""
               },
               "description": "The top level domain for the site.",
               "name": "tld",

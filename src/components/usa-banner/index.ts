@@ -32,7 +32,6 @@ interface UsaBannerTranslations {
 }
 
 type SupportedLanguage = "en" | "es";
-type SupportedTLD = "gov" | "mil";
 
 const USA_BANNER_TRANSLATIONS: Record<
   SupportedLanguage,
@@ -111,16 +110,16 @@ const USA_BANNER_TRANSLATIONS: Record<
 export class UsaBanner extends LitElement {
   static properties = {
     lang: { type: String, reflect: true },
-    isOpen: { type: Boolean },
+    isOpen: { state: true },
     label: { type: String },
     tld: { type: String, reflect: true },
   };
 
   // Property declarations
-  lang!: SupportedLanguage;
+  lang!: "en" | "es";
   isOpen!: boolean;
   label!: string;
-  tld!: SupportedTLD;
+  tld!: "gov" | "mil";
 
   toggle() {
     this.isOpen = !this.isOpen;
