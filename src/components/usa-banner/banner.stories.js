@@ -5,7 +5,28 @@ import { within } from "shadow-dom-testing-library";
 import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
 
-const { argTypes, args } = getStorybookHelpers("usa-banner");
+const { argTypes, args, template } = getStorybookHelpers("usa-banner");
+
+const filteredArgTypes = (argTypes) => {
+  const filtered = {};
+
+  for (const [key, value] of Object.entries(argTypes)) {
+    // Disable methods and isOpen
+    if (value.table?.category === "methods" || key === "isOpen") {
+      filtered[key] = {
+        ...value,
+        table: {
+          ...value.table,
+          disable: true,
+        },
+      };
+    } else {
+      filtered[key] = value;
+    }
+  }
+
+  return filtered;
+};
 
 export default {
   title: "Components/Banner",
@@ -16,31 +37,8 @@ export default {
     tld: "gov",
     lang: "en",
   },
-  argTypes,
-  render: ({ lang, label, tld, ...cssProps }) => {
-    // Return only CSS variables to use in a style tag
-    const cssVariables = Object.entries(cssProps)
-      .filter(
-        ([key, value]) => key.startsWith("--") && value != null && value !== "",
-      )
-      .map(([key, value]) => `${key}: ${value};`)
-      .join("\n    ");
-
-    return html`
-      ${cssVariables
-        ? html`<style>
-            usa-banner {
-              ${cssVariables}
-            }
-          </style>`
-        : nothing}
-      <usa-banner
-        lang=${lang || nothing}
-        label=${label || nothing}
-        tld=${tld || nothing}
-      ></usa-banner>
-    `;
-  },
+  argTypes: filteredArgTypes(argTypes),
+  render: (args) => template(args),
 };
 
 export const Default = {};
