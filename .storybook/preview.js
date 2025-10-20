@@ -6,7 +6,9 @@ import { setStorybookHelpersConfig } from "@wc-toolkit/storybook-helpers";
 import customElements from "../custom-elements.json";
 
 setCustomElementsManifest(customElements);
-setStorybookHelpersConfig({});
+setStorybookHelpersConfig({
+  hideArgRef: true,
+});
 
 /**
  *
