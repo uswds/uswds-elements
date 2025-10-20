@@ -1,8 +1,6 @@
 import "./index";
-import { html, nothing } from "lit";
 import { expect, userEvent, waitFor } from "storybook/test";
 import { within } from "shadow-dom-testing-library";
-import { unsafeHTML } from "lit/directives/unsafe-html.js";
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
 
 const { argTypes, args, template } = getStorybookHelpers("usa-banner");
