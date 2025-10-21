@@ -1,4 +1,5 @@
 import "./index";
+import ComponentDocs from "./docs.mdx";
 import { expect, userEvent, waitFor } from "storybook/test";
 import { within } from "shadow-dom-testing-library";
 import { getStorybookHelpers } from "@wc-toolkit/storybook-helpers";
@@ -34,6 +35,11 @@ export default {
     label: "",
     tld: "gov",
     lang: "en",
+  },
+  parameters: {
+    docs: {
+      page: ComponentDocs,
+    },
   },
   argTypes: filteredArgTypes(argTypes),
   render: (args) => template(args),
