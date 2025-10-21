@@ -11,6 +11,78 @@ import iconClose from "../../shared/icons/close.svg";
 import iconExpandMore from "../../shared/icons/expand_more.svg";
 import iconExpandLess from "../../shared/icons/expand_less.svg";
 
+interface UsaBannerTranslations {
+  banner: {
+    label: string;
+    text: string;
+    action: string;
+  };
+  domain: {
+    heading: string;
+    text1: string;
+    text2: string;
+  };
+  https: {
+    heading1: string;
+    heading2: string;
+    text1: string;
+    text2: string;
+    text3: string;
+  };
+}
+
+type SupportedLanguage = "en" | "es";
+
+const USA_BANNER_TRANSLATIONS: Record<
+  SupportedLanguage,
+  UsaBannerTranslations
+> = {
+  en: {
+    banner: {
+      label: "Official website of the United States government",
+      text: "An official website of the United States government",
+      action: "Here’s how you know",
+    },
+    domain: {
+      heading: "Official websites use",
+      text1: "A",
+      text2:
+        "website belongs to an official government organization in the United States.",
+    },
+    https: {
+      heading1: "Secure",
+      heading2: "websites use HTTPS",
+      text1: "A <strong>lock</strong>",
+      text2:
+        "or <strong>https://</strong> means you’ve safely connected to the",
+      text3:
+        "website. Share sensitive information only on official, secure websites.",
+    },
+  },
+  es: {
+    banner: {
+      label: "Un sitio oficial del Gobierno de Estados Unidos",
+      text: "Un sitio oficial del Gobierno de Estados Unidos",
+      action: "Así es como usted puede verificarlo",
+    },
+    domain: {
+      heading: "Los sitios web oficiales usan",
+      text1: "Un sitio web",
+      text2:
+        "pertenece a una organización oficial del Gobierno de Estados Unidos.",
+    },
+    https: {
+      heading1: "Los sitios web seguros",
+      heading2: "usan HTTPS",
+      text1: "Un <strong>candado</strong>",
+      text2:
+        "o <strong>https://</strong> significa que usted se conectó de forma segura a un sitio web",
+      text3:
+        "Comparta información sensible sólo en sitios web oficiales y seguros.",
+    },
+  },
+};
+
 /**
  * @summary The usa-banner component.
  *
@@ -38,20 +110,16 @@ import iconExpandLess from "../../shared/icons/expand_less.svg";
 export class UsaBanner extends LitElement {
   static properties = {
     lang: { type: String, reflect: true },
-    data: { attribute: false },
-    isOpen: { type: Boolean },
-    classes: {},
+    isOpen: { state: true },
     label: { type: String },
     tld: { type: String, reflect: true },
   };
 
   // Property declarations
-  lang!: string;
-  data!: any;
+  lang!: "en" | "es";
   isOpen!: boolean;
-  classes!: any;
   label!: string;
-  tld!: string;
+  tld!: "gov" | "mil";
 
   toggle() {
     this.isOpen = !this.isOpen;
@@ -66,64 +134,16 @@ export class UsaBanner extends LitElement {
     this.lang = "en";
     this.isOpen = false;
     this.tld = "gov";
-
-    this.data = {
-      en: {
-        banner: {
-          label: "Official website of the United States government",
-          text: "An official website of the United States government",
-          action: "Here’s how you know",
-        },
-        domain: {
-          heading: "Official websites use",
-          text1: "A",
-          text2:
-            "website belongs to an official government organization in the United States.",
-        },
-        https: {
-          heading1: "Secure",
-          heading2: "websites use HTTPS",
-          text1: "A <strong>lock</strong>",
-          text2:
-            "or <strong>https://</strong> means you’ve safely connected to the",
-          text3:
-            "website. Share sensitive information only on official, secure websites.",
-        },
-      },
-      es: {
-        banner: {
-          label: "Un sitio oficial del Gobierno de Estados Unidos",
-          text: "Un sitio oficial del Gobierno de Estados Unidos",
-          action: "Así es como usted puede verificarlo",
-        },
-        domain: {
-          heading: "Los sitios web oficiales usan",
-          text1: "Un sitio web",
-          text2:
-            "pertenece a una organización oficial del Gobierno de Estados Unidos.",
-        },
-        https: {
-          heading1: "Los sitios web seguros",
-          heading2: "usan HTTPS",
-          text1: "Un <strong>candado</strong>",
-          text2:
-            "o <strong>https://</strong> significa que usted se conectó de forma segura a un sitio web",
-          text3:
-            "Comparta información sensible sólo en sitios web oficiales y seguros.",
-        },
-      },
-    };
   }
 
   // Get English or Spanish strings. Default to English if an unknown `lang` is passed.
   // Ex: <usa-banner lang="zy"></usa-banner>
-  get _bannerText() {
-    const content = this.data[this.lang] || this.data["en"];
-    return content;
+  protected get _bannerText() {
+    return USA_BANNER_TRANSLATIONS[this.lang] || USA_BANNER_TRANSLATIONS["en"];
   }
 
   // Get the action text and use for both mobile & desktop buttons.
-  get _actionText() {
+  protected get _actionText() {
     const bannerActionText = this.querySelector('[slot="banner-action"]');
 
     return bannerActionText?.textContent;

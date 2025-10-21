@@ -484,8 +484,9 @@ button[aria-expanded="true"]:hover {
   flex: 1;
 }
 
-.icon-lock {
-  background-image: var(--usa-icon-lock);
+.icon-lock,
+::slotted(.usa-banner__icon-lock) {
+  background-color: currentColor;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
