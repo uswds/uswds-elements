@@ -67,7 +67,7 @@ export const CustomContent = {
     "domain-text-slot":
       "Un site Web .gov appartient à une organisation gouvernementale officielle aux États-Unis.",
     "https-heading-slot": "Les sites Web .gov sécurisés utilisent HTTPS",
-    "https-text-slot": `Un <strong>verrou</strong> ( <span class="usa-banner__icon-lock" role="img" aria-label="Locked padlock icon"></span> ) ou <strong>https://</strong> signifie que vous êtes connecté(e) en toute sécurité au site Web .gov. Assurez-vous de ne partager des informations sensibles que sur des sites Web officiels et sécurisés.`,
+    "https-text-slot": `Un <strong>verrou</strong> ( <span class="usa-banner__icon-lock" role="img" aria-label="Icône de cadenas verrouillé"></span> ) ou <strong>https://</strong> signifie que vous êtes connecté(e) en toute sécurité au site Web .gov. Assurez-vous de ne partager des informations sensibles que sur des sites Web officiels et sécurisés.`,
   },
 };
 
