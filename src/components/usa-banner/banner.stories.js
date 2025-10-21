@@ -9,7 +9,7 @@ import { unsafeHTML } from "lit/directives/unsafe-html.js";
 export default {
   title: "Components/Banner",
   component: "usa-banner",
-  tags: ["experimental"],
+  tags: ["beta"],
   args: {
     label: "",
     tld: "gov",
