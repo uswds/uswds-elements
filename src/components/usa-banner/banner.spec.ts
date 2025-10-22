@@ -2,12 +2,23 @@ import { beforeEach, describe, expect, it } from "vitest";
 
 import "./index.js";
 
-function getInsideBanner() {
-  return document.body.querySelector("usa-banner")?.shadowRoot;
+function getInsideBanner(): ShadowRoot {
+  const banner = document.body.querySelector("usa-banner");
+  if (!banner) {
+    throw new Error("USA Banner element not found");
+  }
+  if (!banner.shadowRoot) {
+    throw new Error("USA Banner shadowRoot not found");
+  }
+  return banner.shadowRoot;
 }
 
-function getBannerButton() {
-  return getInsideBanner().querySelector(".usa-accordion__button");
+function getBannerButton(): HTMLButtonElement {
+  const button = getInsideBanner().querySelector(".usa-accordion__button");
+  if (!button) {
+    throw new Error("Banner button not found");
+  }
+  return button as HTMLButtonElement;
 }
 
 describe("USA Banner component", async () => {
@@ -22,7 +33,7 @@ describe("USA Banner component", async () => {
   });
 
   it("uses gov TLD by default", () => {
-    expect(getInsideBanner().querySelector(".content").textContent).toContain(
+    expect(getInsideBanner().querySelector(".content")?.textContent).toContain(
       ".gov",
     );
   });
@@ -58,7 +69,7 @@ describe("MIL variant", async () => {
   });
 
   it("renders correctly", () => {
-    expect(getInsideBanner().querySelector(".content").textContent).toContain(
+    expect(getInsideBanner().querySelector(".content")?.textContent).toContain(
       ".mil",
     );
   });
