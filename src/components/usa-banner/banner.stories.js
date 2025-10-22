@@ -100,7 +100,8 @@ export const CustomThemeExample = {
     "--usa-banner-background-color": "#0f191c", // blue-cool-90
     "--usa-banner-button-close-background-color": "#002d3f", // blue-cool-80-vivid
     "--usa-banner-focus-outline-color": "#52daf2", // cyan-20-vivid
-    "--usa-banner-font-family": "monospace",
+    "--usa-banner-font-family":
+      "ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, 'DejaVu Sans Mono', monospace",
     "--usa-banner-link-hover-color": "#c3ebfa", // blue-cool-10-vivid
     "--usa-banner-text-color": "#ffffff",
     "--usa-banner-link-color": "#97d4ea", // blue-cool-20-vivid
