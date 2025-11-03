@@ -26,8 +26,8 @@
   --usa-banner-font-size-xs: 0.75rem;
   --usa-banner-font-size-sm: 0.875rem;
   --usa-banner-font-size-base: 0.94rem;
-  --usa-banner-icon-gov-color: #2378c3;
-  --usa-banner-icon-https-color: #719f2a;
+  --usa-banner-icon-gov-color: var(--usa-color-blue-50, #2378c3);
+  --usa-banner-icon-https-color: var(--usa-color-green-vivid-40, #719f2a);
   --usa-banner-line-height-sm: 1.2;
   --usa-banner-line-height-base: 1.6;
   --usa-banner-link-color: var(--usa-color-blue-vivid-60, #005ea2);
