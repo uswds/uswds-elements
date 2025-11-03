@@ -155,7 +155,7 @@ export class UsaBanner extends LitElement {
     const { domain } = this._bannerText;
 
     return html`
-      <div class="icon-gov usa-media-block__body">
+      <div class="icon-gov">
         <p>
           <strong>
             <slot name="domain-heading"> ${domain.heading} .${tld} </slot>
@@ -183,7 +183,7 @@ export class UsaBanner extends LitElement {
     const { https } = this._bannerText;
 
     return html`
-      <div class="icon-https usa-media-block__body">
+      <div class="icon-https">
         <p>
           <strong>
             <slot name="https-heading">
