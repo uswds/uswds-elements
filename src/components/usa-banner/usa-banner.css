@@ -478,14 +478,6 @@ button[aria-expanded="true"]:hover {
   width: var(--usa-spacing-5);
 }
 
-.usa-media-block__img {
-  width: var(--usa-spacing-5);
-}
-
-.usa-media-block__body {
-  flex: 1;
-}
-
 .icon-lock,
 ::slotted(.usa-banner__icon-lock) {
   background-color: currentColor;
