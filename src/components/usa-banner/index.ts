@@ -153,14 +153,11 @@ export class UsaBanner extends LitElement {
     const { domain } = this._bannerText;
 
     return html`
-      <img
-        class="icon usa-media-block__img"
-        src="${iconDotGov}"
+      <span
+        class="icon-gov usa-media-block__img"
         role="img"
-        alt=""
         aria-hidden="true"
-        fetchpriority="low"
-      />
+      ></span>
       <div class="usa-media-block__body">
         <p>
           <strong>
@@ -181,7 +178,6 @@ export class UsaBanner extends LitElement {
         class="icon-lock"
         role="img"
         aria-label="Locked padlock icon"
-        part="lock-icon"
       ></span>
     `;
   }
@@ -190,14 +186,11 @@ export class UsaBanner extends LitElement {
     const { https } = this._bannerText;
 
     return html`
-      <img
-        class="icon usa-media-block__img"
-        src="${iconHttps}"
+      <span
+        class="icon-https usa-media-block__img"
         role="img"
-        alt=""
         aria-hidden="true"
-        fetchpriority="low"
-      />
+      ></span>
       <div class="usa-media-block__body">
         <p>
           <strong>
@@ -221,6 +214,8 @@ export class UsaBanner extends LitElement {
         --usa-icon-close: url("${unsafeCSS(iconClose)}");
         --usa-icon-expand-less: url("${unsafeCSS(iconExpandLess)}");
         --usa-icon-expand-more: url("${unsafeCSS(iconExpandMore)}");
+        --usa-icon-gov: url("${unsafeCSS(iconDotGov)}");
+        --usa-icon-https: url("${unsafeCSS(iconHttps)}");
       }
     `,
     styles,
