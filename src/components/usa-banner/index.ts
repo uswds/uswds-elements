@@ -94,6 +94,8 @@ const USA_BANNER_TRANSLATIONS: Record<
  * @cssprop --usa-banner-button-close-background-color - Sets the background color for the close control on smaller viewports.
  * @cssprop --usa-banner-focus-outline-color - Sets banner focus outline color.
  * @cssprop --usa-banner-font-family - Sets banner font family.
+ * @cssprop --usa-banner-icon-gov-color - Sets the color for the .gov icon.
+ * @cssprop --usa-banner-icon-https-color - Sets the color for the https icon.
  * @cssprop --usa-banner-link-color - Sets the default link color.
  * @cssprop --usa-banner-link-hover-color - Sets the default link color.
  * @cssprop --usa-banner-text-color - Sets the default text color.
