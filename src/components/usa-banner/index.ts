@@ -153,12 +153,7 @@ export class UsaBanner extends LitElement {
     const { domain } = this._bannerText;
 
     return html`
-      <span
-        class="icon-gov usa-media-block__img"
-        role="img"
-        aria-hidden="true"
-      ></span>
-      <div class="usa-media-block__body">
+      <div class="icon-gov usa-media-block__body">
         <p>
           <strong>
             <slot name="domain-heading"> ${domain.heading} .${tld} </slot>
@@ -186,12 +181,7 @@ export class UsaBanner extends LitElement {
     const { https } = this._bannerText;
 
     return html`
-      <span
-        class="icon-https usa-media-block__img"
-        role="img"
-        aria-hidden="true"
-      ></span>
-      <div class="usa-media-block__body">
+      <div class="icon-https usa-media-block__body">
         <p>
           <strong>
             <slot name="https-heading">
