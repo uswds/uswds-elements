@@ -31,6 +31,7 @@ const filteredArgTypes = (argTypes: ArgTypes) => {
 export default {
   title: "Components/Banner",
   component: "usa-banner",
+  tags: ["beta"],
   args: {
     ...args,
     label: "",

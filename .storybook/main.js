@@ -8,6 +8,7 @@ const config = {
     "@storybook/addon-links",
     "@storybook/addon-docs",
     "@storybook/addon-a11y",
+    "storybook-addon-tag-badges",
   ],
   framework: {
     name: "@storybook/web-components-vite",
