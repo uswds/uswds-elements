@@ -6,7 +6,6 @@ import { setStorybookHelpersConfig } from "@wc-toolkit/storybook-helpers";
 import customElements from "../custom-elements.json";
 import UswdsTheme from "./UswdsTheme";
 import "../storybook/index.css";
-import "./index.css";
 import "../src/core/index.css";
 
 setCustomElementsManifest(customElements);
