@@ -51,11 +51,11 @@
               "name": "--usa-banner-font-family"
             },
             {
-              "description": "Sets the color for the .gov icon.",
+              "description": "Sets the color for the icon indicating user is on an official government domain.",
               "name": "--usa-banner-icon-gov-color"
             },
             {
-              "description": "Sets the color for the https icon.",
+              "description": "Sets the color for the https icon in the expanded state of the banner.",
               "name": "--usa-banner-icon-https-color"
             },
             {
