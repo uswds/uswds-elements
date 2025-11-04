@@ -94,6 +94,8 @@ const USA_BANNER_TRANSLATIONS: Record<
  * @cssprop --usa-banner-button-close-background-color - Sets the background color for the close control on smaller viewports.
  * @cssprop --usa-banner-focus-outline-color - Sets banner focus outline color.
  * @cssprop --usa-banner-font-family - Sets banner font family.
+ * @cssprop --usa-banner-icon-gov-color - Sets the color for the official government domain icon in the expanded state of the banner.
+ * @cssprop --usa-banner-icon-https-color - Sets the color for the https icon in the expanded state of the banner.
  * @cssprop --usa-banner-link-color - Sets the default link color.
  * @cssprop --usa-banner-link-hover-color - Sets the default link color.
  * @cssprop --usa-banner-text-color - Sets the default text color.
@@ -153,15 +155,7 @@ export class UsaBanner extends LitElement {
     const { domain } = this._bannerText;
 
     return html`
-      <img
-        class="icon usa-media-block__img"
-        src="${iconDotGov}"
-        role="img"
-        alt=""
-        aria-hidden="true"
-        fetchpriority="low"
-      />
-      <div class="usa-media-block__body">
+      <div class="icon-gov">
         <p>
           <strong>
             <slot name="domain-heading"> ${domain.heading} .${tld} </slot>
@@ -181,7 +175,6 @@ export class UsaBanner extends LitElement {
         class="icon-lock"
         role="img"
         aria-label="Locked padlock icon"
-        part="lock-icon"
       ></span>
     `;
   }
@@ -190,15 +183,7 @@ export class UsaBanner extends LitElement {
     const { https } = this._bannerText;
 
     return html`
-      <img
-        class="icon usa-media-block__img"
-        src="${iconHttps}"
-        role="img"
-        alt=""
-        aria-hidden="true"
-        fetchpriority="low"
-      />
-      <div class="usa-media-block__body">
+      <div class="icon-https">
         <p>
           <strong>
             <slot name="https-heading">
@@ -221,6 +206,8 @@ export class UsaBanner extends LitElement {
         --usa-icon-close: url("${unsafeCSS(iconClose)}");
         --usa-icon-expand-less: url("${unsafeCSS(iconExpandLess)}");
         --usa-icon-expand-more: url("${unsafeCSS(iconExpandMore)}");
+        --usa-icon-gov: url("${unsafeCSS(iconDotGov)}");
+        --usa-icon-https: url("${unsafeCSS(iconHttps)}");
       }
     `,
     styles,

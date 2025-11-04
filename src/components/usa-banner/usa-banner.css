@@ -26,6 +26,8 @@
   --usa-banner-font-size-xs: 0.75rem;
   --usa-banner-font-size-sm: 0.875rem;
   --usa-banner-font-size-base: 0.94rem;
+  --usa-banner-icon-gov-color: var(--usa-color-blue-50, #2378c3);
+  --usa-banner-icon-https-color: var(--usa-color-green-vivid-40, #719f2a);
   --usa-banner-line-height-sm: 1.2;
   --usa-banner-line-height-base: 1.6;
   --usa-banner-link-color: var(--usa-color-blue-vivid-60, #005ea2);
@@ -476,14 +478,6 @@ button[aria-expanded="true"]:hover {
   width: var(--usa-spacing-5);
 }
 
-.usa-media-block__img {
-  width: var(--usa-spacing-5);
-}
-
-.usa-media-block__body {
-  flex: 1;
-}
-
 .icon-lock,
 ::slotted(.usa-banner__icon-lock) {
   background-color: currentColor;
@@ -497,4 +491,32 @@ button[aria-expanded="true"]:hover {
   mask-repeat: no-repeat;
   mask-size: cover;
   width: 1.21875ex;
+}
+
+.icon-gov,
+.icon-https {
+  padding-inline-start: calc(var(--usa-spacing-5) + var(--usa-spacing-1));
+  position: relative;
+
+  &::before {
+    content: "";
+    display: inline-block;
+    height: var(--usa-spacing-5);
+    left: 0;
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    position: absolute;
+    top: 0;
+    width: var(--usa-spacing-5);
+  }
+}
+
+.icon-gov::before {
+  background-color: var(--usa-banner-icon-gov-color);
+  mask-image: var(--usa-icon-gov);
+}
+
+.icon-https::before {
+  background-color: var(--usa-banner-icon-https-color);
+  mask-image: var(--usa-icon-https);
 }

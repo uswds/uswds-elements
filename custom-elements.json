@@ -51,6 +51,14 @@
               "name": "--usa-banner-font-family"
             },
             {
+              "description": "Sets the color for the official government domain icon in the expanded state of the banner.",
+              "name": "--usa-banner-icon-gov-color"
+            },
+            {
+              "description": "Sets the color for the https icon in the expanded state of the banner.",
+              "name": "--usa-banner-icon-https-color"
+            },
+            {
               "description": "Sets the default link color.",
               "name": "--usa-banner-link-color"
             },
