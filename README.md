@@ -19,7 +19,7 @@ We are releasing these Web Components (USWDS Elements) incrementally with the in
 
 For now, the best way to install USWDS Elements is via npm:
 
-```
+```bash
 npm install -S @uswds/elements
 ```
 
