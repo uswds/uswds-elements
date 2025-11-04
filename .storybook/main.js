@@ -14,6 +14,12 @@ const config = {
     name: "@storybook/web-components-vite",
     options: {},
   },
+  previewHead: (head) => `
+    ${head || ""}
+    <link rel="stylesheet" href="/storybook/index.css" />
+    <link rel="stylesheet" href="/.storybook/index.css" />
+    <link rel="stylesheet" href="/src/core/index.css" />
+  `,
   viteFinal: async (config) => {
     /**
      * Unload the `vite-plugin-bundlesize` plugin.

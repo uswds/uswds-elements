@@ -1,9 +1,22 @@
 :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)),
 :where(li:not(.sb-anchor, .sb-unstyled, .sb-unstyled li)) {
-  font-size: 22px !important;
-  line-height: 1.4 !important;
+  font-size: 1.75rem;
+  line-height: 1.75 !important;
+  max-width: 80ch;
+}
+
+body {
+  font-size: 1.75rem;
 }
 
 .toc-list-item {
-  font-size: 1rem !important;
+  font-size: 0.875rem;
+  margin-inline-start: 0.75rem !important;
+  margin-block-end: 0.5rem !important;
+  padding-inline: 0.5rem;
+}
+
+.site-note {
+  background-color: var(--usa-color-blue-10);
+  padding: 0.75rem;
 }
