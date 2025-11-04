@@ -107,6 +107,8 @@ export const CustomThemeExample = {
     "--usa-banner-link-hover-color": "#c3ebfa", // blue-cool-10-vivid
     "--usa-banner-text-color": "#ffffff",
     "--usa-banner-link-color": "#97d4ea", // blue-cool-20-vivid
+    "--usa-banner-icon-gov-color": "#29e1cb", // mint-cool-20-vivid
+    "--usa-banner-icon-https-color": "#29e1cb", // mint-cool-20-vivid
   },
 };
 
