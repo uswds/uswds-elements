@@ -51,7 +51,7 @@
               "name": "--usa-banner-font-family"
             },
             {
-              "description": "Sets the color for the icon indicating user is on an official government domain.",
+              "description": "Sets the color for the official government domain icon in the expanded state of the banner.",
               "name": "--usa-banner-icon-gov-color"
             },
             {
