@@ -24,15 +24,6 @@ const config = {
       (plugin) => plugin.name !== "vite-plugin-bundlesize",
     );
 
-    config.plugins = config.plugins.filter(
-      (plugin) =>
-        !(
-          plugin &&
-          typeof plugin === "object" &&
-          plugin.name === "vite-plugin-lit-css"
-        ),
-    );
-
     return config;
   },
 };
