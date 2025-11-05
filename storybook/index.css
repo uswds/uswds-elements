@@ -44,7 +44,6 @@
   pre,
   code {
     font-size: initial;
-    line-height: 1.5;
   }
 
   :where(p:not(.sb-anchor, .sb-unstyled, .sb-unstyled p)),
