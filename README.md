@@ -66,12 +66,42 @@ There are interactive form controls in our Storybook instance that demonstrate h
 
 For example, the `usa-banner` component can be customized by setting the `--usa-banner-background-color` CSS variable to a color of your choosing:
 
+```html
+<style>
+    usa-banner {
+        --usa-banner-background-color: #d9e8f6; /** equivalent to `primary-lighter` from USWDS - https://designsystem.digital.gov/design-tokens/color/theme-tokens/#theme-color-tokens-table-2 */
+        --usa-banner-button-close-background-color: #d6f3ff;
+    }
+</style>
+<usa-banner></usa-banner>
+```
+
+This can be seen in the demo on the [USWDS Elements Storybook](<https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/story/components-banner--default&args=--usa-banner-background-color:!hex(e4f7ff)>).
+
+**Note:** Please be mindful of the accessibility implications of customizing component appearance. It is your responsibility to ensure that your customizations meet the [accessibility requirements](https://designsystem.digital.gov/accessibility/) of the design system and pass any [WCAG 2.2](https://www.w3.org/TR/WCAG22/) or [Section 508](https://www.section508.gov/) accessibility tests.
+
 > [!IMPORTANT]
 > If you are bundling your application using Vite, you may encounter a JavaScript error when using the `usa-banner` component with Vite's dev server (this also applies to other Vite-based tools such as Astro). To work around this, you may need to run the dev server in production mode by prefixing the command to start the server with `NODE_ENV=production`. For instance, if you run the command `npm run dev` to start your dev server, you should start it with `NODE_ENV=production npm run dev`.
 
 ## Documentation
 
 For more detailed documentation, refer to the Storybook for USWDS Elements. You can visit the most up-to-date Storybook documentation on [Cloud.gov Pages](https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/docs/readme--docs).
+
+## Browser support
+
+We’ve designed the design system to support older and newer browsers through [progressive enhancement](https://en.wikipedia.org/wiki/Progressive_enhancement). The current major version of USWDS Elements (v1) follows the [2% rule](https://gds.blog.gov.uk/2012/01/25/support-for-browsers/): we officially support any browser above 2% usage as observed by [analytics.usa.gov](https://analytics.usa.gov/). Currently, this means support for the newest versions of Chrome, Firefox, and Safari.
+
+## Accessibility
+
+The design system also meets the [WCAG 2.0 AA accessibility guidelines](https://www.w3.org/TR/WCAG20/) and conforms to the standards of [Section 508 of the Rehabilitation Act](http://www.section508.gov/). Additionally, we try to meet the requirements of [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
+
+We use the following tools to ensure USWDS is accessible:
+
+- [ANDI](https://www.ssa.gov/accessibility/andi/help/install.html).
+- [Axe core](https://www.deque.com/axe/).
+- [Axe dev tools](https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US).
+
+If you find any issues with our accessibility conformance, please create an issue in our GitHub repo or send us an email at [uswds@gsa.gov](mailto:uswds@gsa.gov). We prioritize accessibility issues. See [the Accessibility page of our website](https://designsystem.digital.gov/documentation/accessibility/) for more information.
 
 ## Component Versions
 

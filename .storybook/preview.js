@@ -25,6 +25,7 @@ const preview = {
     docs: {
       toc: true, // Autogenerate table of contents.
       theme: UswdsTheme,
+      codePanel: true,
       canvas: {
         sourceState: "shown",
       },
