@@ -15,13 +15,33 @@ Over the course of the next several months and beyond, we will incrementally bui
 
 We are releasing these Web Components (USWDS Elements) incrementally with the intent that they can also be added gradually to existing sites that are currently using USWDS. If you aren't currently using USWDS or you're using a version older than USWDS 3, we recommend adopting version 3 in the near term rather than waiting until all of USWDS Elements is production-ready.
 
-## Installation
+## Installation using node and npm
 
-For now, the best way to install USWDS Elements is via npm:
+1. Install `node/npm`. Below is a link to find the install method that coincides with your operating system:
+    - Node (see [.nvmrc](https://github.com/uswds/uswds-elements/blob/develop/.nvmrc) for version number), [Installation guides](https://nodejs.org/en/download)
 
-```bash
-npm install -S @uswds/elements
-```
+    **Note for Windows users:** If you are using Windows and are unfamiliar with Node or npm, we recommend following [Team Treehouse's tutorial](http://blog.teamtreehouse.com/install-node-js-npm-windows) for more information or [installing and running your project from Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl#install-nvm-nodejs-and-npm).
+
+2. Make sure you have installed it correctly:
+
+    ```shell
+    npm -v
+    10.9.4 # This line may vary depending on what version of Node you've installed.
+    ```
+
+3. Create a `package.json` file. You can do this manually, but an easier method is to use the `npm init` command. This command will prompt you with a few questions to create your `package.json` file.
+
+4. Add `@uswds/uswds` to your project’s `package.json`:
+
+    ```shell
+    npm install -S @uswds/elements
+    ```
+
+The `@uswds/elements` module is now installed as a dependency.
+
+**Note:** We do _not_ recommend directly editing the design system files in `node_modules`. One of the benefits of using a package manager is its ease of upgrade and installation. If you make customizations to the files in the package, any upgrade or re-installation will wipe them out.
+
+## Using USWDS Elements in your project
 
 How you add the component to a page may vary depending on the tools you use in your work. If you use Vite, you can add components by importing them into a script that is imported elsewhere into a page:
 
@@ -31,19 +51,27 @@ import { UsaBanner } from "@uswds/elements";
 ```
 
 ```html
-<!-- importing directy into an HTML page -->
+<!-- importing directly into an HTML page -->
 <script type="module">
     import { UsaBanner } from "@uswds/elements";
 </script>
 <usa-banner></usa-banner>
 ```
 
+## Style theming and tokens
+
+Each USWDS Element provides support for theming by exposing CSS custom properties (CSS variables) that can be used to control the appearance of the component.
+
+There are interactive form controls in our Storybook instance that demonstrate how to use the theming variables, provide custom text, and otherwise customize the components.
+
+For example, the `usa-banner` component can be customized by setting the `--usa-banner-background-color` CSS variable to a color of your choosing:
+
 > [!IMPORTANT]
 > If you are bundling your application using Vite, you may encounter a JavaScript error when using the `usa-banner` component with Vite's dev server (this also applies to other Vite-based tools such as Astro). To work around this, you may need to run the dev server in production mode by prefixing the command to start the server with `NODE_ENV=production`. For instance, if you run the command `npm run dev` to start your dev server, you should start it with `NODE_ENV=production npm run dev`.
 
 ## Documentation
 
-For more detailed documention, refer to the Storybook for USWDS Elements. You can visit the most up-to-date Storybook documentation on [Cloud.gov Pages](https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/docs/readme--docs).
+For more detailed documentation, refer to the Storybook for USWDS Elements. You can visit the most up-to-date Storybook documentation on [Cloud.gov Pages](https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/docs/readme--docs).
 
 ## Component Versions
 
