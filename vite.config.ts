@@ -30,11 +30,9 @@ const entries: Array<Entry> = [
 
 export default defineConfig({
   plugins: [
-    [
-      litCss({
-        exclude: ["./src/core/index.css", "./storybook/index.css"],
-      }),
-    ],
+    litCss({
+      exclude: ["./src/core/index.css", "./storybook/index.css"],
+    }),
     bundlesize({
       limits: [
         ...entries.map(mapEntryToLimit),
