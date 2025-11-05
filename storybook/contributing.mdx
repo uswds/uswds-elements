@@ -6,26 +6,106 @@ import { Meta } from "@storybook/addon-docs/blocks";
 
 This information is for developers who want to contribute to the USWDS Elements project.
 
-## Installing
+## Project setup
 
-From the project root, run the following commands:
+It is helpful to have [nvm installed](https://github.com/nvm-sh/nvm) and use the correct version of Node.js. From the project root, run the following command:
 
 ```bash
 npm install
 ```
 
+### Installing Playwright (for E2E testing)
+
+If you plan to run or write end-to-end tests, please see the [Playwright documentation](https://playwright.dev/docs/intro) for installation instructions and the [README.md file in the `e2e` directory](https://github.com/uswds/uswds-elements/tree/develop/e2e).
+
+## Development Workflow
+
+The development workflow uses [Storybook](https://storybook.js.org/) and [custom elements manifest](https://github.com/webcomponents/custom-elements-manifest) to generate a custom elements manifest and watch for changes to the custom elements manifest. Storybook handles documentation of component usage, styling, and properties.
+
 ### Running StorybookJS
+
+Start the development server with Storybook and custom elements manifest watch process:
 
 ```bash
 npm run start
 ```
 
+This runs Storybook on port 8008 at `http://localhost:8008`.
+
 ---
 
-## Creating stories
+### Creating stories
 
 Stories should document the following component features:
 
 - Variants (e.g. default, primary, secondary, etc.)
 - Properties
 - CSS Custom Properties
+
+### Story File Structure
+
+Stories and functional tests should be created alongside components:
+
+```
+src/components/usa-example/
+  ├── docs.mdx
+  ├── index.ts
+  ├── usa-example.css
+  ├── usa-example.spec.ts
+  └── usa-example.stories.ts
+```
+
+## Project Structure
+
+- **`src/components/`** - Web Component implementations
+- **`src/core/`** - Core utilities and base classes
+- **`src/shared/`** - Static asset files like fonts and icons
+- **`e2e/`** - Playwright end-to-end tests
+- **`storybook/`** - Storybook documentation files
+- **`.storybook/`** - Storybook configuration
+- **`tokens/`** - Design token definitions (Style Dictionary)
+- **`internals/`** - Internal build scripts and utilities
+
+## Component Development Checklist
+
+When creating a new component:
+
+- [] Create component files in `src/components/[component-name]/`
+- [] Add JSDoc comments to component files documenting the component's API
+- [] Write component implementation (TypeScript + Lit)
+- [] Create component styles in an external CSS file and import it into the component
+- [] Export component from `index.ts`
+- [] Add component to for package exports `src/components/index.js`
+- [] Create Storybook stories documenting all variants and props
+- [] Write unit tests with Vitest
+- [] Write E2E tests with Playwright (including visual regression tests)
+- [] Build the custom elements manifest to keep it synced with JSDoc comments
+- [] Test accessibility with Storybook's a11y addon
+
+---
+
+## Pre-commit Hooks
+
+This project uses [Husky](https://typicode.github.io/husky/) for Git hooks. Hooks are automatically set up when you run `npm install` via the `prepare` script.
+
+## Publishing and Releases
+
+The package is published as `@uswds/elements` on npm. The current version can be found in `package.json`
+
+Component maturity levels:
+
+- : Experimental, API may change significantly **Pre-alpha**
+- **Alpha**: Core functionality stable, refinements expected
+- **Beta**: Feature complete, undergoing final testing
+- **Stable**: Production ready
+
+Check the README for current component status.
+
+## Additional Resources
+
+- [USWDS Design System](https://designsystem.digital.gov)
+- [Web Components MDN Guide](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)
+- [Lit Documentation](https://lit.dev)
+- [Storybook Documentation](https://storybook.js.org)
+- [Playwright Documentation](https://playwright.dev)
+- [E2E Testing Guide](https://github.com/uswds/uswds-elements/tree/develop/e2e) (detailed testing documentation)
