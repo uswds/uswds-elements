@@ -13,7 +13,7 @@
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
     "noEmit": true,
-    "baseUrl": ".",
+    "baseUrl": "..",
     "paths": { "@uswds/uswds/*": ["node_modules/@uswds/uswds/dist/*"] },
 
     /* Linting */
@@ -24,6 +24,6 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"],
-  "typeRoots": ["node_modules/@types", "src"]
+  "include": ["../src"],
+  "typeRoots": ["node_modules/@types", "../src"]
 }

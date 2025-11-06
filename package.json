@@ -20,7 +20,7 @@
     "./core/*": "./src/core/*"
   },
   "scripts": {
-    "build": "tsc && vite build --config ./config/vite.config.ts && npm run manifest:build",
+    "build": "tsc -p ./config/tsconfig.json && vite build --config ./config/vite.config.ts && npm run manifest:build",
     "build:tokens": "style-dictionary build --config ./config/style-dictionary.config.js",
     "build:watch": "vite build --config ./config/vite.config.ts --watch",
     "dev": "vite --config ./config/vite.config.ts",
