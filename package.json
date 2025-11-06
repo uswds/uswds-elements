@@ -21,7 +21,7 @@
   },
   "scripts": {
     "build": "tsc && vite build --config ./config/vite.config.ts && npm run manifest:build",
-    "build:tokens": "style-dictionary build --config ./style-dictionary.config.js",
+    "build:tokens": "style-dictionary build --config ./config/style-dictionary.config.js",
     "build:watch": "vite build --config ./config/vite.config.ts --watch",
     "dev": "vite --config ./config/vite.config.ts",
     "fix-permissions": "sudo chown -R $(id -u):$(id -g) .",
