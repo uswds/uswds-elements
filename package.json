@@ -20,10 +20,10 @@
     "./core/*": "./src/core/*"
   },
   "scripts": {
-    "build": "tsc && vite build && npm run manifest:build",
+    "build": "tsc && vite build --config ./config/vite.config.ts && npm run manifest:build",
     "build:tokens": "style-dictionary build --config ./style-dictionary.config.js",
-    "build:watch": "vite build --watch",
-    "dev": "vite",
+    "build:watch": "vite build --config ./config/vite.config.ts --watch",
+    "dev": "vite --config ./config/vite.config.ts",
     "fix-permissions": "sudo chown -R $(id -u):$(id -g) .",
     "prettier:js": "npx prettier --check '**/*.{cjs,css,js,json,jsx,mjs,ts,tsx}'",
     "prettier:js:fix": "npx prettier --write '**/*.{cjs,css,js,json,jsx,mjs,ts,tsx}'",
@@ -38,10 +38,10 @@
     "stylelint:fix": "stylelint './src/components/**/*.{css,css.js,css.ts}' --fix --config=./config/stylelint.config.mjs",
     "manifest:build": "npx cem analyze",
     "manifest:watch": "npx cem analyze --watch --dev",
-    "test": "vitest",
-    "test:ci": "vitest run",
+    "test": "vitest --config ./config/vitest.config.js",
+    "test:ci": "vitest run --config ./config/vitest.config.js",
     "test:storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run storybook:serve\" \"wait-on tcp:127.0.0.1:3000 && npx test-storybook --url http://localhost:3000\"",
-    "vite:preview": "vite preview",
+    "vite:preview": "vite preview --config ./config/vite.config.ts",
     "pages": "npm run storybook:build && cp -r storybook-static _site",
     "prepare": "husky"
   },
