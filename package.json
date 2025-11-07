@@ -25,6 +25,8 @@
     "build:watch": "vite build --watch",
     "dev": "vite",
     "fix-permissions": "sudo chown -R $(id -u):$(id -g) .",
+    "pages": "npm run storybook:build && cp -r storybook-static _site",
+    "prepare": "husky",
     "prettier:js": "npx prettier --check '**/*.{cjs,css,js,json,jsx,mjs,ts,tsx}'",
     "prettier:js:fix": "npx prettier --write '**/*.{cjs,css,js,json,jsx,mjs,ts,tsx}'",
     "prettier:md": "npx prettier --check '**/*.{md,mdx}'",
@@ -38,12 +40,11 @@
     "stylelint:fix": "stylelint './src/components/**/*.{css,css.js,css.ts}' --fix",
     "manifest:build": "npx cem analyze",
     "manifest:watch": "npx cem analyze --watch --dev",
+    "release": "npm run build:tokens && npm run build && changeset publish",
     "test": "vitest",
     "test:ci": "vitest run",
     "test:storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run storybook:serve\" \"wait-on tcp:127.0.0.1:3000 && npx test-storybook --url http://localhost:3000\"",
-    "vite:preview": "vite preview",
-    "pages": "npm run storybook:build && cp -r storybook-static _site",
-    "prepare": "husky"
+    "vite:preview": "vite preview"
   },
   "dependencies": {
     "@uswds/uswds": "^3.11.0",
@@ -51,6 +52,7 @@
     "sass": "^1.84.0"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.29.7",
     "@custom-elements-manifest/analyzer": "^0.10.3",
     "@eslint/css": "^0.9.0",
     "@playwright/test": "^1.55.1",
