@@ -44,12 +44,12 @@ With Storybook running locally, execute the E2E tests:
 
 ```shell
 # Run all tests
-npx playwright test
+npx playwright test --config=./config/playwright.config.ts
 ```
 
 ```shell
 # Run a specific test file
-npx playwright test e2e/components/usa-banner/usa-banner.spec.ts
+npx playwright test ./e2e/components/usa-banner/usa-banner.spec.ts --config=./config/playwright.config.ts
 ```
 
 ### 3. Writing a New Visual Regression Test
@@ -116,7 +116,7 @@ This will open a shell inside the container with the Playwright and Node depende
 From the terminal in the container environment, run the snapshot update workflow:
 
 ```sh
-npx playwright test --update-snapshots
+npx playwright test --config=./config/playwright.config.ts --update-snapshots
 ```
 
 This will regenerate the baseline images in the relevant `*-snapshots/` folders.

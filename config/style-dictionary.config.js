@@ -2,7 +2,7 @@ import StyleDictionary from "style-dictionary";
 import {
   generateTokenName,
   getTokenValueWithUnit,
-} from "./internals/token-helpers/index.ts";
+} from "../internals/token-helpers/index.ts";
 
 StyleDictionary.registerTransform({
   name: "name/uswds-theme",

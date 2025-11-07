@@ -14,6 +14,14 @@ const config = {
     name: "@storybook/web-components-vite",
     options: {},
   },
+  core: {
+    builder: {
+      name: "@storybook/builder-vite",
+      options: {
+        viteConfigPath: "./config/vite.config.ts",
+      },
+    },
+  },
   viteFinal: async (config) => {
     /**
      * Unload the `vite-plugin-bundlesize` plugin.

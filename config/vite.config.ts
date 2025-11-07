@@ -8,7 +8,7 @@ import {
   type Entry,
   mapEntriesToKeyValue,
   mapEntryToLimit,
-} from "./internals/build-helpers";
+} from "../internals/build-helpers";
 
 const entries: Array<Entry> = [
   {
@@ -42,7 +42,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@uswds/uswds": resolve(__dirname, "node_modules/@uswds/uswds/dist"),
+      // Resolve from project root even when config is in ./config
+      "@uswds/uswds": resolve(process.cwd(), "node_modules/@uswds/uswds/dist"),
     },
   },
   css: {

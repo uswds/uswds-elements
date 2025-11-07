@@ -1,10 +1,13 @@
-import { Meta } from "@storybook/addon-docs/blocks";
+import { Meta, Markdown } from "@storybook/addon-docs/blocks";
+import Contributing from "../CONTRIBUTING.md?raw";
 
-<Meta title="Contributing" />
+<Meta title="Documentation/Contributing" />
 
-# Contributing
+<Markdown>{Contributing}</Markdown>
 
-This information is for developers who want to contribute to the USWDS Elements project.
+## Overview
+
+This information is for USWDS Core team members contribute to the USWDS Elements project.
 
 ## Project setup
 
@@ -65,6 +68,7 @@ src/components/usa-example/
 - **`.storybook/`** - Storybook configuration
 - **`tokens/`** - Design token definitions (Style Dictionary)
 - **`internals/`** - Internal build scripts and utilities
+- **`config/`** - Config files for project tooling and testing
 
 ## Component Development Checklist
 
