@@ -103,6 +103,95 @@ We use the following tools to ensure USWDS is accessible:
 
 If you find any issues with our accessibility conformance, please create an issue in our GitHub repo or send us an email at [uswds@gsa.gov](mailto:uswds@gsa.gov). We prioritize accessibility issues. See [the Accessibility page of our website](https://designsystem.digital.gov/documentation/accessibility/) for more information.
 
+## Publishing
+
+This repository is automatically published to NPM when a new release is created.
+
+We use Changesets to manage changelogs, version bumps, pre-releases (alpha/beta), and automated publishing via GitHub Actions. The repository includes a pre-configured Changesets setup so you can create pre-releases (for example, `alpha`) and standard releases.
+
+### Pre-release flow
+
+If you are working on a pre-release version, enter pre-release mode:
+
+```bash
+   npx @changesets/cli pre enter <tag> # for example, npx @changesets/cli pre enter alpha
+```
+
+This will write a `.changeset/pre.json` that configures the pre-release tag and initial version. This file should be committed to the repository.
+
+**Note:** Once you are in pre-release mode, you do not have to enter it every time. When you are ready to exit pre-release mode, run:
+
+```bash
+npx @changesets/cli pre exit
+```
+
+### Version bumps, and publishing (Changesets)
+
+1. Create a changeset describing your change(s)
+    - Run the interactive prompt and follow the questions:
+
+        ```bash
+        npx @changesets/cli
+        ```
+
+    - The command creates a file under the `.changeset/` directory that describes the packages and the release type (patch/minor/major). You can edit this file to add more details, such as a link to the issue or pull request that the change addresses. The file will get a nonsensical name like `fire-penguin-annex.md`, and that's to be expected. These files are only in the repository for a short time and are used to generate changelogs and version bumps. They are not published to NPM and are cleaned up after the release is published.
+
+2. Bump versions locally (optional)
+    - To update package.json versions and changelogs locally before publishing:
+        ```bash
+        npx @changesets/cli version
+        ```
+    - Commit the resulting changes (package.json updates and generated changelog files):
+        ```bash
+        git add .
+        git commit -m "chore(release): version packages and changelogs"
+        ```
+
+3. Publish
+    - Option A — Let the repository automation handle publishing (recommended):
+        - Push your branch to GitHub and open a PR. The CI / release automation will run and, depending on the configuration and merged changesets, will publish releases when merged to `main`.
+    - Option B — Publish locally (requires NPM credentials and appropriate tokens):
+        ```bash
+        npm run release
+        ```
+        This script typically runs your tokenized publish flow (it may run builds and then `changeset publish`).
+
+#### How the automation works (GitHub Actions)
+
+- There is a CI workflow configured to automate release and publish:
+    - The workflow runs on pushes to `main` and uses the Changesets GitHub Action.
+    - The action can either create a release PR or publish directly to NPM depending on repository and action settings.
+    - The workflow uses repository secrets:
+        - `GITHUB_TOKEN` — standard workflow permission for the action to create PRs/commits.
+        - `NPM_TOKEN` — required to publish packages to the NPM registry.
+    - The action is configured to run the project’s release script (for example `npm run release`) and is run in a controlled environment; it will also disable Husky hooks during automated runs (HUSKY=0) to avoid local commit hooks blocking automation.
+
+#### Notes, tips, and troubleshooting
+
+- Ensure your changeset accurately reflects the semantic change (patch/minor/major). Changesets drives the version bump and changelog generation.
+- Pre-release flows:
+    - The repository includes a `.changeset/pre.json` configuration that sets a default pre-release tag (e.g., `alpha`) and initial versions for pre-release packages. Use `npx @changesets/cli pre enter  <tag>` to begin a pre-release cycle.
+    - When in pre mode, version bumps will produce pre-release identifiers (for example, `1.0.0-alpha.1`).
+- CI vs local publish:
+    - For most contributors, pushing a properly authored changeset and opening a PR is the recommended route—automation will create the release or open the release PR for maintainers to review.
+    - If you must publish locally, make sure `NPM_TOKEN` is configured in your environment or use a CI/protected account to run the publish steps.
+- If releases are not being published as expected:
+    - Verify `NPM_TOKEN` exists in repository secrets and has publish scope.
+    - Ensure the commit/push to `main` contains a changeset (or the automation has been triggered by the Changesets action).
+    - Review the release workflow logs in GitHub Actions for details (it will show the changesets step and any publishing errors).
+- If you want to change the default pre-release tag (for example, from `alpha` to `beta`), update the `.changeset/pre.json` file and follow the pre-mode steps above.
+
+Example quick flow (pre-release -> publish via automation)
+
+1. On a feature branch, implement changes.
+2. Enter pre mode if you want pre-release tagging:
+    - `npx @changesets/cli pre enter --tag alpha`
+3. Run `npx @changesets/cli` and follow the prompts (choose the appropriate release type).
+4. Commit the changeset file(s), push the branch, and open a PR.
+5. Once the PR is merged to `main`, the repository release workflow will pick up the changeset and publish the pre-release to NPM (provided `NPM_TOKEN` and workflow permissions are set).
+
+If you have questions about changing the pre-release tag or the release automation behavior, or if you want a walkthrough of creating a test release in a fork, please open an issue or ask in the PR review comments.
+
 ## Component Versions
 
 | Component    | Status    |
