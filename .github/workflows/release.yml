@@ -1,4 +1,7 @@
 name: Release and publish to NPM
+permissions:
+  contents: write
+  pull-requests: write
 
 on:
   push:
@@ -20,7 +23,7 @@ jobs:
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: changesets/action@v1
+        uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # pin@v1.5.3
         with:
           publish: npm run release
           commitMode: github-api
