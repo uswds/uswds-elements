@@ -7,6 +7,7 @@
     ".storybook",
     "storybook",
     "internals/scripts",
+    "build",
     "dist",
     "src"
   ],
@@ -17,7 +18,8 @@
     },
     "./components/*": "./dist/components/*.js",
     "./src/components/*": "./src/components/*/index.js",
-    "./core/*": "./src/core/*"
+    "./core/*": "./src/core/*",
+    "./styles/*": "./build/*"
   },
   "scripts": {
     "build": "tsc -p ./config/tsconfig.json && vite build --config ./config/vite.config.ts && npm run manifest:build",
