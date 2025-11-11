@@ -1,8 +1,5 @@
 {
   "breakpoint": {
-    "tablet": {
-      "$value": { "value": "40", "unit": "rem" }
-    },
     "card": {
       "$value": { "value": "10", "unit": "rem" }
     },
@@ -14,6 +11,9 @@
     },
     "mobile-lg": {
       "$value": { "value": "30", "unit": "rem" }
+    },
+    "tablet": {
+      "$value": { "value": "40", "unit": "rem" }
     },
     "tablet-lg": {
       "$value": { "value": "55", "unit": "rem" }
