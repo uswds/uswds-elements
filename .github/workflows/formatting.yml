@@ -1,5 +1,8 @@
 name: Code formatting
+permissions:
+  contents: read
 on: push
+
 jobs:
   test:
     timeout-minutes: 60

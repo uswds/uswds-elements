@@ -1,4 +1,6 @@
 name: Storybook and Component Tests
+permissions:
+  contents: read
 on: push
 jobs:
   test:

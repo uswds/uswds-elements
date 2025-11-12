@@ -1,15 +1,19 @@
 {
   "name": "@uswds/elements",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "type": "module",
   "customElements": "custom-elements.json",
   "files": [
     ".storybook",
     "storybook",
     "internals/scripts",
+    "build",
     "dist",
     "src"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "exports": {
     ".": {
       "import": "./dist/components/index.js",
@@ -17,7 +21,8 @@
     },
     "./components/*": "./dist/components/*.js",
     "./src/components/*": "./src/components/*/index.js",
-    "./core/*": "./src/core/*"
+    "./core/*": "./src/core/*",
+    "./styles/*": "./build/*"
   },
   "scripts": {
     "build": "tsc -p ./config/tsconfig.json && vite build --config ./config/vite.config.ts && npm run manifest:build",
