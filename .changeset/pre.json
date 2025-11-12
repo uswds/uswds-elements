@@ -4,5 +4,7 @@
   "initialVersions": {
     "@uswds/elements": "1.0.0-alpha.2"
   },
-  "changesets": []
+  "changesets": [
+    "petite-dodos-call"
+  ]
 }
