@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - main
+      - develop
+  pull_request:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -20,6 +22,14 @@ jobs:
 
       - name: Setup project
         uses: ./.github/actions/setup
+        with:
+          skipInstall: 'true' # we need to skip the install step because we need to update npm first for OIDC
+
+      - name: Update npm version
+        run: npm install -g npm@latest # OIDC requires npm v11.5.1 or later
+
+      - name: Install dependencies
+        run: npm ci
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
@@ -27,6 +37,7 @@ jobs:
         with:
           publish: npm run release
           commitMode: github-api
+          branch: develop
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HUSKY: 0
