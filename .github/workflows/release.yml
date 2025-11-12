@@ -30,4 +30,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           HUSKY: 0
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: '' # setting this to an empty string makes changesets use trusted publishing: https://github.com/changesets/changesets/issues/1152#issuecomment-3190884868
