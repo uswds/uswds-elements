@@ -80,9 +80,6 @@ This can be seen in the demo on the [USWDS Elements Storybook](<https://federali
 
 **Note:** Please be mindful of the accessibility implications of customizing component appearance. It is your responsibility to ensure that your customizations meet the [accessibility requirements](https://designsystem.digital.gov/accessibility/) of the design system and pass any [WCAG 2.2](https://www.w3.org/TR/WCAG22/) or [Section 508](https://www.section508.gov/) accessibility tests.
 
-> [!IMPORTANT]
-> If you are bundling your application using Vite, you may encounter a JavaScript error when using the `usa-banner` component with Vite's dev server (this also applies to other Vite-based tools such as Astro). To work around this, you may need to run the dev server in production mode by prefixing the command to start the server with `NODE_ENV=production`. For instance, if you run the command `npm run dev` to start your dev server, you should start it with `NODE_ENV=production npm run dev`.
-
 ## Documentation
 
 For more detailed documentation, refer to the Storybook for USWDS Elements. You can visit the most up-to-date Storybook documentation on [Cloud.gov Pages](https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/docs/readme--docs).
@@ -138,10 +135,13 @@ npx @changesets/cli pre exit
 
 2. Bump versions locally (optional)
     - To update package.json versions and changelogs locally before publishing:
+
         ```bash
         npx @changesets/cli version
         ```
+
     - Commit the resulting changes (package.json updates and generated changelog files):
+
         ```bash
         git add .
         git commit -m "chore(release): version packages and changelogs"
@@ -151,9 +151,11 @@ npx @changesets/cli pre exit
     - Option A — Let the repository automation handle publishing (recommended):
         - Push your branch to GitHub and open a PR. The CI / release automation will run and, depending on the configuration and merged changesets, will publish releases when merged to `main`.
     - Option B — Publish locally (requires NPM credentials and appropriate tokens):
+
         ```bash
         npm run release
         ```
+
         This script typically runs your tokenized publish flow (it may run builds and then `changeset publish`).
 
 #### How the automation works (GitHub Actions)
@@ -163,7 +165,6 @@ npx @changesets/cli pre exit
     - The action can either create a release PR or publish directly to NPM depending on repository and action settings.
     - The workflow uses repository secrets:
         - `GITHUB_TOKEN` — standard workflow permission for the action to create PRs/commits.
-        - `NPM_TOKEN` — required to publish packages to the NPM registry.
     - The action is configured to run the project’s release script (for example `npm run release`) and is run in a controlled environment; it will also disable Husky hooks during automated runs (HUSKY=0) to avoid local commit hooks blocking automation.
 
 #### Notes, tips, and troubleshooting
