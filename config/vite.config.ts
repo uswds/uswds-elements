@@ -73,8 +73,13 @@ export default defineConfig({
       entry: mapEntriesToKeyValue(entries),
     },
     rollupOptions: {
-      external: ["lit"],
-      output: { globals: { lit: "lit" }, format: "es" },
+      /**
+       * The regex resolves the error in vite environments:
+       * - https://github.com/uswds/uswds-elements/issues/222
+       * - https://github.com/shoelace-style/shoelace/discussions/1847#discussioncomment-14516120
+       */
+      external: [/^@?lit(-\w+)?($|\/.+)/],
+      output: { format: "es" },
     },
   },
 });
