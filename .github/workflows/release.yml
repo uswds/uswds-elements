@@ -1,12 +1,12 @@
 name: Release and publish to NPM
 permissions:
   contents: write
+  id-token: write
   pull-requests: write
 
 on:
   push:
     branches:
-      - main
       - develop
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
@@ -35,7 +35,7 @@ jobs:
         uses: changesets/action@e0145edc7d9d8679003495b11f87bd8ef63c0cba # pin@v1.5.3
         with:
           publish: npm run release
-          commitMode: github-api
+          commitMode: github-api # the api is required to get signed commits on changeset bot's workflow
           branch: develop
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
