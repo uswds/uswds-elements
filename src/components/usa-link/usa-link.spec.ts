@@ -1,11 +1,17 @@
 import { beforeEach, describe, expect, it } from "vitest";
 
-import "./index.js";
+import "./index.ts";
 
-function getInsideLink() {
-  return document.body
+function getInsideLink(): HTMLAnchorElement {
+  const link = document.body
     .querySelector("usa-link")
     ?.shadowRoot?.querySelector("a");
+
+  if (!link) {
+    throw new Error("Could not find inner <a> inside <usa-link>");
+  }
+
+  return link as HTMLAnchorElement;
 }
 
 describe("usa-link component", async () => {
@@ -14,17 +20,16 @@ describe("usa-link component", async () => {
   });
 
   it("should show href props", () => {
-    getInsideLink();
     expect(getInsideLink().getAttribute("href")).toContain(".gov");
   });
 
   it("should show slotted children", () => {
-    getInsideLink();
+    const slot = document.body
+      .querySelector("usa-link")
+      ?.shadowRoot?.querySelector("slot");
+
     expect(
-      document.body
-        .querySelector("usa-link")
-        ?.shadowRoot?.querySelector("slot")
-        .assignedNodes({ flatten: true })[0].textContent,
+      slot?.assignedNodes({ flatten: true })[0].textContent ?? "",
     ).toContain("dangerous");
   });
 });

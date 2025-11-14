@@ -1,4 +1,4 @@
-import { LitElement, css, html } from "lit";
+import { LitElement, html } from "lit";
 import styles from "./usa-link.css";
 
 /**
@@ -19,30 +19,40 @@ export class UsaLink extends LitElement {
   static styles = [styles];
 
   static properties = {
-    href: {},
+    href: { type: String },
   };
 
-  hasLinkChild() {
-    const childLink = this.querySelector("a");
-    if (!childLink) return false;
-
-    this.href = childLink.href;
-    this.slottedChildren = childLink;
-    this.shadowRoot.appendChild(this.slottedChildren);
-  }
+  declare href?: string;
+  private slottedChildren?: HTMLAnchorElement;
 
   constructor() {
     super();
   }
 
-  templateWithChildren() {
-    return html`<a class="usa-link" href="${this.href}"
+  private hasLinkChild(): boolean {
+    const childLink = this.querySelector("a");
+    if (!childLink) return false;
+
+    if (childLink instanceof HTMLAnchorElement) {
+      this.href = childLink.href;
+      this.slottedChildren = childLink;
+      this.shadowRoot?.appendChild(this.slottedChildren);
+      return true;
+    }
+
+    return false;
+  }
+
+  private templateWithChildren() {
+    return html`<a class="usa-link" href="${this.href ?? ""}"
       >${this.slottedChildren}</a
     >`;
   }
 
-  templateWithSlots() {
-    return html`<a class="usa-link" href="${this.href}"><slot></slot></a>`;
+  private templateWithSlots() {
+    return html`<a class="usa-link" href="${this.href ?? ""}"
+      ><slot></slot
+    ></a>`;
   }
 
   render() {
