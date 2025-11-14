@@ -4,6 +4,7 @@ import browserslist from "browserslist";
 import { browserslistToTargets } from "lightningcss";
 import litCss from "vite-plugin-lit-css";
 import bundlesize from "vite-plugin-bundlesize";
+import dts from "vite-plugin-dts";
 import {
   type Entry,
   mapEntriesToKeyValue,
@@ -38,6 +39,9 @@ export default defineConfig({
         ...entries.map(mapEntryToLimit),
         { name: "**/*.cjs", limit: "Infinity" },
       ],
+    }),
+    dts({
+      tsconfigPath: "./config/tsconfig.json",
     }),
   ],
   resolve: {

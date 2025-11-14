@@ -3,6 +3,7 @@
   "version": "1.0.0-alpha.3",
   "type": "module",
   "customElements": "custom-elements.json",
+  "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uswds/uswds-elements.git"
@@ -21,6 +22,7 @@
   "exports": {
     ".": {
       "import": "./dist/components/index.js",
+      "types": "./dist/index.d.ts",
       "default": "./dist/components/index.js"
     },
     "./components/*": "./dist/components/*.js",
@@ -99,6 +101,7 @@
     "typescript": "^5.8.3",
     "vite": "^7.1.5",
     "vite-plugin-bundlesize": "^0.3.0",
+    "vite-plugin-dts": "^4.5.4",
     "vite-plugin-lit-css": "^2.2.1",
     "vitest": "^3.2.4",
     "wait-on": "^7.2.0",

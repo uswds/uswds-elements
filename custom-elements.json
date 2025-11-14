@@ -4,7 +4,7 @@
   "modules": [
     {
       "kind": "javascript-module",
-      "path": "src/components/index.js",
+      "path": "src/components/index.ts",
       "declarations": [],
       "exports": [
         {
@@ -12,7 +12,7 @@
           "name": "UsaLink",
           "declaration": {
             "name": "UsaLink",
-            "module": "src/components/index.js"
+            "module": "src/components/index.ts"
           }
         },
         {
@@ -20,7 +20,7 @@
           "name": "UsaBanner",
           "declaration": {
             "name": "UsaBanner",
-            "module": "src/components/index.js"
+            "module": "src/components/index.ts"
           }
         }
       ]
@@ -250,7 +250,7 @@
     },
     {
       "kind": "javascript-module",
-      "path": "src/components/usa-link/index.js",
+      "path": "src/components/usa-link/index.ts",
       "declarations": [
         {
           "kind": "class",
@@ -282,28 +282,47 @@
           ],
           "members": [
             {
-              "kind": "method",
-              "name": "hasLinkChild"
-            },
-            {
-              "kind": "method",
-              "name": "templateWithChildren"
-            },
-            {
-              "kind": "method",
-              "name": "templateWithSlots"
-            },
-            {
               "kind": "field",
               "name": "href",
               "privacy": "public",
+              "type": {
+                "text": "string | undefined"
+              },
               "attribute": "href"
+            },
+            {
+              "kind": "field",
+              "name": "slottedChildren",
+              "type": {
+                "text": "HTMLAnchorElement | undefined"
+              },
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "hasLinkChild",
+              "privacy": "private",
+              "return": {
+                "type": {
+                  "text": "boolean"
+                }
+              }
+            },
+            {
+              "kind": "method",
+              "name": "templateWithChildren",
+              "privacy": "private"
+            },
+            {
+              "kind": "method",
+              "name": "templateWithSlots",
+              "privacy": "private"
             }
           ],
           "attributes": [
             {
               "type": {
-                "text": "String"
+                "text": "string | undefined"
               },
               "description": "The url for the link",
               "name": "href",
@@ -325,7 +344,7 @@
           "name": "UsaLink",
           "declaration": {
             "name": "UsaLink",
-            "module": "src/components/usa-link/index.js"
+            "module": "src/components/usa-link/index.ts"
           }
         },
         {
@@ -333,7 +352,7 @@
           "name": "usa-link",
           "declaration": {
             "name": "UsaLink",
-            "module": "src/components/usa-link/index.js"
+            "module": "src/components/usa-link/index.ts"
           }
         }
       ]
