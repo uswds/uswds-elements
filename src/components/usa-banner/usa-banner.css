@@ -55,6 +55,7 @@ section {
   box-sizing: border-box;
   font-family: var(--usa-banner-font-family);
   font-size: var(--usa-banner-font-size-xs);
+  text-align: start;
 }
 
 section *,
