@@ -1,6 +1,6 @@
 {
   "name": "@uswds/elements",
-  "version": "1.0.0-alpha.3",
+  "version": "1.0.0-alpha.4",
   "type": "module",
   "customElements": "custom-elements.json",
   "types": "./dist/index.d.ts",
