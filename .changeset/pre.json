@@ -5,6 +5,7 @@
     "@uswds/elements": "1.0.0-alpha.2"
   },
   "changesets": [
+    "good-needles-fix",
     "petite-dodos-call",
     "twenty-socks-reflect"
   ]
