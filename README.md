@@ -1,23 +1,23 @@
 > [!CAUTION]
-> Work on USWDS Elements, the Web Component version of the Design System, is happening in this repository. This code may not all be suitable for production use. Please refer to the documentation for each component.
+> Work on development of the HTML Web Component version of the U.S. Web Design System, called USWDS Elements, is happening in this repository. This code may not all be suitable for production use. Work on USWDS Elements is currently taking a slower-than-previous iterative approach to development. Each USWDS Elements component in this repository may be in a different state of development, with USWDS Banner always intended to be closest to stable. Please refer to the documentation for the status of each component.
 
 # USWDS Elements
 
 The [United States Web Design System](https://designsystem.digital.gov) is a toolkit of principles, guidance, and code that includes a library of open source user interface components and a visual style guide for U.S. federal government websites.
 
-This repository contains the code for the Web Component-based version of the design system, which is currently in pre-release status, with a goal release of May 2025. We maintain other repositories for the [current version of the design system](https://github.com/uswds/uswds), which we call USWDS Core, as well as [its documentation and website](https://github.com/uswds/uswds-site). For USWDS Core and its documentation on the web, visit [https://designsystem.digital.gov](https://designsystem.digital.gov).
+This repository contains the code for the Web Component-based version of the design system, which is currently in pre-release status. We maintain other repositories for the [current version of the design system](https://github.com/uswds/uswds), which we call USWDS Core, as well as [its documentation and website](https://github.com/uswds/uswds-site). For USWDS Core and its documentation, visit [https://designsystem.digital.gov](https://designsystem.digital.gov).
 
-Over the course of the next several months and beyond, we will incrementally build new [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)-based implementations of USWDS Core. As we ship new USWDS Web Components, our intent is that you'll be able to use them alongside existing USWDS code.
+We're working on incrementally building new [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)-based implementations of USWDS Core components. As we ship new USWDS Elements Web Components, our intent is that you'll be able to use them alongside existing USWDS code.
 
 - [More on our decision to use Web Components](https://github.com/uswds/uswds-proposals/blob/main/decisions/0001-use-web-components.md)
 
 ## Upgrading to Web Components
 
-We are releasing these Web Components (USWDS Elements) incrementally with the intent that they can also be added gradually to existing sites that are currently using USWDS. If you aren't currently using USWDS or you're using a version older than USWDS 3, we recommend adopting version 3 in the near term rather than waiting until all of USWDS Elements is production-ready.
+We're releasing these Web Components (USWDS Elements) incrementally with the intent that they can also be added gradually to existing sites that are currently using USWDS Core. If you aren't currently using USWDS or you're using a version older than the current USWDS 3, we recommend adopting version 3 in the near term rather than waiting until all of USWDS Elements is production-ready.
 
 ## Installation using node and npm
 
-1. Install `node/npm`. Below is a link to find the install method that coincides with your operating system:
+1. Install `node/npm`. In the link below you can find the install method that coincides with your operating system:
     - Node (see [.nvmrc](https://github.com/uswds/uswds-elements/blob/develop/.nvmrc) for version number), [Installation guides](https://nodejs.org/en/download)
 
     **Note for Windows users:** If you are using Windows and are unfamiliar with Node or npm, we recommend following [Team Treehouse's tutorial](http://blog.teamtreehouse.com/install-node-js-npm-windows) for more information or [installing and running your project from Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl#install-nvm-nodejs-and-npm).
@@ -43,7 +43,7 @@ The `@uswds/elements` module is now installed as a dependency.
 
 ## Using USWDS Elements in your project
 
-How you add the component to a page may vary depending on the tools you use in your work. If you use Vite, you can add components by importing them into a script that is imported elsewhere into a page:
+How you add a USWDS Elements component to a page might vary depending on your tools. If you use Vite, you can add components by importing them into a script that's imported elsewhere into a page:
 
 ```js
 // Importing into a javascript file, like index.js
@@ -62,7 +62,7 @@ import { UsaBanner } from "@uswds/elements";
 
 Each USWDS Element provides support for theming by exposing CSS custom properties (CSS variables) that can be used to control the appearance of the component.
 
-There are interactive form controls in our Storybook instance that demonstrate how to use the theming variables, provide custom text, and otherwise customize the components.
+Interactive form controls in our Storybook instance can demonstrate how to use the theming variables, provide custom text, and otherwise customize the components.
 
 For example, the `usa-banner` component can be customized by setting the `--usa-banner-background-color` CSS variable to a color of your choosing:
 
@@ -76,9 +76,9 @@ For example, the `usa-banner` component can be customized by setting the `--usa-
 <usa-banner></usa-banner>
 ```
 
-This can be seen in the demo on the [USWDS Elements Storybook](<https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/story/components-banner--default&args=--usa-banner-background-color:!hex(e4f7ff)>).
+You can see this in the demo on the [USWDS Elements Storybook](<https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/story/components-banner--default&args=--usa-banner-background-color:!hex(e4f7ff)>).
 
-**Note:** Please be mindful of the accessibility implications of customizing component appearance. It is your responsibility to ensure that your customizations meet the [accessibility requirements](https://designsystem.digital.gov/accessibility/) of the design system and pass any [WCAG 2.2](https://www.w3.org/TR/WCAG22/) or [Section 508](https://www.section508.gov/) accessibility tests.
+**Note:** Please be mindful of the accessibility implications of customizing component appearance. It's **your** responsibility to ensure that your customizations meet the [accessibility requirements](https://designsystem.digital.gov/accessibility/) of the design system and pass any [WCAG 2.2](https://www.w3.org/TR/WCAG22/) or [Section 508](https://www.section508.gov/) accessibility tests.
 
 ## Documentation
 
@@ -108,7 +108,7 @@ We use Changesets to manage changelogs, version bumps, pre-releases (alpha/beta)
 
 ### Pre-release flow
 
-If you are working on a pre-release version, enter pre-release mode:
+If you're working on a pre-release version, enter pre-release mode:
 
 ```bash
    npx @changesets/cli pre enter <tag> # for example, npx @changesets/cli pre enter alpha
@@ -116,7 +116,7 @@ If you are working on a pre-release version, enter pre-release mode:
 
 This will write a `.changeset/pre.json` that configures the pre-release tag and initial version. This file should be committed to the repository.
 
-**Note:** Once you are in pre-release mode, you do not have to enter it every time. When you are ready to exit pre-release mode, run:
+**Note:** Once you're in pre-release mode, you don't have to enter it every time. When you're ready to exit pre-release mode, run:
 
 ```bash
 npx @changesets/cli pre exit
@@ -131,7 +131,7 @@ npx @changesets/cli pre exit
         npx @changesets/cli
         ```
 
-    - The command creates a file under the `.changeset/` directory that describes the packages and the release type (patch/minor/major). You can edit this file to add more details, such as a link to the issue or pull request that the change addresses. The file will get a nonsensical name like `fire-penguin-annex.md`, and that's to be expected. These files are only in the repository for a short time and are used to generate changelogs and version bumps. They are not published to NPM and are cleaned up after the release is published.
+    - The command creates a file under the `.changeset/` directory that describes the packages and the release type (patch/minor/major). You can edit this file to add more details, such as a link to the issue or pull request that the change addresses. The file will automatically get a nonsensical name like `fire-penguin-annex.md`, and that's normal. These files are only in the repository for a short time, to generate changelogs and version bumps. They aren't published to NPM and are cleaned up after the release is published.
 
 2. Bump versions locally (optional)
     - To update package.json versions and changelogs locally before publishing:
@@ -160,7 +160,7 @@ npx @changesets/cli pre exit
 
 #### How the automation works (GitHub Actions)
 
-- There is a CI workflow configured to automate release and publish:
+- There's a CI workflow configured to automate release and publish:
     - The workflow runs on pushes to `main` and uses the Changesets GitHub Action.
     - The action can either create a release PR or publish directly to NPM depending on repository and action settings.
     - The workflow uses repository secrets:
@@ -176,10 +176,10 @@ npx @changesets/cli pre exit
 - CI vs local publish:
     - For most contributors, pushing a properly authored changeset and opening a PR is the recommended route—automation will create the release or open the release PR for maintainers to review.
     - If you must publish locally, make sure `NPM_TOKEN` is configured in your environment or use a CI/protected account to run the publish steps.
-- If releases are not being published as expected:
+- If releases aren't being published as expected:
     - Verify `NPM_TOKEN` exists in repository secrets and has publish scope.
     - Ensure the commit/push to `main` contains a changeset (or the automation has been triggered by the Changesets action).
-    - Review the release workflow logs in GitHub Actions for details (it will show the changesets step and any publishing errors).
+    - Review the release workflow logs in GitHub Actions for details (it'll show the changesets step and any publishing errors).
 - If you want to change the default pre-release tag (for example, from `alpha` to `beta`), update the `.changeset/pre.json` file and follow the pre-mode steps above.
 
 Example quick flow (pre-release -> publish via automation)
