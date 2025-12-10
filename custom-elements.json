@@ -100,6 +100,16 @@
           "members": [
             {
               "kind": "field",
+              "name": "flagSrc",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "usFlagSmall",
+              "attribute": "flagSrc"
+            },
+            {
+              "kind": "field",
               "name": "lang",
               "privacy": "public",
               "type": {
@@ -215,6 +225,15 @@
               "propName": "tld"
             },
             {
+              "name": "flagSrc",
+              "type": {
+                "text": "string"
+              },
+              "default": "usFlagSmall",
+              "fieldName": "flagSrc",
+              "propName": "flagsrc"
+            },
+            {
               "name": "isOpen",
               "type": {
                 "text": "boolean"
@@ -237,14 +256,6 @@
         {
           "kind": "js",
           "name": "UsaBanner",
-          "declaration": {
-            "name": "UsaBanner",
-            "module": "src/components/usa-banner/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "usa-banner",
           "declaration": {
             "name": "UsaBanner",
             "module": "src/components/usa-banner/index.ts"
@@ -347,14 +358,6 @@
         {
           "kind": "js",
           "name": "UsaLink",
-          "declaration": {
-            "name": "UsaLink",
-            "module": "src/components/usa-link/index.ts"
-          }
-        },
-        {
-          "kind": "custom-element-definition",
-          "name": "usa-link",
           "declaration": {
             "name": "UsaLink",
             "module": "src/components/usa-link/index.ts"

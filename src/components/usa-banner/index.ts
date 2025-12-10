@@ -112,6 +112,7 @@ const USA_BANNER_TRANSLATIONS: Record<
  */
 export class UsaBanner extends LitElement {
   static properties = {
+    flagSrc: { type: String },
     lang: { type: String, reflect: true },
     isOpen: { state: true },
     label: { type: String },
@@ -119,6 +120,7 @@ export class UsaBanner extends LitElement {
   };
 
   // Property declarations
+  flagSrc!: string;
   lang!: "en" | "es";
   isOpen!: boolean;
   label!: string;
@@ -134,6 +136,7 @@ export class UsaBanner extends LitElement {
 
   constructor() {
     super();
+    this.flagSrc = usFlagSmall;
     this.lang = "en";
     this.isOpen = false;
     this.tld = "gov";
@@ -230,7 +233,7 @@ export class UsaBanner extends LitElement {
                 <img
                   aria-hidden="true"
                   class="header-flag"
-                  src=${usFlagSmall}
+                  src=${this.flagSrc}
                   alt=""
                 />
               </div>
