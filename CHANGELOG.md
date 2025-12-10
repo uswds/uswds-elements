@@ -1,5 +1,11 @@
 # @uswds/elements
 
+## 1.0.0-alpha.6
+
+### Patch Changes
+
+- 21888fc: Adds a prop to the banner component to allow customization of the flag image.
+
 ## 1.0.0-alpha.5
 
 ### Patch Changes
