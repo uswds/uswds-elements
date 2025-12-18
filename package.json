@@ -97,7 +97,7 @@
     "prettier": "^3.6.2",
     "serve-static": "^2.2.0",
     "shadow-dom-testing-library": "^1.13.1",
-    "storybook": "^10.0.7",
+    "storybook": "^10.1.10",
     "storybook-addon-tag-badges": "^3.0.2",
     "style-dictionary": "^5.1.1",
     "stylelint": "^16.25.0",
