@@ -60,7 +60,7 @@
   "dependencies": {
     "@uswds/uswds": "^3.13.0",
     "lit": "^3.3.1",
-    "sass": "^1.94.0"
+    "sass": "^1.97.3"
   },
   "devDependencies": {
     "@changesets/cli": "^2.29.7",
