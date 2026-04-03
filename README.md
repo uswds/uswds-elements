@@ -1,5 +1,5 @@
 > [!CAUTION]
-> Work on development of the HTML Web Component version of the U.S. Web Design System, called USWDS Elements, is happening in this repository. This code may not all be suitable for production use. Work on USWDS Elements is currently taking a slower-than-previous iterative approach to development. Each USWDS Elements component in this repository may be in a different state of development, with USWDS Banner always intended to be closest to stable. Please refer to the documentation for the status of each component.
+> This repository hosts work on development of the HTML Web Component version of the U.S. Web Design System, called USWDS Elements (some call it USWDS 4.0). This code may not all be suitable for production use. Work on USWDS Elements is currently taking a community-driven iterative approach to development, which is currently fairly slow. Each USWDS Elements component in this repository is in a different state of development, with USWDS Banner always intended to be closest to stable due to its [inclusion in Federal Website Standards](https://standards.digital.gov/standards/banner/). Please refer to the documentation for the status of each component.
 
 # USWDS Elements
 
@@ -7,20 +7,20 @@ The [United States Web Design System](https://designsystem.digital.gov) is a too
 
 This repository contains the code for the Web Component-based version of the design system, which is currently in pre-release status. We maintain other repositories for the [current version of the design system](https://github.com/uswds/uswds), which we call USWDS Core, as well as [its documentation and website](https://github.com/uswds/uswds-site). For USWDS Core and its documentation, visit [https://designsystem.digital.gov](https://designsystem.digital.gov).
 
-We're working on incrementally building new [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)-based implementations of USWDS Core components. As we ship new USWDS Elements Web Components, our intent is that you'll be able to use them alongside existing USWDS code.
+We're working on incrementally building new [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)-based implementations of USWDS Core components. As we ship new USWDS Elements Web Components, our intent is that you'll be able to use them alongside existing USWDS code. Contributions now welcome, though the USWDS Elements review process prioritizes USWDS partnerships: email [uswds@gsa.gov](mailto:uswds@gsa.gov) if interested.
 
-- [More on our decision to use Web Components](https://github.com/uswds/uswds-proposals/blob/main/decisions/0001-use-web-components.md)
+- [For context, here's our Architectural Decision Record explaining why system development is focusing on Web Components](https://github.com/uswds/uswds-proposals/blob/main/decisions/0001-use-web-components.md)
 
 ## Upgrading to Web Components
 
-We're releasing these Web Components (USWDS Elements) incrementally with the intent that they can also be added gradually to existing sites that are currently using USWDS Core. If you aren't currently using USWDS or you're using a version older than the current USWDS 3, we recommend adopting version 3 in the near term rather than waiting until all of USWDS Elements is production-ready.
+We're releasing these USWDS Web Components (USWDS Elements) incrementally so they can be added gradually to existing sites currently using USWDS Core (3.x). If you aren't currently using USWDS or you're using a version older than the USWDS 3, we recommend adopting version 3 in the near term rather than waiting until all of USWDS Elements is production-ready.
 
 ## Installation using node and npm
 
 1. Install `node/npm`. In the link below you can find the install method that coincides with your operating system:
     - Node (see [.nvmrc](https://github.com/uswds/uswds-elements/blob/develop/.nvmrc) for version number), [Installation guides](https://nodejs.org/en/download)
 
-    **Note for Windows users:** If you are using Windows and are unfamiliar with Node or npm, we recommend following [Team Treehouse's tutorial](http://blog.teamtreehouse.com/install-node-js-npm-windows) for more information or [installing and running your project from Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl#install-nvm-nodejs-and-npm).
+    **Note for Windows users:** If you are using Windows and are unfamiliar with Node or npm, we recommend following [Team Treehouse's tutorial](http://blog.teamtreehouse.com/install-node-js-npm-windows) for more information or [installing and running your project from Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl#install-nvm-nodejs-and-npm)
 
 2. Make sure you have installed it correctly:
 
@@ -78,25 +78,25 @@ For example, the `usa-banner` component can be customized by setting the `--usa-
 
 You can see this in the demo on the [USWDS Elements Storybook](<https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/story/components-banner--default&args=--usa-banner-background-color:!hex(e4f7ff)>).
 
-**Note:** Please be mindful of the accessibility implications of customizing component appearance. It's **your** responsibility to ensure that your customizations meet the [accessibility requirements](https://designsystem.digital.gov/accessibility/) of the design system and pass any [WCAG 2.2](https://www.w3.org/TR/WCAG22/) or [Section 508](https://www.section508.gov/) accessibility tests.
+**Note:** Please be mindful of the accessibility implications of customizing component appearance. It's **your** responsibility to ensure that all your customizations meet the [accessibility requirements](https://designsystem.digital.gov/accessibility/) of the design system and pass all [WCAG 2.2](https://www.w3.org/TR/WCAG22/) and [Section 508](https://www.section508.gov/) accessibility tests. Accessibility is a **legal requirement**.
 
 ## Documentation
 
-For more detailed documentation, refer to the Storybook for USWDS Elements. You can visit the most up-to-date Storybook documentation on [Cloud.gov Pages](https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/docs/readme--docs).
+For more detailed documentation, refer to the Storybook for USWDS Elements. You can visit the most up-to-date Storybook documentation on [Cloud.gov Pages](https://federalist-ab6c0bdb-eccd-4b26-bb5f-b0154661e999.sites.pages.cloud.gov/site/uswds/web-components/?path=/docs/readme--docs). These USWDS documentation sources do get out of sync sometimes: typically Storybook is more sandbox-y and experimental, so may not match other documentation.
 
 ## Browser support
 
-We’ve designed the design system to support older and newer browsers through [progressive enhancement](https://en.wikipedia.org/wiki/Progressive_enhancement). The current major version of USWDS Elements (v1) follows the [2% rule](https://gds.blog.gov.uk/2012/01/25/support-for-browsers/): we officially support any browser above 2% usage as observed by [analytics.usa.gov](https://analytics.usa.gov/). Currently, this means support for the newest versions of Chrome, Firefox, and Safari.
+USWDS supports older and newer browsers through [progressive enhancement](https://en.wikipedia.org/wiki/Progressive_enhancement). The current major version of USWDS Elements (alpha) follows the [2% rule](https://gds.blog.gov.uk/2012/01/25/support-for-browsers/): we officially support any browser above 2% usage as observed by [analytics.usa.gov](https://analytics.usa.gov/). Currently, this means support for the newest versions of Chrome, Firefox, and Safari.
 
 ## Accessibility
 
-The design system also meets the [WCAG 2.0 AA accessibility guidelines](https://www.w3.org/TR/WCAG20/) and conforms to the standards of [Section 508 of the Rehabilitation Act](http://www.section508.gov/). Additionally, we try to meet the requirements of [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
+The design system also meets the [WCAG 2.0 AA accessibility guidelines](https://www.w3.org/TR/WCAG20/) and conforms to the standards of [Section 508 of the Rehabilitation Act](http://www.section508.gov/), with one current exception: [input mask](https://designsystem.digital.gov/components/input-mask/). Additionally, we try to meet the requirements of [WCAG 2.2](https://www.w3.org/TR/WCAG22/).
 
 We use the following tools to ensure USWDS is accessible:
 
-- [ANDI](https://www.ssa.gov/accessibility/andi/help/install.html).
-- [Axe core](https://www.deque.com/axe/).
-- [Axe dev tools](https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US).
+- [ANDI](https://www.ssa.gov/accessibility/andi/help/install.html)
+- [Axe core](https://www.deque.com/axe/)
+- [Axe dev tools](https://chrome.google.com/webstore/detail/axe-devtools-web-accessib/lhdoppojpmngadmnindnejefpokejbdd?hl=en-US)
 
 If you find any issues with our accessibility conformance, please create an issue in our GitHub repo or send us an email at [uswds@gsa.gov](mailto:uswds@gsa.gov). We prioritize accessibility issues. See [the Accessibility page of our website](https://designsystem.digital.gov/documentation/accessibility/) for more information.
 
@@ -114,7 +114,7 @@ If you're working on a pre-release version, enter pre-release mode:
    npx @changesets/cli pre enter <tag> # for example, npx @changesets/cli pre enter alpha
 ```
 
-This will write a `.changeset/pre.json` that configures the pre-release tag and initial version. This file should be committed to the repository.
+This writes a `.changeset/pre.json` that configures the pre-release tag and initial version. This file should be committed to the repository.
 
 **Note:** Once you're in pre-release mode, you don't have to enter it every time. When you're ready to exit pre-release mode, run:
 
@@ -131,7 +131,7 @@ npx @changesets/cli pre exit
         npx @changesets/cli
         ```
 
-    - The command creates a file under the `.changeset/` directory that describes the packages and the release type (patch/minor/major). You can edit this file to add more details, such as a link to the issue or pull request that the change addresses. The file will automatically get a nonsensical name like `fire-penguin-annex.md`, and that's normal. These files are only in the repository for a short time, to generate changelogs and version bumps. They aren't published to NPM and are cleaned up after the release is published.
+    - The command creates a file under the `.changeset/` directory that describes the packages and the release type (patch/minor/major). You can edit this file to add more details, such as a link to the issue or pull request that the change addresses. The file will automatically get a nonsensical name like `fire-penguin-annex.md`, which is normal. These files are only in the repository for a short time, to generate changelogs and version bumps. They aren't published to NPM and are cleaned up after the release is published.
 
 2. Bump versions locally (optional)
     - To update package.json versions and changelogs locally before publishing:
@@ -161,11 +161,11 @@ npx @changesets/cli pre exit
 #### How the automation works (GitHub Actions)
 
 - There's a CI workflow configured to automate release and publish:
-    - The workflow runs on pushes to `main` and uses the Changesets GitHub Action.
-    - The action can either create a release PR or publish directly to NPM depending on repository and action settings.
+    - The workflow runs on pushes to `main` and uses the Changesets GitHub Action
+    - The action can either create a release PR or publish directly to NPM depending on repository and action settings
     - The workflow uses repository secrets:
-        - `GITHUB_TOKEN` — standard workflow permission for the action to create PRs/commits.
-    - The action is configured to run the project’s release script (for example `npm run release`) and is run in a controlled environment; it will also disable Husky hooks during automated runs (HUSKY=0) to avoid local commit hooks blocking automation.
+        - `GITHUB_TOKEN` — standard workflow permission for the action to create PRs/commits
+    - The action is configured to run the project’s release script (for example `npm run release`) and is run in a controlled environment; it will also disable Husky hooks during automated runs (HUSKY=0) to avoid local commit hooks blocking automation
 
 #### Notes, tips, and troubleshooting
 
@@ -174,28 +174,28 @@ npx @changesets/cli pre exit
     - The repository includes a `.changeset/pre.json` configuration that sets a default pre-release tag (e.g., `alpha`) and initial versions for pre-release packages. Use `npx @changesets/cli pre enter  <tag>` to begin a pre-release cycle.
     - When in pre mode, version bumps will produce pre-release identifiers (for example, `1.0.0-alpha.1`).
 - CI vs local publish:
-    - For most contributors, pushing a properly authored changeset and opening a PR is the recommended route—automation will create the release or open the release PR for maintainers to review.
-    - If you must publish locally, make sure `NPM_TOKEN` is configured in your environment or use a CI/protected account to run the publish steps.
+    - For most contributors, pushing a properly authored changeset and opening a PR is the recommended route—automation, which will create the release or open the release PR for maintainers to review
+    - If you must publish locally, make sure `NPM_TOKEN` is configured in your environment or use a CI/protected account to run the publish steps
 - If releases aren't being published as expected:
-    - Verify `NPM_TOKEN` exists in repository secrets and has publish scope.
-    - Ensure the commit/push to `main` contains a changeset (or the automation has been triggered by the Changesets action).
-    - Review the release workflow logs in GitHub Actions for details (it'll show the changesets step and any publishing errors).
-- If you want to change the default pre-release tag (for example, from `alpha` to `beta`), update the `.changeset/pre.json` file and follow the pre-mode steps above.
+    - Verify `NPM_TOKEN` exists in repository secrets and has publish scope
+    - Ensure the commit/push to `main` contains a changeset (or the automation has been triggered by the Changesets action)
+    - Review the release workflow logs in GitHub Actions for details (it'll show the changesets step and any publishing errors)
+- If you want to change the default pre-release tag (for example, from `alpha` to `beta`), update the `.changeset/pre.json` file and follow the pre-mode steps above
 
-Example quick flow (pre-release -> publish via automation)
+Example quick flow (pre-release -> publish via automation):
 
-1. On a feature branch, implement changes.
+1. On a feature branch, implement changes
 2. Enter pre mode if you want pre-release tagging:
     - `npx @changesets/cli pre enter --tag alpha`
-3. Run `npx @changesets/cli` and follow the prompts (choose the appropriate release type).
-4. Commit the changeset file(s), push the branch, and open a PR.
-5. Once the PR is merged to `main`, the repository release workflow will pick up the changeset and publish the pre-release to NPM (provided `NPM_TOKEN` and workflow permissions are set).
+3. Run `npx @changesets/cli` and follow the prompts (choose the appropriate release type)
+4. Commit the changeset file(s), push the branch, and open a PR
+5. Once the PR is merged to `main`, the repository release workflow will pick up the changeset and publish the pre-release to NPM (provided `NPM_TOKEN` and workflow permissions are set)
 
 If you have questions about changing the pre-release tag or the release automation behavior, or if you want a walkthrough of creating a test release in a fork, please open an issue or ask in the PR review comments.
 
-## Component Versions
+## Component versions
 
 | Component    | Status    |
 | ------------ | --------- |
-| `usa-banner` | Beta      |
-| `usa-link`   | Pre-alpha |
+| `usa-banner` | Beta (Banner only, not entire package)     |
+| `usa-link`   | Pre-alpha (proof-of-concept: not intended as direction, or even for release) |
