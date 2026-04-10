@@ -195,7 +195,7 @@ If you have questions about changing the pre-release tag or the release automati
 
 ## Component versions
 
-| Component    | Status    |
-| ------------ | --------- |
-| `usa-banner` | Beta (Banner only, not entire package)     |
+| Component    | Status                                                                       |
+| ------------ | ---------------------------------------------------------------------------- |
+| `usa-banner` | Beta (Banner only, not entire package)                                       |
 | `usa-link`   | Pre-alpha (proof-of-concept: not intended as direction, or even for release) |

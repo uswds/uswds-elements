@@ -9,7 +9,7 @@ runs:
   using: composite
   steps:
     - name: Install node.js version
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@53b83947a5a98c8d113130e565377fae1a50d02f # pin v6.3.0
       id: install-node
       with:
         node-version-file: '.nvmrc'
