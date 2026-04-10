@@ -104,7 +104,7 @@
     "stylelint-config-standard": "^39.0.1",
     "stylelint-order": "^7.0.0",
     "typescript": "^5.9.3",
-    "vite": "^7.2.2",
+    "vite": "^7.3.2",
     "vite-plugin-bundlesize": "^0.3.0",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-lit-css": "^2.2.2",
