@@ -23,6 +23,11 @@ const entries: Array<Entry> = [
     sizeLimit: "10 kB",
   },
   {
+    name: "components/usa-alert",
+    path: "src/components/usa-alert/index.ts",
+    sizeLimit: "3 kB",
+  },
+  {
     name: "components/usa-link",
     path: "src/components/usa-link/index.js",
     sizeLimit: "0.8 kB",

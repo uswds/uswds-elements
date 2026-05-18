@@ -1,4 +1,5 @@
+import { UsaAlert } from "./usa-alert";
 import { UsaLink } from "./usa-link";
 import { UsaBanner } from "./usa-banner";
 
-export { UsaLink, UsaBanner };
+export { UsaAlert, UsaLink, UsaBanner };

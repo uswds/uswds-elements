@@ -9,6 +9,14 @@
       "exports": [
         {
           "kind": "js",
+          "name": "UsaAlert",
+          "declaration": {
+            "name": "UsaAlert",
+            "module": "src/components/index.ts"
+          }
+        },
+        {
+          "kind": "js",
           "name": "UsaLink",
           "declaration": {
             "name": "UsaLink",
@@ -21,6 +29,228 @@
           "declaration": {
             "name": "UsaBanner",
             "module": "src/components/index.ts"
+          }
+        }
+      ]
+    },
+    {
+      "kind": "javascript-module",
+      "path": "src/components/usa-alert/index.ts",
+      "declarations": [
+        {
+          "kind": "class",
+          "description": "",
+          "name": "UsaAlert",
+          "cssProperties": [
+            {
+              "description": "Override background color.",
+              "name": "--usa-alert-background-color"
+            },
+            {
+              "description": "Override left border color.",
+              "name": "--usa-alert-border-color"
+            },
+            {
+              "description": "Override icon color.",
+              "name": "--usa-alert-icon-color"
+            },
+            {
+              "description": "Override icon size.",
+              "name": "--usa-alert-icon-size"
+            },
+            {
+              "description": "Override horizontal padding.",
+              "name": "--usa-alert-padding-x"
+            },
+            {
+              "description": "Override vertical padding.",
+              "name": "--usa-alert-padding-y"
+            },
+            {
+              "description": "Override font family.",
+              "name": "--usa-alert-font-family"
+            },
+            {
+              "description": "Override text color.",
+              "name": "--usa-alert-text-color"
+            }
+          ],
+          "slots": [
+            {
+              "description": "The alert heading (use an h-element: h2, h3, etc.).",
+              "name": "headline"
+            },
+            {
+              "description": "Default slot for alert body content.",
+              "name": ""
+            }
+          ],
+          "members": [
+            {
+              "kind": "field",
+              "name": "status",
+              "privacy": "public",
+              "type": {
+                "text": "AlertStatus"
+              },
+              "default": "\"info\"",
+              "attribute": "status",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "slim",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "slim",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "noIcon",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "no-icon",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "closeable",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "false",
+              "attribute": "closeable",
+              "reflects": true
+            },
+            {
+              "kind": "field",
+              "name": "closeLabel",
+              "privacy": "public",
+              "type": {
+                "text": "string"
+              },
+              "default": "\"Close alert\"",
+              "attribute": "close-label"
+            },
+            {
+              "kind": "field",
+              "name": "_visible",
+              "privacy": "public",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "attribute": "_visible"
+            },
+            {
+              "kind": "field",
+              "name": "_role",
+              "type": {
+                "text": "string"
+              },
+              "privacy": "private",
+              "readonly": true
+            },
+            {
+              "kind": "method",
+              "name": "_handleClose",
+              "privacy": "private"
+            }
+          ],
+          "events": [
+            {
+              "name": "close",
+              "type": {
+                "text": "CustomEvent"
+              },
+              "description": "Dispatched when the close button is clicked."
+            }
+          ],
+          "attributes": [
+            {
+              "type": {
+                "text": "AlertStatus"
+              },
+              "description": "Determines the icon and border/background color.",
+              "name": "status",
+              "default": "\"info\"",
+              "fieldName": "status",
+              "propName": "status"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Displays the slim variation (smaller icon, no heading).",
+              "name": "slim",
+              "default": "false",
+              "fieldName": "slim",
+              "propName": "slim"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Hides the status icon.",
+              "name": "no-icon",
+              "default": "false",
+              "fieldName": "noIcon",
+              "propName": "noIcon"
+            },
+            {
+              "type": {
+                "text": "boolean"
+              },
+              "description": "Shows a close button.",
+              "name": "closeable",
+              "default": "false",
+              "fieldName": "closeable",
+              "propName": "closeable"
+            },
+            {
+              "type": {
+                "text": "string"
+              },
+              "description": "Aria-label for the close button. Defaults to \"Close alert\".",
+              "name": "close-label",
+              "default": "\"Close alert\"",
+              "fieldName": "closeLabel",
+              "propName": "closeLabel"
+            },
+            {
+              "name": "_visible",
+              "type": {
+                "text": "boolean"
+              },
+              "default": "true",
+              "fieldName": "_visible",
+              "propName": "_visible"
+            }
+          ],
+          "superclass": {
+            "name": "LitElement",
+            "package": "lit"
+          },
+          "tagName": "usa-alert",
+          "customElement": true,
+          "summary": "Displays important messages to the user with contextual status styling."
+        }
+      ],
+      "exports": [
+        {
+          "kind": "js",
+          "name": "UsaAlert",
+          "declaration": {
+            "name": "UsaAlert",
+            "module": "src/components/usa-alert/index.ts"
           }
         }
       ]
