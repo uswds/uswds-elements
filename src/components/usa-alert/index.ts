@@ -67,7 +67,7 @@ export class UsaAlert extends LitElement {
     this._visible = true;
   }
 
-  private get _role(): string {
+  private get #role(): string {
     if (
       this.status === "error" ||
       this.status === "emergency" ||
@@ -109,7 +109,7 @@ export class UsaAlert extends LitElement {
     };
 
     return html`
-      <div class="${classMap(classes)}" role="${this._role}">
+      <div class="${classMap(classes)}" role="${this.#role}">
         <div class="usa-alert__body">
           ${!this.slim ? html`<slot name="headline"></slot>` : null}
           <div class="usa-alert__text">
@@ -124,7 +124,7 @@ export class UsaAlert extends LitElement {
                 aria-label="${this.closeLabel}"
                 @click="${this._handleClose}"
               >
-                <span class="usa-alert__close-icon" aria-hidden="true"></span>
+                <span class="usa-alert__close-icon"></span>
               </button>
             `
           : null}
