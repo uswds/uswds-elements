@@ -15,6 +15,10 @@ function getShadow(): ShadowRoot {
   return shadow;
 }
 
+async function updateComplete(): Promise<void> {
+  await getAlert().updateComplete;
+}
+
 describe("usa-alert component", () => {
   beforeEach(() => {
     document.body.innerHTML = `
@@ -60,7 +64,7 @@ describe("status variants", () => {
   statuses.forEach((status) => {
     it(`renders ${status} variant`, async () => {
       document.body.innerHTML = `<usa-alert status="${status}"><p>Test</p></usa-alert>`;
-      await getAlert().updateComplete;
+      await updateComplete();
       const alertDiv = getShadow().querySelector(".usa-alert");
       expect(alertDiv?.classList.contains(`usa-alert--${status}`)).toBe(true);
     });
@@ -68,7 +72,7 @@ describe("status variants", () => {
 
   it("falls back to info for invalid status", async () => {
     document.body.innerHTML = `<usa-alert status="invalid"><p>Test</p></usa-alert>`;
-    await getAlert().updateComplete;
+    await updateComplete();
     const alertDiv = getShadow().querySelector(".usa-alert");
     expect(alertDiv?.classList.contains("usa-alert--info")).toBe(true);
   });
@@ -77,35 +81,35 @@ describe("status variants", () => {
 describe("ARIA roles", () => {
   it("uses role=status for info", async () => {
     document.body.innerHTML = `<usa-alert status="info"><p>Test</p></usa-alert>`;
-    await getAlert().updateComplete;
+    await updateComplete();
     const alertDiv = getShadow().querySelector(".usa-alert");
     expect(alertDiv?.getAttribute("role")).toBe("status");
   });
 
   it("uses role=status for success", async () => {
     document.body.innerHTML = `<usa-alert status="success"><p>Test</p></usa-alert>`;
-    await getAlert().updateComplete;
+    await updateComplete();
     const alertDiv = getShadow().querySelector(".usa-alert");
     expect(alertDiv?.getAttribute("role")).toBe("status");
   });
 
   it("uses role=alert for error", async () => {
     document.body.innerHTML = `<usa-alert status="error"><p>Test</p></usa-alert>`;
-    await getAlert().updateComplete;
+    await updateComplete();
     const alertDiv = getShadow().querySelector(".usa-alert");
     expect(alertDiv?.getAttribute("role")).toBe("alert");
   });
 
   it("uses role=alert for warning", async () => {
     document.body.innerHTML = `<usa-alert status="warning"><p>Test</p></usa-alert>`;
-    await getAlert().updateComplete;
+    await updateComplete();
     const alertDiv = getShadow().querySelector(".usa-alert");
     expect(alertDiv?.getAttribute("role")).toBe("alert");
   });
 
   it("uses role=alert for emergency", async () => {
     document.body.innerHTML = `<usa-alert status="emergency"><p>Test</p></usa-alert>`;
-    await getAlert().updateComplete;
+    await updateComplete();
     const alertDiv = getShadow().querySelector(".usa-alert");
     expect(alertDiv?.getAttribute("role")).toBe("alert");
   });
@@ -172,7 +176,7 @@ describe("closeable", () => {
     btn.click();
 
     // Wait for Lit reactive update
-    await getAlert().updateComplete;
+    await updateComplete();
 
     const alertDiv = getShadow().querySelector(".usa-alert");
     expect(alertDiv).toBeNull();
@@ -180,7 +184,7 @@ describe("closeable", () => {
 
   it("supports custom close-label", async () => {
     document.body.innerHTML = `<usa-alert closeable close-label="Dismiss warning"><p>Test</p></usa-alert>`;
-    await getAlert().updateComplete;
+    await updateComplete();
     const btn = getShadow().querySelector(".usa-alert__close");
     expect(btn?.getAttribute("aria-label")).toBe("Dismiss warning");
   });
