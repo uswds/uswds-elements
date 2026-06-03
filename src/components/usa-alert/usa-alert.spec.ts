@@ -146,9 +146,9 @@ describe("closeable", () => {
     expect(btn?.getAttribute("aria-label")).toBe("Close alert");
   });
 
-  it("dispatches close event on click", async () => {
+  it("dispatches usa-alert-close event on click", async () => {
     const handler = vi.fn();
-    getAlert().addEventListener("close", handler);
+    getAlert().addEventListener("usa-alert-close", handler);
 
     const btn = getShadow().querySelector(
       ".usa-alert__close",

@@ -36,7 +36,7 @@ type AlertStatus = (typeof VALID_STATUSES)[number];
  * @slot headline - The alert heading (use an h-element: h2, h3, etc.).
  * @slot - Default slot for alert body content.
  *
- * @fires close - Dispatched when the close button is clicked.
+ * @fires usa-alert-close - Dispatched when the close button is clicked.
  *
  * @element usa-alert
  */
@@ -80,7 +80,7 @@ export class UsaAlert extends LitElement {
 
   private _handleClose() {
     this.dispatchEvent(
-      new CustomEvent("close", { bubbles: true, composed: true }),
+      new CustomEvent("usa-alert-close", { bubbles: true, composed: true }),
     );
     this._visible = false;
   }
