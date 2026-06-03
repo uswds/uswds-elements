@@ -67,7 +67,7 @@ export class UsaAlert extends LitElement {
     this._visible = true;
   }
 
-  private get #role(): string {
+  get #role(): string {
     if (
       this.status === "error" ||
       this.status === "emergency" ||
