@@ -32,6 +32,7 @@
   --usa-alert-emergency-background: var(--usa-color-emergency, #9c3d10);
   --usa-alert-emergency-border: var(--usa-color-emergency-dark, #332d29);
   --usa-alert-emergency-icon: #fff;
+  --usa-alert-emergency-text-color: #fff;
 
   display: block;
 }
@@ -83,7 +84,7 @@
   --usa-alert-icon-color: var(--usa-alert-emergency-icon);
 
   & .usa-alert__body {
-    color: #fff;
+    color: var(--usa-alert-emergency-text-color);
   }
 }
 
@@ -163,7 +164,7 @@
 }
 
 .usa-alert--emergency ::slotted([slot="headline"]) {
-  color: #fff;
+  color: var(--usa-alert-emergency-text-color);
 }
 
 /** Alert text */
@@ -211,7 +212,7 @@
 }
 
 .usa-alert--emergency .usa-alert__close-icon {
-  background-color: #fff;
+  background-color: var(--usa-alert-emergency-text-color);
 }
 
 /** High contrast mode */

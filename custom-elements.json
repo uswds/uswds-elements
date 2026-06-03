@@ -152,11 +152,11 @@
             },
             {
               "kind": "field",
-              "name": "_role",
+              "name": "#role",
+              "privacy": "private",
               "type": {
                 "text": "string"
               },
-              "privacy": "private",
               "readonly": true
             },
             {
