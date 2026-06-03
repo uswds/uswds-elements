@@ -29,13 +29,9 @@ describe("usa-alert component", () => {
     `;
   });
 
-  it("renders with default info status", () => {
+  it("defaults to info status with role=status", () => {
     const alertDiv = getShadow().querySelector(".usa-alert");
     expect(alertDiv?.classList.contains("usa-alert--info")).toBe(true);
-  });
-
-  it("has role=status for info alerts", () => {
-    const alertDiv = getShadow().querySelector(".usa-alert");
     expect(alertDiv?.getAttribute("role")).toBe("status");
   });
 
@@ -79,13 +75,6 @@ describe("status variants", () => {
 });
 
 describe("ARIA roles", () => {
-  it("uses role=status for info", async () => {
-    document.body.innerHTML = `<usa-alert status="info"><p>Test</p></usa-alert>`;
-    await updateComplete();
-    const alertDiv = getShadow().querySelector(".usa-alert");
-    expect(alertDiv?.getAttribute("role")).toBe("status");
-  });
-
   it("uses role=status for success", async () => {
     document.body.innerHTML = `<usa-alert status="success"><p>Test</p></usa-alert>`;
     await updateComplete();
