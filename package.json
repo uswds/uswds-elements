@@ -108,7 +108,7 @@
     "vite-plugin-bundlesize": "^0.3.0",
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-lit-css": "^2.2.2",
-    "vitest": "^4.0.8",
+    "vitest": "^4.1.0",
     "wait-on": "^9.0.3",
     "web-vitals": "^5.1.0"
   },
