@@ -1,5 +1,5 @@
 > [!CAUTION]
-> This repository hosts development work for the HTML Web Component version of the U.S. Web Design System, called USWDS Elements (some call it USWDS 4.0). This code may not all be suitable for production use. Work on USWDS Elements is currently taking a gradual, community-driven iterative approach to development. Everything in this repository is in a different state of development, with USWDS Banner always intended to be closest to stable due to its [inclusion in the Federal Website Standards](https://standards.digital.gov/standards/banner/), which are required by the [21st Century Integrated Digital Experience Act](https://digital.gov/resources/delivering-digital-first-public-experience#what-is-21st-century-idea) (21st Century IDEA), and reinforced by [OMB Memo M-23-22]([https://bidenwhitehouse.archives.gov/omb/management/ofcio/delivering-a-digital-first-public-experience/](https://bidenwhitehouse.archives.gov/omb/management/ofcio/delivering-a-digital-first-public-experience/#III)). The documentation of each item will include its current status — for components, check the ```docs.mdx``` in ```/src/components/[usa-component-name]```. 
+> This repository hosts development work for the HTML Web Component version of the U.S. Web Design System, called USWDS Elements (some call it USWDS 4.0). This code may not all be suitable for production use. Work on USWDS Elements is currently taking a gradual, community-driven iterative approach to development. Everything in this repository is in a different state of development, with USWDS Banner always intended to be closest to stable due to its [inclusion in the Federal Website Standards](https://standards.digital.gov/standards/banner/), which are required by the [21st Century Integrated Digital Experience Act](https://digital.gov/resources/delivering-digital-first-public-experience#what-is-21st-century-idea) (21st Century IDEA), and reinforced by [OMB Memo M-23-22](<[https://bidenwhitehouse.archives.gov/omb/management/ofcio/delivering-a-digital-first-public-experience/](https://bidenwhitehouse.archives.gov/omb/management/ofcio/delivering-a-digital-first-public-experience/#III)>). The documentation of each item will include its current status — for components, check the `docs.mdx` in `/src/components/[usa-component-name]`.
 
 # USWDS Elements
 
@@ -7,7 +7,7 @@ The [United States Web Design System](https://designsystem.digital.gov) is a too
 
 This repository contains the code for the Web Component-based version of the design system, which is currently in pre-release status. We maintain other repositories for the [current version of the design system](https://github.com/uswds/uswds), which we call USWDS Core, as well as [its documentation and website](https://github.com/uswds/uswds-site). For USWDS Core and its documentation, visit [https://designsystem.digital.gov](https://designsystem.digital.gov).
 
-We're working on incrementally building new [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)-based implementations of USWDS Core components. Once each new USWDS Elements Web Component progresses into production-ready mode, you'll be able to use them alongside existing USWDS code. You can try out the first published example of a USWDS Web Component variant now: the [USWDS Banner Web Component variant](https://designsystem.digital.gov/components/banner/#banner-web-component-2). 
+We're working on incrementally building new [Web Component](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)-based implementations of USWDS Core components. Once each new USWDS Elements Web Component progresses into production-ready mode, you'll be able to use them alongside existing USWDS code. You can try out the first published example of a USWDS Web Component variant now: the [USWDS Banner Web Component variant](https://designsystem.digital.gov/components/banner/#banner-web-component-2).
 
 Contributions are now welcome, though the USWDS Elements review process prioritizes [USWDS Open Source Community member](https://github.com/uswds/uswds/blob/develop/COMMUNITY.md#communitymd) and [USWDS partnership](https://github.com/uswds/uswds/blob/develop/COMMUNITY.md#uswds-current--former-partners) contributions.
 
@@ -197,8 +197,8 @@ If you have questions about changing the pre-release tag or the release automati
 
 ## Component versions
 
-| Component    | Status                                                                       |
-| ------------ | ---------------------------------------------------------------------------- |
-| `usa-banner` | Beta (Banner only, not entire package)                                       |
-| `usa-link`   | Pre-alpha (proof-of-concept: not intended as direction, or even for release) |
+| Component    | Status                                                                          |
+| ------------ | ------------------------------------------------------------------------------- |
+| `usa-banner` | Beta (Banner only, not entire package)                                          |
+| `usa-link`   | Pre-alpha (proof-of-concept: not intended as direction, or even for release)    |
 | `usa-alert`  | Pre-alpha (proof-of-concept for architecture validation; not completely tested) |
