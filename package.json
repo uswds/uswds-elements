@@ -35,6 +35,7 @@
     "build:tokens": "style-dictionary build --config ./config/style-dictionary.config.js",
     "build:watch": "vite build --config ./config/vite.config.ts --watch",
     "dev": "vite --config ./config/vite.config.ts",
+    "extract:uswds-tokens": "node internals/scripts/extract-uswds-tokens.js",
     "fix-permissions": "sudo chown -R $(id -u):$(id -g) .",
     "pages": "npm run storybook:build && cp -r storybook-static _site",
     "prepare": "husky",
