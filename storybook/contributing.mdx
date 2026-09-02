@@ -66,9 +66,22 @@ src/components/usa-example/
 - **`e2e/`** - Playwright end-to-end tests
 - **`storybook/`** - Storybook documentation files
 - **`.storybook/`** - Storybook configuration
-- **`tokens/`** - Design token definitions (Style Dictionary)
 - **`internals/`** - Internal build scripts and utilities
 - **`config/`** - Config files for project tooling and testing
+- **`packages/`** - npm workspace packages, each independently versioned and published (see [npm Workspaces](#npm-workspaces) below)
+  - **`packages/tokens/`** - Design token definitions and Style Dictionary build, published as `@uswds/tokens`
+
+## npm Workspaces
+
+This repo is an npm workspaces monorepo. `@uswds/elements` (the root package) and any packages under `packages/*` are managed together with a single `npm install` at the repo root, but each is versioned and published independently via Changesets.
+
+To run a script scoped to one workspace package instead of the root, use `--workspace`:
+
+```bash
+npm run build --workspace=@uswds/tokens
+```
+
+Each package under `packages/` is self-contained: it can be built using only the files inside its own directory (plus its declared dependencies), so it can also be built standalone, e.g. `cd packages/tokens && npx style-dictionary build --config ./config/style-dictionary.config.js`.
 
 ## Component Development Checklist
 

@@ -1,0 +1,37 @@
+{
+  "name": "@uswds/tokens",
+  "version": "0.1.0",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uswds/uswds-elements.git",
+    "directory": "packages/tokens"
+  },
+  "files": ["build", "tokens"],
+  "publishConfig": {
+    "access": "public"
+  },
+  "exports": {
+    "./css/*": "./build/css/*",
+    "./scss/*": "./build/scss/*"
+  },
+  "scripts": {
+    "build": "wireit",
+    "prepare": "npm run build"
+  },
+  "wireit": {
+    "build": {
+      "command": "style-dictionary build --config ./config/style-dictionary.config.js",
+      "files": [
+        "tokens/**/*.json",
+        "config/style-dictionary.config.js",
+        "internals/token-helpers/index.ts"
+      ],
+      "output": ["build/**"]
+    }
+  },
+  "devDependencies": {
+    "style-dictionary": "^5.4.4",
+    "wireit": "^0.14.13"
+  }
+}

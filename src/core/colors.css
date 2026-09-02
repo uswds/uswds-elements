@@ -1,4 +1,4 @@
-@import url("/build/css/system/color.css");
+@import "@uswds/tokens/css/system/color.css";
 
 :root {
   --usa-color-base-lightest: var(--usa-color-gray-5);
