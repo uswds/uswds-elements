@@ -5,6 +5,7 @@ import {
   maskComments,
   scanFile,
   classifyCurtisTier,
+  classifyName,
 } from "./extract-uswds-tokens.js";
 
 const fileMeta = {
@@ -291,5 +292,53 @@ describe("classifyCurtisTier: Nathan Curtis' system/theme/state vocabulary (ADR-
     };
     const { rows } = processFile(src, localFileMeta, componentVocab);
     expect(rowByName(rows, "$icon-width").tier).toBe("local");
+  });
+});
+
+describe("classifyName: category vocabulary, informed by the original CSVs' established groupings", () => {
+  const vocab = new Set();
+
+  it("classifies a two-word category phrase as category, not the equal-or-shorter property match (box-shadow, flex-direction, flex-wrap)", () => {
+    expect(
+      classifyName("system-properties-box-shadow-standard-1", vocab).populated
+        .category,
+    ).toBe("box-shadow");
+    expect(
+      classifyName("system-properties-flex-direction-row", vocab).populated
+        .category,
+    ).toBe("flex-direction");
+    expect(
+      classifyName("system-properties-flex-wrap-wrap", vocab).populated
+        .category,
+    ).toBe("flex-wrap");
+  });
+
+  it("classifies settings-only categories the legacy CSV had but this classifier originally lacked", () => {
+    expect(classifyName("theme-focus-width", vocab).populated.category).toBe(
+      "focus",
+    );
+    expect(classifyName("theme-column-gap-sm", vocab).populated.category).toBe(
+      "column-gap",
+    );
+    expect(
+      classifyName("theme-site-margins-max-width", vocab).populated.category,
+    ).toBe("site-margins");
+    expect(
+      classifyName("theme-lead-font-family", vocab).populated.category,
+    ).toBe("lead");
+  });
+
+  it("classifies typeface metadata rows under a typeface category instead of leaving them blank", () => {
+    expect(
+      classifyName("system-typeface-tokens-georgia-cap-height", vocab).populated
+        .category,
+    ).toBe("typeface");
+  });
+
+  it("leaves flat color shortcodes (namespace=color) without a category, matching the original CSVs' own convention — concept still carries the family", () => {
+    const cls = classifyName("color-blue-warm-60v", vocab);
+    expect(cls.namespace).toBe("color");
+    expect(cls.populated.category).toBeUndefined();
+    expect(cls.populated.concept).toBe("blue-warm");
   });
 });
