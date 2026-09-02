@@ -9,10 +9,19 @@
 ## Concern
 
 Create `tokens/system/` source files for the **utility-scale property tokens**
-inventoried in `uswds-properties-tokens.csv` (extracted from `_properties.scss` via
-`internals/scripts/extract-properties.js`). These tokens are part of the primitive tier
+inventoried in `uswds-properties-tokens.csv`. These tokens are part of the primitive tier
 but live in a separate CSV because they originate from `$system-properties` — a nested
 map, not the simple-map files processed by the regex extractor.
+
+> **Amendment (2026-09-01):** `internals/scripts/extract-properties.js`, cited above as this CSV's
+> extractor, was never actually committed to this repo — checked across all branches and reflog;
+> see plan-01's amendment. Its replacement, `internals/scripts/extract-uswds-tokens.js`, is
+> AST-based and comprehensive rather than properties-specific; running it and filtering its output
+> to `source_file` ending in `_properties.scss` or `layout-grid-widths.scss` reproduces this batch
+> (335 raw rows before applying ADR-0009 Decision 1's in/out-of-scope category filter; ~157 after —
+> the classifier's `category`/`property` columns don't cleanly reproduce that boundary yet, so
+> filtering by raw `token_name` against the category list in ADR-0009 Decision 1 is more reliable
+> for now).
 
 Scope per plan-01 §Phase 1 and ADR-0009:
 

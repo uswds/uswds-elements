@@ -19,6 +19,20 @@
 >
 > The "Done when" gate includes a check that the reconciliation script exits 0 with a
 > de-duplicated input or a keyed implementation.
+>
+> **Amendment (2026-09-01) — this prerequisite is resolved if `reconcile-colors.js` reads from
+> `uswds-tokens-inventory-full.csv` instead.** The new AST-based extractor
+> (`internals/scripts/extract-uswds-tokens.js`, see plan-01's amendment) always encodes a map
+> entry's full key path into the flattened token name (e.g. the nested `vivid` sub-map's grade 10
+> becomes `$system-color-blue-cool-vivid-10`, distinct from the standard grade's
+> `$system-color-blue-cool-10`) — the root cause of the 202-duplicate bug (dropping that `vivid`
+> path segment) cannot recur by construction. Verified: only 1 duplicate `(token_name, source_file)`
+> pair remains among that CSV's `tier=system` rows (`$color-mint-5v` in
+> `shortcodes-color-system.scss`) — and it is a genuine literal duplicate in the USWDS source itself
+> (two identical back-to-back declarations at lines 235–236), not the vivid-submap collision the
+> 202-count came from. If `reconcile-colors.js` is written against the new
+> CSV, option (a)/(b) above and the 202-row issue are moot; if it still reads the original
+> `uswds-system-tokens.csv`, the prerequisite as written still applies unchanged.
 
 ---
 

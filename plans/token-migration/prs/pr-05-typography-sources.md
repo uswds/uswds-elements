@@ -14,8 +14,16 @@ typographic tokens inventoried in `uswds-system-tokens.csv`:
 - **Type scale** — 20 steps (1–20), pixel values, each annotated with `legacyName`
 - **Line heights** — 6 steps (1–6), dimensionless ratios
 - **Per-typeface line-height combinations** — `sans-1..6`, `serif-1..6`, `mono-1..6`,
-  `cond-1..6`, `heading-1..6`, `ui-1..6` (ADR-0006: these are tokens; cap-height
-  normalization math stays in USWDS core Sass)
+  `cond-1..6`, `heading-1..6`, `ui-1..6`, `body-1..6`, `code-1..6`, `alt-1..6` — **9 typeface
+  groups, 54 entries** (ADR-0006: these are tokens; cap-height normalization math stays in USWDS
+  core Sass). Amendment (2026-09-01): this PR originally scoped only 6 groups (36 entries,
+  omitting `body`/`code`/`alt`) per `uswds-properties-tokens.csv`, which itself carried only 12 of
+  the real 54 — both were incomplete relative to `_properties.scss`'s actual
+  `$system-properties.line-height.standard` map, confirmed by the new AST-based extractor
+  (`internals/scripts/extract-uswds-tokens.js`; see plan-01's amendment). The same map also has a
+  separate, simpler `extended` sub-map (6 dimensionless entries, `1: 1` … `6: 1.75` — not
+  per-typeface) that this PR should add as `tokens/system/line-height/extended.json`, sourced the
+  same way as the base 6-step scale in step 2 below.
 - **Letter-spacing** — `auto` (initial), positives `ls-1..3`, negatives `ls-neg-1..3`
   (from `uswds-properties-tokens.csv`)
 - **Font stacks** — DTCG `fontFamily` arrays for each named stack
@@ -29,17 +37,18 @@ No web component CSS changes. No existing names are affected.
 
 ## Files touched
 
-| Action | Path                                                                                  |
-| ------ | ------------------------------------------------------------------------------------- |
-| New    | `tokens/system/font-size/type-scale.json` — 20-step type scale                        |
-| New    | `tokens/system/line-height/line-height.json` — 6 base line heights                    |
-| New    | `tokens/system/line-height/per-typeface.json` — 36 per-typeface combos                |
-| New    | `tokens/system/letter-spacing/letter-spacing.json` — 7 entries (auto + 3 pos + 3 neg) |
-| New    | `tokens/system/font-family/stacks.json` — named font stacks as `fontFamily` arrays    |
-| New    | `tokens/system/font-family/typefaces.json` — typeface metadata tokens                 |
-| Modify | `tokens/index.js` — register the new category groups                                  |
-| Modify | `config/style-dictionary.config.js` — add platforms/files for new categories          |
-| New    | `build/css/system/font-size.css`, `build/css/system/line-height.css`, etc.            |
+| Action | Path                                                                                   |
+| ------ | -------------------------------------------------------------------------------------- |
+| New    | `tokens/system/font-size/type-scale.json` — 20-step type scale                         |
+| New    | `tokens/system/line-height/line-height.json` — 6 base line heights                     |
+| New    | `tokens/system/line-height/per-typeface.json` — 54 per-typeface combos (9 groups × 6)  |
+| New    | `tokens/system/line-height/extended.json` — 6-entry simplified scale, not per-typeface |
+| New    | `tokens/system/letter-spacing/letter-spacing.json` — 7 entries (auto + 3 pos + 3 neg)  |
+| New    | `tokens/system/font-family/stacks.json` — named font stacks as `fontFamily` arrays     |
+| New    | `tokens/system/font-family/typefaces.json` — typeface metadata tokens                  |
+| Modify | `tokens/index.js` — register the new category groups                                   |
+| Modify | `config/style-dictionary.config.js` — add platforms/files for new categories           |
+| New    | `build/css/system/font-size.css`, `build/css/system/line-height.css`, etc.             |
 
 ---
 
@@ -123,7 +132,7 @@ No web component CSS changes. No existing names are affected.
     }
     ```
 
-3. **`tokens/system/line-height/per-typeface.json`** — 36 combos (6 typefaces × 6
+3. **`tokens/system/line-height/per-typeface.json`** — 54 combos (9 typefaces × 6
    steps). Each is a DTCG alias referencing the base line-height step, carrying a
    `$description` noting the typeface context:
 
@@ -138,10 +147,22 @@ No web component CSS changes. No existing names are affected.
         "mono": { ... },
         "cond": { ... },
         "heading": { ... },
-        "ui": { ... }
+        "ui": { ... },
+        "body": { ... },
+        "code": { ... },
+        "alt": { ... }
       }
     }
     ```
+
+    Values are not identical across typefaces (each is a distinct, hand-tuned ratio from
+    `_properties.scss`'s `lh("<typeface>", n)` lookups) — verify each group's 6 values against the
+    real source rather than assuming they alias the base 6-step scale uniformly.
+
+3a. **`tokens/system/line-height/extended.json`** — the separate, non-per-typeface 6-entry scale
+from the same `$system-properties.line-height` map (`extended: (1: 1, 2: 1.1, 3: 1.35, 4: 1.5,
+   5: 1.62, 6: 1.75)`), close to but not identical to the base 6-step scale in step 2 — carry it as
+its own literal-valued group, not an alias of `line-height.json`.
 
 4. **`tokens/system/letter-spacing/letter-spacing.json`** — 7 entries from
    `uswds-properties-tokens.csv`:
@@ -271,7 +292,8 @@ No web component CSS changes. No existing names are affected.
 - [ ] `npm run build:tokens` exits 0
 - [ ] `npm test` exits 0
 - [ ] Type scale: 20 entries in `build/css/system/font-size.css` (`--usa-font-size-1` through `--usa-font-size-20`)
-- [ ] Line heights: 6 base + 36 per-typeface entries in `build/css/system/line-height.css`
+- [ ] Line heights: 6 base + 54 per-typeface entries (9 groups × 6, incl. `body`/`code`/`alt`) + 6
+      `extended` entries in `build/css/system/line-height.css`
 - [ ] Letter spacing: 7 entries (`auto`, `ls-1..3`, `ls-neg-1..3`) in `build/css/system/letter-spacing.css`; negative values are literal negatives (e.g. `-0.01em`), not a separate naming convention
 - [ ] Font stacks present in `build/css/system/font-family.css` as comma-separated family lists
 - [ ] No `@font-face` src maps or `$theme-font-*-custom-stack` entries appear in output (font build config excluded)

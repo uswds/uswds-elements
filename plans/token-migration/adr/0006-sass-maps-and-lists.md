@@ -46,7 +46,7 @@ considered and rejected — it duplicates derivable structure and invites drift.
 
 ### 3. Utility-generator configuration → stays in uswds-core Sass, out of scope
 
-The 174 `_settings-utilities.scss` entries (`$background-color-settings`, `$border-palettes`,
+The `_settings-utilities.scss` entries (`$background-color-settings`, `$border-palettes`,
 `$global-color-palettes`, `$output-these-utilities`, `$theme-utility-breakpoints`, …) configure
 _which utility classes get generated_. They are build configuration, not design decisions about
 visual values. They are excluded from the token package entirely.
@@ -59,6 +59,14 @@ scale values, but they resolve through `get-standard-values()` into `$system-pro
 Config Tokens (future)" against `_settings-utilities.scss`; that was the wrong target — it
 extracts config, not values, and running it would have produced nothing. The corrected Batch 3
 (row added to the table above) targets `_properties.scss` instead.
+
+> **Amendment (2026-09-01):** this section originally cited 174 `_settings-utilities.scss` entries,
+> from Batch 1/2's regex extractor. The comprehensive AST-based extractor
+> (`internals/scripts/extract-uswds-tokens.js`, see plan-01's amendment) counts 232 top-level
+> declarations in that file — the regex extractor undercounted, most likely on the repetitive
+> `$foo-settings` / `$foo-settings-complete` / `$foo-palettes` / `$foo-manual-values` pattern that
+> repeats per utility (172 occurrences noted in the AST-based extractor's own source survey). The
+> exclusion decision (out of scope entirely) is unaffected — only the count was wrong.
 
 ### 4. Lists as values → typed DTCG values
 

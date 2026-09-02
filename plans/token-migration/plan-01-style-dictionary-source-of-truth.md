@@ -23,6 +23,27 @@ The token inventory of USWDS core is complete and classified per Nathan Curtis' 
 - [`uswds-system-tokens.csv`](uswds-system-tokens.csv) — ~1,100 system tokens (color families, spacing, type scale)
 - [`uswds-properties-tokens.csv`](uswds-properties-tokens.csv) — Batch 3, ~144 utility-scale tokens: z-index, opacity, box-shadow, order, flex/flex-direction/flex-wrap, gap, letter-spacing, per-typeface line-height, and the 12-column grid fraction scale. Extracted from `uswds-core/src/styles/_properties.scss` (the `$system-properties` map) and `tokens/units/layout-grid-widths.scss` — neither is under `settings/` or `tokens/`'s simple-map files, so the regex-based extractor used for the other two CSVs can't safely resolve them (nested function-call values like `rgba(0, 0, 0, 0.1)` and `#{$neg-prefix}` key interpolation break it). This batch was extracted with `internals/scripts/extract-properties.js`, which compiles the real USWDS source with dart-sass and reads resolved values directly from the compiler instead of parsing SCSS text. The same fix cleaned up `uswds-system-tokens.csv`'s previously-corrupted negative-spacing rows (`neg-*`, was one garbled ~900-character row, now 16 clean entries).
 
+> **Amendment (2026-09-01):** the three batch counts above, and `internals/scripts/extract-properties.js`
+> itself, turned out not to exist in this repo's history — no such script was ever committed (checked
+> across all branches/reflog in both this repo and the upstream `uswds` checkout). The counts were
+> apparently produced by hand or by a script that was run locally and never captured, and the three
+> CSVs carry real bugs from that: `uswds-system-tokens.csv` undercounts because of the documented
+> 202-duplicate-name bug (see PR 2) and separately mis-parses `shortcodes-color-basic.scss` into 14
+> corrupted rows; `uswds-properties-tokens.csv` captures only 12 of the real 60 per-typeface
+> line-height entries. A new **AST-based** extractor, `internals/scripts/extract-uswds-tokens.js`
+> (comprehensive — scans `~/devspace/uswds/packages/**/*.scss`, not just uswds-core's curated subset),
+> replaces the lost script and fixes these bugs structurally. Its output,
+> [`uswds-tokens-inventory-full.csv`](uswds-tokens-inventory-full.csv), is additive — it does not
+> replace the three batch CSVs above, which stay as historical Phase-1-planning input — but it is the
+> more trustworthy source for real counts. Measured from it: **574** settings-tier rows (232 of them
+> utility-generator config, not 174), **2,124** system-tier rows excluding generated-lookup maps (not
+> ~1,100), **156** `_settings-components.scss` rows (not 152), and **60** per-typeface line-height
+> entries — 9 typeface groups (`sans/serif/mono/cond/heading/ui/body/code/alt`) × 6 steps = 54, plus a
+> separate 6-entry `extended` scale — not the 12 the old CSV carried, and not even the 36 (6 groups)
+> pr-05 originally planned for. See `uswds-tokens-inventory-full.csv`'s `tier` column (Curtis'
+> system/theme/state vocabulary, ADR-0010, plus `component`/`config`/`internal`/`local` for what
+> doesn't fit) for the authoritative per-tier breakdown going forward.
+
 This plan makes the Style Dictionary in `tokens/` the comprehensive source of truth for USWDS:
 
 1. **CSS custom properties** for web components (`--usa-color-red-60v`, `--usa-button-*`)
@@ -76,7 +97,7 @@ Bring `tokens/` to full coverage of the system tier, sourced from `uswds-system-
 
 - **Colors:** all 27 families, including gray grades 1–4; nonexistent `-90v` vivid slots omitted (ADR-0008); canonical `vivid-{grade}` names emitted with `{grade}v` legacy aliases kept alongside (ADR-0002 amended) via `internals/token-helpers/index.ts` + alias-emitting format
 - **Spacing:** full computed scale — multiples (`05`…`15`), named (`card`, `card-lg`, `mobile`, `mobile-lg`, `tablet`, `desktop`, `widescreen`, …), negatives (`neg-*`), pixel literals (`1px`, `2px`) — each with `$extensions.uswds.formula` provenance (ADR-0007)
-- **Typography:** `tokens/typography/` — type scale (1–20), line heights (1–6) plus the richer per-typeface combinations (`sans-1..6`, `serif-1..6`, `mono-1..6`, `cond-1..6`, `heading-1..6`, `ui-1..6`), letter-spacing including negatives (`ls-neg-1/2/3`), font stacks as `fontFamily` arrays, typeface metadata (display name, cap-height, stack) per ADR-0006; @font-face `src` maps stay out
+- **Typography:** `tokens/typography/` — type scale (1–20), line heights (1–6) plus the richer per-typeface combinations across all 9 real typeface groups (`sans-1..6`, `serif-1..6`, `mono-1..6`, `cond-1..6`, `heading-1..6`, `ui-1..6`, `body-1..6`, `code-1..6`, `alt-1..6` — 54 entries, not the 6-group/36-entry set originally listed here; see pr-05's amendment), plus the separate non-per-typeface `extended` 6-entry scale from the same map, letter-spacing including negatives (`ls-neg-1/2/3`), font stacks as `fontFamily` arrays, typeface metadata (display name, cap-height, stack) per ADR-0006; @font-face `src` maps stay out
 - **Utility scale** (new, sourced from `uswds-properties-tokens.csv`, ADR-0009): sibling categories under `tokens/system/` (ADR-0010) — `z-index.json` (`auto, bottom:-100, 0, 100–500, top:99999`), `opacity.json` (`0–100` → `0`–`1`), `shadow.json` (box-shadow `none, 1–5`), `flex.json` (flex `1–12/fill/auto`, flex-direction, flex-wrap, order `first:-1, last:999, 0–11`), `gap.json` (column-gaps merged with `theme-column-gap-{sm,md,lg}`)
 - **Grid** (new): `tokens/grid/layout-grid-widths.json` — 12-column fraction scale (`1/12 … 12/12`, from `tokens/units/layout-grid-widths.scss`)
 - **Breakpoints:** re-expressed as aliases of named spacing tokens (matching `$system-breakpoints` being a slice of spacing)
@@ -119,7 +140,7 @@ Storybook visual check of usa-alert/usa-link in forced dark scheme.
 
 ### Phase 3 — Component tier (ADR-0004)
 
-- Generate the `$theme-{component}-*` → `--usa-{component}-*` migration table from the 152 component rows in `uswds-settings-tokens.csv` (component/element/variant/state columns are populated); record non-1:1 cases (`navigation`/`megamenu` → `usa-header` internals) explicitly
+- Generate the `$theme-{component}-*` → `--usa-{component}-*` migration table from the component rows in `uswds-settings-tokens.csv` (component/element/variant/state columns are populated; the CSV counted 152, `uswds-tokens-inventory-full.csv`'s more complete AST-based extraction counts 156 — see the amendment above); record non-1:1 cases (`navigation`/`megamenu` → `usa-header` internals) explicitly
 - Create `tokens/components/{component}.json` for existing components first (alert, banner\*, link — extends [plan-02](plan-02-port-audit-enforce.md) PR 8), then per new component as built; values alias the adaptive tier where the mode-sensitivity driver applies, otherwise the theme/state tier token matching the CSV default's existing role reference (ADR-0004 Alias target)
 - Update component CSS to consume component tokens without fallbacks (plan-02's pattern; usa-banner stays self-contained)
 
@@ -172,8 +193,9 @@ Everything from plan-02 (stylelint `custom-property-pattern`, `audit-token-names
 - `tokens/colors/*.json` (current; becomes `tokens/system/color/*.json` after P1-PR0), `tokens/theme/color/*.json` (new), `tokens/state/color/*.json` (new), `tokens/system/spacing/spacing.json` (current: `tokens/spacing/spacing.json`), `tokens/system/typography/*` (new; current: `tokens/typography/*`), `tokens/system/{z-index,opacity,shadow,flex,gap}/*.json` (new), `tokens/system/grid/layout-grid-widths.json` (new; current: `tokens/grid/layout-grid-widths.json`), `tokens/components/*.json` (new)
 - `internals/formats/` (new) — uswds-core SCSS map/settings/shortcode formats
 - `internals/scripts/expand-color-format.js` (new, P1-PR3) — deterministic hex→sRGB components transformer; run once and commit
-- `plans/token-migration/uswds-{settings,system,properties}-tokens.csv` — migration source data
-- `internals/scripts/extract-properties.js` — Sass-based extractor for `_properties.scss`/`layout-grid-widths.scss`/spacing negatives (Batch 3)
+- `plans/token-migration/uswds-{settings,system,properties}-tokens.csv` — migration source data (historical Batch 1–3 snapshots; see amendment above)
+- `plans/token-migration/uswds-tokens-inventory-full.csv` — comprehensive AST-based re-extraction covering all of `packages/**/*.scss`, with corrected counts and a `tier` column carrying Curtis' system/theme/state vocabulary (plus `component`/`config`/`internal`/`local` for what doesn't fit); the more trustworthy source going forward
+- `internals/scripts/extract-uswds-tokens.js` — the AST-based extractor that produces the file above (replaces the never-committed `internals/scripts/extract-properties.js`)
 - USWDS core targets (Phase 4 swap): `packages/uswds-core/src/styles/tokens/color/*`, `tokens/units/spacing.scss`, `tokens/font/*`, `settings/_settings-color.scss` et al.
 
 > **Note on `spacing.205`:** this token (`1.25rem`, grid-base × 2.5) is owned by P1-PR 4
