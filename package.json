@@ -4,6 +4,9 @@
   "type": "module",
   "customElements": "custom-elements.json",
   "types": "./dist/index.d.ts",
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uswds/uswds-elements.git"
@@ -11,7 +14,6 @@
   "files": [
     ".storybook",
     "storybook",
-    "build",
     "dist",
     "src"
   ],
@@ -27,12 +29,10 @@
     "./components/*": "./dist/components/*.js",
     "./components/frameworks/react/*": "./dist/components/frameworks/react/*.js",
     "./src/components/*": "./src/components/*/index.js",
-    "./core/*": "./src/core/*",
-    "./styles/*": "./build/*"
+    "./core/*": "./src/core/*"
   },
   "scripts": {
     "build": "tsc -p ./config/tsconfig.json && vite build --config ./config/vite.config.ts && npm run manifest:build",
-    "build:tokens": "style-dictionary build --config ./config/style-dictionary.config.js",
     "build:watch": "vite build --config ./config/vite.config.ts --watch",
     "dev": "vite --config ./config/vite.config.ts",
     "fix-permissions": "sudo chown -R $(id -u):$(id -g) .",
@@ -43,7 +43,9 @@
     "prettier:md": "npx prettier --check '**/*.{md,mdx}' --config ./config/.prettierrc",
     "prettier:md:fix": "npx prettier --write '**/*.{md,mdx}' --config ./config/.prettierrc",
     "start": "npm run storybook & npm run manifest:watch",
+    "prestorybook:build": "npm run build --workspace=@uswds/tokens",
     "storybook:build": "storybook build",
+    "prestorybook": "npm run build --workspace=@uswds/tokens",
     "storybook": "storybook dev -p 8008",
     "prestorybook:serve": "npm run storybook:build --quiet",
     "storybook:serve": "node ./internals/scripts/serve-storybook.js",
@@ -51,7 +53,7 @@
     "stylelint:fix": "stylelint './src/components/**/*.{css,css.js,css.ts}' --fix --config=./config/stylelint.config.mjs",
     "manifest:build": "npx cem analyze --config ./config/custom-elements-manifest.config.js",
     "manifest:watch": "npx cem analyze --config ./config/custom-elements-manifest.config.js --watch --dev",
-    "release": "npm run build:tokens && npm run build && changeset publish",
+    "release": "npm run build --workspace=@uswds/tokens && npm run build && changeset publish",
     "test": "vitest --config ./config/vitest.config.js",
     "test:ci": "vitest run --config ./config/vitest.config.js",
     "test:storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run storybook:serve\" \"wait-on tcp:127.0.0.1:3000 && npx test-storybook --url http://localhost:3000\"",
@@ -74,6 +76,7 @@
     "@types/express": "^5.0.5",
     "@types/node": "^24.10.1",
     "@types/serve-static": "^2.2.0",
+    "@uswds/tokens": "^0.1.0",
     "@vitest/eslint-plugin": "^1.4.2",
     "@vitest/ui": "^4.0.8",
     "@wc-toolkit/storybook-helpers": "^10.0.0",

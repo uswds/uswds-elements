@@ -108,6 +108,8 @@ This repository is automatically published to NPM when a new release is created.
 
 We use Changesets to manage changelogs, version bumps, pre-releases (alpha/beta), and automated publishing via GitHub Actions. The repository includes a pre-configured Changesets setup so you can create pre-releases (for example, `alpha`) and standard releases.
 
+This is an npm workspaces monorepo: alongside the root `@uswds/elements` package, `packages/tokens` is published separately as `@uswds/tokens`. Each workspace package is versioned and released independently through the same Changesets flow described below — a changeset can target one or more packages, and only the packages it lists get a version bump.
+
 ### Pre-release flow
 
 If you're working on a pre-release version, enter pre-release mode:
