@@ -4,7 +4,9 @@
   "type": "module",
   "customElements": "custom-elements.json",
   "types": "./dist/index.d.ts",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uswds/uswds-elements.git"
