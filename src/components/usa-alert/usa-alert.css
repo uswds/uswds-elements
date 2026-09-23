@@ -1,0 +1,124 @@
+:host {
+  --icon-info: var(--usa-icon-info);
+  --icon-warning: var(--usa-icon-warning);
+  --icon-success: var(--usa-icon-check-circle);
+  --icon-error: var(--usa-icon-error);
+  --icon-emergency: var(--usa-icon-error);
+
+  box-sizing: border-box;
+}
+
+.usa-alert {
+  background-color: var(--base-lightest);
+  border-left: var(--alert-bar-width, var(--usa-spacing-1)) solid
+    var(--base-light);
+
+  .usa-alert__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-left: var(--usa-spacing-4);
+    padding-block: var(--theme-alert-padding-y, var(--usa-spacing-2));
+    padding-inline: var(--theme-alert-padding-x, var(--usa-spacing-3));
+
+    .usa-alert__icon {
+      left: 2rem;
+      position: absolute;
+      width: 2rem; /* TODO */
+    }
+
+    .usa-alert__heading {
+      align-items: center;
+      display: flex;
+    }
+
+    .usa-alert__text {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+  }
+}
+
+.usa-alert--success {
+  .usa-alert__icon {
+    content: var(--icon-success);
+  }
+
+  background-color: var(--usa-color-green-cool-5);
+  border-left-color: var(--usa-color-green-cool-vivid-40);
+}
+
+.usa-alert--info {
+  .usa-alert__icon {
+    content: var(--icon-info);
+  }
+
+  background-color: var(--usa-color-cyan-5);
+  border-left-color: var(--usa-color-cyan-vivid-30);
+}
+
+.usa-alert--warning {
+  .usa-alert__icon {
+    content: var(--icon-warning);
+  }
+
+  background-color: var(--usa-color-yellow-5);
+  border-left-color: var(--usa-color-gold-vivid-20);
+}
+
+.usa-alert--error {
+  .usa-alert__icon {
+    content: var(--icon-error);
+  }
+
+  background-color: var(--usa-color-red-warm-10);
+  border-left-color: var(--usa-color-red-warm-vivid-50);
+}
+
+.usa-alert--slim {
+  .usa-alert__body {
+    margin-left: 1rem;
+
+    .usa-alert__icon {
+      width: 1.5rem;
+    }
+  }
+}
+
+.usa-alert--no-icon {
+  .usa-alert__body {
+    margin-left: 0;
+
+    .usa-alert__icon {
+      display: none;
+    }
+  }
+}
+
+::slotted(h1),
+::slotted(h2),
+::slotted(h3),
+::slotted(h4),
+::slotted(h5),
+::slotted(h6) {
+  font-family:
+    "Source Sans Pro Web", "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif; /* TODO */
+
+  font-size: 1.33rem; /* TODO */
+  line-height: 0.9; /* TODO */
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+::slotted(p),
+::slotted(div) {
+  font-family:
+    "Source Sans Pro Web", "Helvetica Neue", Helvetica, Roboto, Arial,
+    sans-serif; /* TODO */
+
+  font-size: 1.06rem; /* TODO */
+  line-height: 1.5; /* TODO */
+  margin-bottom: 0;
+  margin-top: 0;
+}
