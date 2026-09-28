@@ -28,4 +28,6 @@ USWDS is committed to building a safe, welcoming, harassment-free culture for ev
 
 By contributing to this repository, you agree to adhere to the [GSA Social Media Policy](https://www.gsa.gov/directives-library/gsa-social-media-policy-2) (Section 10 Engagement). We expect all contributors, both internal and external, to engage respectfully and professionally in all project-related public communications.
 
+Any posts or comments that the admin determine are not productive will be removed, and users who make multiple such posts or comments will be banned.
+
 We encourage you to read this project’s Contribution Guide (you are here) and its [README](https://github.com/uswds/uswds-elements). If you want to learn more about our open source policy or have other questions, check out the [18F Open Source Policy GitHub repository](https://github.com/18f/open-source-policy) or send us an [email](mailto:uswds@gsa.gov).
